@@ -2,6 +2,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Product} from '../product';
 
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 import {PRODUCTS} from '../mock-products';
 
 import { ProductService } from '../product.service';
@@ -14,23 +16,20 @@ import { ProductService } from '../product.service';
 export class ProductComponent implements OnInit {
 
 
-  products: Product[];
 
-  selectedProduct: Product;
+    products: Product[] = [];
 
+    constructor(private productService: ProductService) { }
 
-  constructor(private productService: ProductService) { }
+    ngOnInit() {
+      this.getProducts();
+      }
 
-  ngOnInit() {
-
-    this.getProducts();
-  }
-
-
-  getProducts(): void {
+   getProducts(): void {
     this.productService.getProducts()
-      .subscribe(products => this.products = products);
+      .subscribe(products => this.products = products.slice(1, 5));
   }
+
 
 }
 

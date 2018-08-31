@@ -1,15 +1,13 @@
 
-<h2>My Products</h2>
-<ul class="products">
-  <!--<li *ngFor="let product of products"
-  	[class.selected]="product === selectedProduct"
-   (click)="onSelect(product)">
-    <span class="badge">{{product.id}}</span> {{product.name}}
-  </li>-->
-  <li *ngFor="let product of products">
-  	<a routerLink = "/detail/{{product.id}}">
-  		<span clss="badge">{{product.id}}</span>{{product.name}}
-  	</a>
-  </li>
 
-</ul>
+<h3>Top Products</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let product of products" class="col-1-4"
+    routerLink='/detail/{{product.id}}'>
+    <div class="module product">
+      <h4>{{product.name}}</h4>
+    </div>
+  </a>
+</div>
+
+

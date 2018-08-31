@@ -32,4 +32,13 @@ export class ProductDetailComponent implements OnInit {
     .subscribe(product => this.product = product);
   }
 
+save(): void {
+   this.productService.updateProduct(this.product)
+     .subscribe(() => this.goBack());
+ }
+
+  goBack(): void {
+    this.location.back();
+  }
+
 }

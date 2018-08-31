@@ -10,17 +10,21 @@ import { ProductService } from '../product.service';
 })
 export class DashboardComponent implements OnInit {
 
-  products: Product[] = [];
+    products: Product[];
+
+  selectedProduct: Product;
+
 
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
-        this.getProducts();
+
+    this.getProducts();
   }
 
-   getProducts(): void {
+
+  getProducts(): void {
     this.productService.getProducts()
-      .subscribe(products => this.products = products.slice(1, 5));
+      .subscribe(products => this.products = products);
   }
-
 }

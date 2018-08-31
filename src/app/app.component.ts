@@ -8,7 +8,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'REON';
 
-
   constructor() {
 	document.body.style.margin = '0';
 
