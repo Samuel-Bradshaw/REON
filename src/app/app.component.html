@@ -1,12 +1,16 @@
 <!--<h1>{{title}}</h1>-->
 <div class="logo-container"  [ngStyle]="{'background-image': 'url(../assets/images/ReonGroupShots/ReonGroupShots/Jpeg-RGB/DSC_7476.JPG)'}">
-<img src="../assets/images/ReonLogo/Logo/Reon_Logo.png" width="50%" class="logo">
+	<img src="../assets/images/ReonLogo/Logo/Reon_Logo.png" width="50%" class="logo">
+
+
+	<div class="nav-container">
+		<nav class="nav-bar">
+	 		<a routerLink="" class="nav-button active">About</a>
+	  		<a routerLink="/products" class="nav-button">Products</a>
+	  		<a routerLink="/dashboard" class="nav-button">Contact</a>
+		</nav>
+	</div>
 </div>
-<nav class="nav-bar">
- <a routerLink="" class="nav-button">About</a>
-  <a routerLink="/products" class="nav-button">Products</a>
-  <a routerLink="/dashboard" class="nav-button">Contact</a>
-</nav>
 
 
 <router-outlet></router-outlet>

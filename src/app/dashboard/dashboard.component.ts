@@ -14,7 +14,6 @@ export class DashboardComponent implements OnInit {
 
   selectedProduct: Product;
 
-
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
