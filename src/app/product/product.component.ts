@@ -4,8 +4,6 @@ import {Product} from '../product';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import {PRODUCTS} from '../mock-products';
-
 import { ProductService } from '../product.service';
 
 @Component({

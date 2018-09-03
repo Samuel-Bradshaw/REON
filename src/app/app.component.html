@@ -5,9 +5,9 @@
 
 	<div class="nav-container">
 		<nav class="nav-bar">
-	 		<a routerLink="" class="nav-button active">About</a>
-	  		<a routerLink="/products" class="nav-button">Products</a>
-	  		<a routerLink="/dashboard" class="nav-button">Contact</a>
+	 		<a routerLink="/dashboard" class="nav-button" [routerLinkActive]="['active']">About</a>
+	  		<a routerLink="/products" class="nav-button" [routerLinkActive]="['active']">Products</a>
+	  		<!--<a routerLink="/dashboard" class="nav-button" [routerLinkActive]="['active']">Contact</a>-->
 		</nav>
 	</div>
 </div>
