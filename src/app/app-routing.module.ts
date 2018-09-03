@@ -10,7 +10,7 @@ import { ProductDetailComponent }  from './product-detail/product-detail.compone
 const routes: Routes = [
   { path: 'products', component: ProductComponent },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'detail/:id', component: ProductDetailComponent },
+  { path: 'products/:id', component: ProductDetailComponent },
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' } //sets default URL to dashboard
 
 ];

@@ -34,9 +34,12 @@ a.nav-button {
 }
 
 .nav-bar a.active {
+  opacity: 1;
   background-color: black;
   color: white;
+
 }
+
 .logo {
 	display: block;
 	margin-left: auto;
