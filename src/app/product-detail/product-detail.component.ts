@@ -4,6 +4,7 @@ import { Product } from '../product';
 
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { DomSanitizer } from '@angular/platform-browser';
 
 import { ProductService }  from '../product.service';
 
@@ -15,15 +16,24 @@ import { ProductService }  from '../product.service';
 export class ProductDetailComponent implements OnInit {
 
   @Input() product: Product;
+  slideIndex = 1;
+  display1: string; dot1: string;
+  display2: string; dot2: string;
+  display3: string; dot3: string;
+  display4: string; dot4: string; 
+
 
   constructor( 
   	private route: ActivatedRoute,
   	private productService: ProductService,
-  	private location: Location
+  	private location: Location,
+    public sanitizer: DomSanitizer
   	) { }
 
   ngOnInit() {
+
     this.getProduct();
+    this.showDivs(this.slideIndex);
   }
 
   getProduct(): void{
@@ -40,5 +50,46 @@ save(): void {
   goBack(): void {
     this.location.back();
   }
+
+
+plusDivs(n: number): void {
+  this.slideIndex += n;
+  if(this.slideIndex > 4){this.slideIndex = 1}
+  if(this.slideIndex < 1){this.slideIndex = 4}
+  this.showDivs(this.slideIndex);
+}
+
+currentDiv(n: number):void {
+  this.slideIndex = n;
+  this.showDivs(this.slideIndex);
+}
+
+showDivs(n: number):void {
+
+
+if(n == 1)
+  {this.display1 = "block"; this.dot1 = "highlight";
+  this.display2 = "none"; this.display3 = "none"; this.display4="none";
+  this.dot2=""; this.dot3 = "", this.dot4 = ""}
+
+if(n == 2)
+  {this.display2 = "block"; this.dot2 = "highlight";
+  this.display1 = "none"; this.display3 = "none"; this.display4="none";
+  this.dot1=""; this.dot3 = "", this.dot4 = ""}
+
+
+if(n == 3)
+  {this.display3 = "block"; this.dot3 = "highlight";
+  this.display1 = "none"; this.display2 = "none"; this.display4="none";
+  this.dot1=""; this.dot2 = "", this.dot4 = ""}
+
+
+if(n == 4)
+  {this.display4 = "block"; this.dot4 = "highlight";
+  this.display1 = "none"; this.display2 = "none"; this.display3="none";
+  this.dot1=""; this.dot2 = "", this.dot3 = ""}
+
+  
+}
 
 }

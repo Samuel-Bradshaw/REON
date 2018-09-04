@@ -1,13 +1,63 @@
+<div class="container">
+
 <div *ngIf="product">
 
-  <h2>{{product.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{product.id}}</div>
-  <div>
+	<h1 class="center">{{product.name}}</h1>
+	<h2 class="center">{{product.description}}</h2>
+
+	<div class="grid">
+
+		<div class="image-container">
+		 
+
+			<div class="display-container" style="max-width:800px">
+				  <img class="mySlides" src="../../assets{{product.photo1}}" style="width:100%" [style.display]="display1">
+				  <img class="mySlides" src="../../assets{{product.photo2}}" style="width:100%" [style.display]="display2">
+				  <img class="mySlides" src="../../assets{{product.photo3}}" style="width:100%" [style.display]="display3">
+				  <img class="mySlides" src="../../assets{{product.photo4}}" style="width:100%" [style.display]="display4">
+
+				  
+				  	<div class="chevs center">
+				    	<div class="left chev" (click)="plusDivs(-1)">&#10094;</div>
+				    	<div class="right chev" (click)="plusDivs(1)">&#10095;</div>
+					</div>
+					<div class="change-slide center">
+				 	    <span [ngClass]="dot1" class="badge border transparent hover-highlight" (click)="currentDiv(1)"></span>
+				    	<span [ngClass]="dot2" class="badge border transparent hover-highlight" (click)="currentDiv(2)"></span>
+				    	<span [ngClass]="dot3" class="badge border transparent hover-highlight" (click)="currentDiv(3)"></span>
+				    	<span [ngClass]="dot4" class="badge border transparent hover-highlight" (click)="currentDiv(4)"></span>
+					</div>
+				  
+			</div>
+		</div>
+
+
+		<div class="info">
+			
+			<h2>£{{product.price}}</h2>
+			<ul *ngFor="let detail of product.details">
+			  	<li>{{detail}}</li>
+			</ul>
+			<h3>Available: {{product.available}}</h3>
+		</div>
+
+	</div>
+
+	<div *ngIf="product.youtubeurl  !== ''" class="videoWrapper">
+	 <iframe width="560" height="315" [src]='sanitizer.bypassSecurityTrustResourceUrl(product.youtubeurl)' frameborder="0"></iframe>
+	</div>
+
+
+
+<!--   <div>
     <label>name:
       <input [(ngModel)]="product.name" placeholder="name"/>
     </label>
   </div>
 
-  <button (click)="save()">save</button>
+ <button (click)="save()">save</button>
+-->
+
+</div>
 
 </div>

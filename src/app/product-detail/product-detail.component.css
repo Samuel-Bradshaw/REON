@@ -1,0 +1,86 @@
+.container{
+  background-color: black;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 30px;
+  font-family: Questrial;  color: white;
+
+}
+ .center {
+	text-align: center;
+	width: 100%;
+}
+
+.grid{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 20px;
+	padding-bottom: 40px;
+}
+
+.image-container{
+	grid-column: 1/2;
+}
+.info{
+	grid-column: 2/3;
+}
+
+.mySlides {
+	display:none
+}
+.left, .right, .badge {
+	cursor:pointer
+}
+
+.chev{
+	font-size: 28px;
+	color: #ddd;
+}
+
+.chevs{	
+	color: #ddd;
+	position: absolute;
+	top:50%;
+	transform: translateY(-50%);}
+
+.left{
+	float:left!important;
+	margin-left:5px;}
+.right{
+	float:right!important;
+	margin-right:5px;}
+
+.transparent,.hover-none:hover{
+	background-color:transparent!important
+}
+
+.highlight,.hover-highlight:hover{
+	color:#ddd!important;
+	background-color:#ddd!important
+}
+
+.badge {
+	color:#fff;
+	height:13px;
+	width:13px;
+	margin-left: 2px;
+	margin-right: 2px;
+	text-align:center;
+	border-radius: 50%;
+	display:inline-block;
+}
+
+.border{
+	border:2px solid #ccc!important
+}
+
+.display-container{
+	position: relative;
+}
+
+.change-slide{
+	position: absolute;
+	bottom: 0;
+}
+
+
