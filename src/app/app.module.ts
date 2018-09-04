@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms'
 import { HttpClientModule }    from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
-import {MatCardModule} from '@angular/material/card';
-
-
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { ProductComponent } from './product/product.component';
@@ -29,6 +29,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
     MatCardModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule,

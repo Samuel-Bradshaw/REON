@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 
 import { Product } from '../product';
 
@@ -7,6 +7,12 @@ import { Location } from '@angular/common';
 import { DomSanitizer } from '@angular/platform-browser';
 
 import { ProductService }  from '../product.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+
+export interface DialogModalData {
+  product: Product;
+  photoNumber: number;
+}
 
 @Component({
   selector: 'app-product-detail',
@@ -17,17 +23,18 @@ export class ProductDetailComponent implements OnInit {
 
   @Input() product: Product;
   slideIndex = 1;
-  display1: string; dot1: string;
-  display2: string; dot2: string;
-  display3: string; dot3: string;
-  display4: string; dot4: string; 
+  display1: string; slide1: string;
+  display2: string; slide2: string;
+  display3: string; slide3: string;
+  display4: string; slide4: string; 
 
 
   constructor( 
   	private route: ActivatedRoute,
   	private productService: ProductService,
   	private location: Location,
-    public sanitizer: DomSanitizer
+    public sanitizer: DomSanitizer,
+    public dialog: MatDialog,
   	) { }
 
   ngOnInit() {
@@ -66,30 +73,29 @@ currentDiv(n: number):void {
 
 showDivs(n: number):void {
 
+        if(n == 1){
+          this.display1 = "block"; this.slide1 = "highlight";
+          this.display2 = "none"; this.display3 = "none"; this.display4="none";
+          this.slide2=""; this.slide3 = "", this.slide4 = ""}
 
-if(n == 1)
-  {this.display1 = "block"; this.dot1 = "highlight";
-  this.display2 = "none"; this.display3 = "none"; this.display4="none";
-  this.dot2=""; this.dot3 = "", this.dot4 = ""}
-
-if(n == 2)
-  {this.display2 = "block"; this.dot2 = "highlight";
-  this.display1 = "none"; this.display3 = "none"; this.display4="none";
-  this.dot1=""; this.dot3 = "", this.dot4 = ""}
-
-
-if(n == 3)
-  {this.display3 = "block"; this.dot3 = "highlight";
-  this.display1 = "none"; this.display2 = "none"; this.display4="none";
-  this.dot1=""; this.dot2 = "", this.dot4 = ""}
+        if(n == 2){
+          this.display2 = "block"; this.slide2 = "highlight";
+          this.display1 = "none"; this.display3 = "none"; this.display4="none";
+          this.slide1=""; this.slide3 = "", this.slide4 = ""}
 
 
-if(n == 4)
-  {this.display4 = "block"; this.dot4 = "highlight";
-  this.display1 = "none"; this.display2 = "none"; this.display3="none";
-  this.dot1=""; this.dot2 = "", this.dot3 = ""}
+        if(n == 3){
+         this.display3 = "block"; this.slide3 = "highlight";
+         this.display1 = "none"; this.display2 = "none"; this.display4="none";
+         this.slide1=""; this.slide2 = "", this.slide4 = ""}
 
-  
-}
+
+        if(n == 4){
+          this.display4 = "block"; this.slide4 = "highlight";
+          this.display1 = "none"; this.display2 = "none"; this.display3="none";
+          this.slide1=""; this.slide2 = "", this.slide3 = ""}
+        }
+
 
 }
+

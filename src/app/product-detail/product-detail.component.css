@@ -1,10 +1,13 @@
 .container{
   background-color: black;
-  padding-left: 10%;
-  padding-right: 10%;
+  padding-left: 15%;
+  padding-right: 15%;
   padding-top: 30px;
-  font-family: Questrial;  color: white;
+  font-family: Questrial;  color: white; font-weight: 100;
 
+}
+h2{
+	margin-top: 0;
 }
  .center {
 	text-align: center;
@@ -13,13 +16,14 @@
 
 .grid{
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 3fr 2fr;
 	grid-gap: 20px;
 	padding-bottom: 40px;
 }
 
 .image-container{
 	grid-column: 1/2;
+	padding-bottom: 100px;
 }
 .info{
 	grid-column: 2/3;
@@ -28,7 +32,7 @@
 .mySlides {
 	display:none
 }
-.left, .right, .badge {
+.left, .right, .chooseSlide {
 	cursor:pointer
 }
 
@@ -50,28 +54,18 @@
 	float:right!important;
 	margin-right:5px;}
 
-.transparent,.hover-none:hover{
-	background-color:transparent!important
+
+.chooseSlide{
+	opacity: 0.4;
 }
 
 .highlight,.hover-highlight:hover{
-	color:#ddd!important;
-	background-color:#ddd!important
+	opacity: 1;
+
 }
 
-.badge {
-	color:#fff;
-	height:13px;
-	width:13px;
-	margin-left: 2px;
-	margin-right: 2px;
-	text-align:center;
-	border-radius: 50%;
-	display:inline-block;
-}
-
-.border{
-	border:2px solid #ccc!important
+.img-background{
+	background-color: white;
 }
 
 .display-container{
@@ -80,7 +74,33 @@
 
 .change-slide{
 	position: absolute;
-	bottom: 0;
+	padding-top: 10px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-gap: 10px;
+}
+
+.info > ul {
+	list-style: inside;
+    padding-left: 0;
+}
+
+.videoWrapper {
+  position: relative;
+  padding-top: 25px;
+  height: 0;
+  padding-bottom: 56.25%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 50px;
+}
+
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 
