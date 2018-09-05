@@ -8,8 +8,7 @@
 }
 
 .pic-container {
- padding-bottom: 2px;
- min-width: 250px;
+ padding-bottom: 10px;
 }
 
 
@@ -26,6 +25,10 @@
   color: white;
   text-decoration: none;
 
+}
+
+.intro{
+  overflow: hidden;
 }
 
 .product > img {
@@ -45,6 +48,12 @@
 
 }
 
+  .pic-container > img {
+  max-width:100%;
+  max-height: 95%;
+  
+}
+
 h1 {
       font-weight: 100;
       color: white;
@@ -58,18 +67,11 @@ h1 {
     float: left;
     padding-right: 10px;
     width: 50%;
-    max-width: 483px;
-    max-height: 322px;
   }
 
   .description{
-     min-height: 322px;
+     min-height: 100%;
   }
-
-  .pic-container > img {
-  max-height: 322px;
-  
-}
 
   h1 {
        font-size: 44px; 
@@ -80,6 +82,13 @@ h1 {
 }
 
 @media (max-width: 899px){
+
+
+.picture-container{
+    width: 50%;
+    max-width: 483px;
+}
+
   h1{
     font-size: 34px;
   }
@@ -115,7 +124,7 @@ h1 {
 
 @media (min-width: 1550px){
   .description > p{
-    font-size: 2em;
+    font-size: 1.3em;
   }
 }
 

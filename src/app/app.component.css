@@ -65,4 +65,13 @@ a.nav-button {
   .footer > .logo{
     float: right;
     margin-right: 5%;
+    min-width: 100px;
+  }
+
+  @media(max-width: 500px){
+
+  .footer > .logo{
+ 
+    margin-right: 10%;
+    }
   }
