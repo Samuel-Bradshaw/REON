@@ -42,10 +42,12 @@ a.nav-button {
 
 .logo {
 	display: block;
-	margin-left: auto;
-	margin-right: auto;
 	filter: invert(100%);
+}
 
+.header > .logo {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .logo-container {
@@ -53,3 +55,14 @@ a.nav-button {
 	background-repeat:no-repeat;
     background-position: 60% 50%; 
 	}
+
+  .footer{
+    padding-top: 100px;
+    height: 100px;
+    background-color: black;
+  }
+
+  .footer > .logo{
+    float: right;
+    margin-right: 5%;
+  }

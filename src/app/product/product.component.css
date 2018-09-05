@@ -3,54 +3,19 @@
   padding-left: 10%;
   padding-right: 10%;
   padding-top: 30px;
-   font-family: Questrial;  color: white;
+  font-family: Questrial;  color: white;
 
-}
-
-.intro {
-  padding-bottom: 40px;
-}
-
-.category{
-  /*display: grid;
-  grid-template-columns: 5fr 5fr;
-  grid-gap: 10px;*/
-  padding-bottom: 40px;
 }
 
 .pic-container {
- /* grid-column: 1/2;*/
- width: 50%;
- float: left;
- padding-right: 10px;
  padding-bottom: 2px;
- min-width: 300px;
+ min-width: 250px;
 }
 
-.description{
-  font-size: 15px; font-weight: 100;
-  color: white;
-  padding-left: 10px;
-     /* grid-column: 2/3;*/
-
-}
-
-h1 {
-     font-size: 44px; font-weight: 100;
-      color: white;
-      margin:0;
-      padding-bottom: 20px;
-      text-align: center;
-
-}
 
 .products{
-  width: 100%;
-}
-
-.products{
+    width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 40px;
 }
 
@@ -64,11 +29,95 @@ h1 {
 }
 
 .product > img {
-
+  min-width: 120px;
 }
 
 .product > h3 {
   font-weight: 100;
 }
+
+
+.description{
+  font-size: 15px; font-weight: 100;
+  color: white;
+  padding-left: 10px;
+ 
+
+}
+
+h1 {
+      font-weight: 100;
+      color: white;
+      margin:0;
+      padding-bottom: 20px;
+      text-align: center;
+}
+
+@media (min-width: 900px){
+  .pic-container {
+    float: left;
+    padding-right: 10px;
+    width: 50%;
+    max-width: 483px;
+    max-height: 322px;
+  }
+
+  .description{
+     min-height: 322px;
+  }
+
+  .pic-container > img {
+  max-height: 322px;
+  
+}
+
+  h1 {
+       font-size: 44px; 
+  }
+  .products{
+  grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 899px){
+  h1{
+    font-size: 34px;
+  }
+  h2{
+    font-size: 16px;
+  }
+  h3{
+    font-size: 14px;
+  }
+
+  .products{
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+@media (min-width: 501px){
+.products{
+  padding-top: 20px;
+  }
+
+}
+
+
+
+@media (max-width: 500px){
+  .products{
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
+  }
+
+}
+
+@media (min-width: 1550px){
+  .description > p{
+    font-size: 2em;
+  }
+}
+
 
 
