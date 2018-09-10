@@ -62,7 +62,7 @@ a.nav-button {
     background-color: black;
   }
 
-  .footer > .logo{
+  .footer > .logo > img {
     float: right;
     margin-right: 5%;
     min-width: 100px;

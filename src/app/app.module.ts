@@ -9,11 +9,12 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
-import { ProductComponent } from './product/product.component';
-import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { ProductComponent } from './product.component';
+import { ProductDetailComponent } from './product-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './/app-routing.module';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponent } from './dashboard.component';
+import { AddProductComponent } from './add-product/add-product.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ProductDetailComponent,
     MessagesComponent,
     DashboardComponent,
+    AddProductComponent,
 
   ],
   imports: [

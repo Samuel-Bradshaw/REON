@@ -5,7 +5,7 @@
 
 	<div class="nav-container">
 		<nav class="nav-bar">
-	 		<a routerLink="/dashboard" class="nav-button" [routerLinkActive]="['active']">About</a>
+	 		<a routerLink="/about" class="nav-button" [routerLinkActive]="['active']">About</a>
 	  		<a routerLink="/products" class="nav-button" [routerLinkActive]="['active']">Products</a>
 	  		<!--<a routerLink="/dashboard" class="nav-button" [routerLinkActive]="['active']">Contact</a>-->
 		</nav>
@@ -16,7 +16,9 @@
 <router-outlet></router-outlet>
 
 <div class="footer">
-	<img src="../assets/images/ReonLogo/Logo/Reon_Logo.png" width="10%" class="logo">
+	<a routerLink="/new_product" class="logo">
+		<img src="../assets/images/ReonLogo/Logo/Reon_Logo.png" width="10%">
+	</a>
 </div>
 
 <!--<app-messages></app-messages>-->

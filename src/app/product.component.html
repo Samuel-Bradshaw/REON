@@ -1,0 +1,65 @@
+<div class="container">
+
+		<!--<h1 class="title">The drift box range</h1> 
+		-->
+	<div class="category">
+
+	<h1>The REON drift box</h1> 
+	<div class="intro">
+		<div class="pic-container">
+			<img src="../assets/images/ReonGroupShots/ReonGroupShots/Jpeg-RGB/DSC_7476.JPG">
+	  	</div>
+		<div class="description">
+			<p>
+				The REON “drift box” desktop range, is a collection of boutique products developed by Japanese musician and engineer Shin Arakawa. Their roots date back to 2009 from the early prototypes created by Shin for his own performances on the OSAKI synth scene. 
+				<br>
+				<br>
+				REON are hand crafted in Japan using traditional thru-hole components, resulting in products that deliver a truly authentic analogue experience. Presented in a semi-modular format, drift boxes bridge both conventional and modular worlds, delivering a product that can be used independently or integrated in almost any synth setup. 
+				<br>
+				<br>
+				The drift box name was inspired by the adrenalin-pumping motorsport “drifting”, due to the unique and drastic sound warping ability of each product. No two products are quite the same; each has a different filter design and unique trait distinguishing itself from any other analogue synthesizer. With alternative “drift” controlling options and plenty of connectivity for interfacing with external equipment, you will never tire from the limitless sound capability of REON.
+				<br>
+				<br>
+				Owning your first drift box will be the start of a new addiction!  
+			    </p>
+		</div>
+	</div>
+	</div>
+
+	<br>
+	<hr>
+
+	<div class="products">
+
+		<a *ngFor="let product of products" 
+	    routerLink='/products/{{product.id}}'>
+	    <div class="module product">
+	      <img src="../assets{{product.photo1}}" style="width:100%;">
+			<h2>{{ product.name }}</h2>
+			<h3>{{ product.description}} </h3>
+			<h3>£{{product.price}}</h3>  
+	    </div>
+	  </a>
+	</div>
+
+</div>
+
+
+
+
+
+<!--
+		<div> 
+
+	
+	<h1>DriftBox</h1>
+
+	<div class="grid grid-pad">
+	  <a *ngFor="let product of products" class="col-1-4"
+	    routerLink='/detail/{{product.id}}'>
+	    <div class="module product">
+	      <h4>{{product.name}}</h4>
+	    </div>
+	  </a>
+	</div>
+	-->

@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ProductComponent } from './product/product.component';
-import { DashboardComponent }   from './dashboard/dashboard.component';
-import { ProductDetailComponent }  from './product-detail/product-detail.component';
+import { ProductComponent } from './product.component';
+import { DashboardComponent }   from './dashboard.component';
+import { ProductDetailComponent }  from './product-detail.component';
+import { AddProductComponent } from './add-product/add-product.component';
 
 
 
 const routes: Routes = [
   { path: 'products', component: ProductComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'about', component: DashboardComponent },
   { path: 'products/:id', component: ProductDetailComponent },
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' } //sets default URL to dashboard
+  { path: 'new_product', component: AddProductComponent},
+  { path: '', redirectTo: '/about', pathMatch: 'full' } //sets default URL to about
+
 
 ];
 
