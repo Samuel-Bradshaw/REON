@@ -35,10 +35,10 @@ import { AddProductComponent } from './add-product/add-product.component';
     MatDialogModule,
     MatCardModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-    InMemoryDataService, { dataEncapsulation: false }
-    )
+    //HttpClientInMemoryWebApiModule,
+    // HttpClientInMemoryWebApiModule.forRoot(
+    //InMemoryDataService, { dataEncapsulation: false }
+    //)
   ],
   providers: [],
   bootstrap: [AppComponent]

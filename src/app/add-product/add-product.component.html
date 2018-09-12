@@ -1,7 +1,10 @@
 <div class="container">
 <h2>Add new product to database</h2>
 
-<form>
+<form id="newproductform">
+
+<br>
+
 <label for="product-name">Product Name:</label>
 <input type="text" id="product-name" name="product-name" 
 	[(ngModel)]="product_name">
@@ -16,32 +19,94 @@
 <input type="number" id="price" min="0" step="0.01" name="price" 
 	[(ngModel)]="price">
 <br>
-
 <label for="details">Details:</label>
 <input type="text" id="short-description" [(ngModel)]="detail" name="detail">
 <button (click)="addDetail()" title="Add new detail">+</button>
 
 <div *ngIf="details?.length > 0">
-<ul *ngFor="let detail of details; let i = index; trackBy:trackByFn">
-	<li>
-	<input [(ngModel)]="details[i]" name="details[{{i}}]">
-		<button (click)="deleteDetail(i)" title="Remove detail">&#10060;</button>
-	</li>
-
-</ul>
+	<ul *ngFor="let detail of details; let i = index; trackBy:trackByFn">
+		<li>
+		<input [(ngModel)]="details[i]" name="details[{{i}}]">
+			<button (click)="deleteDetail(i)" title="Remove detail">&#10060;</button>
+		</li>
+	</ul>
 </div>
+<br>
+
+<label for="long-description">Long description:</label>
+<textarea form="newproductform"  name="long-description" [(ngModel)]="long_description"></textarea>
+<br>
+
+
+<label for="availability">Available from:</label>
+
+<p> change to date</p>
+<input type="text" id="availability" name="availability" 
+	[(ngModel)]="availability" placeholder="e.g. 'Nov 2018'">
+
+<br>
+
+<h3>Add product images</h3>
+
+<label for="photo1">Choose main photo:</label>
+<input type="file" id="photo1">
+<!-- https://www.youtube.com/watch?v=aDWgEOhxbOo-->
+<br>
+
+<label for="photos">Upload other photos:</label>
+<input type="file" id="photos" multiple>
+<br>
+<br>
+
+<label for="category">Product range</label>
+        <select id="category" [(ngModel)]="category" name="category">
+          	<option  value="" disabled selected> -- select which range the product is from -- </option>
+          	<option *ngFor="let category_i of categories"> {{category_i.category_name}}</option>
+          	<option>Add new range</option> 
+        </select>
+<br>
 
 
 
 
 
+<!-- extend form to upload product category-->
+<div *ngIf="category ==='Add new range'">
 
+	<h2>Enter new range details</h2>
+
+	<label for="category-name">Name of range:</label>
+	<input type="text" id="category-name" name="category-name" [(ngModel)]="category_name">
+	<br>
+
+	<label for="category-description">Description of range:</label>
+	<textarea form="newproductform"  name="category-description" [(ngModel)]="category_description"></textarea>
+	<br>
+
+	<label for="categoryimage1">Upload 'tile' image:</label>
+	<input type="file" id="categoryimage1" (change)="onFileSelected($event)">
+	<!-- https://www.youtube.com/watch?v=aDWgEOhxbOo-->
+	<br>
+
+	<label for="photo2">Upload range page image:</label>
+	<input type="file" id="categoryimage2">
+	<br>
+</div>
 
 
 
 </form>
 
+<!--Testing file upload -->
 
+<form #form="ngForm" (ngSubmit)="onUpload()">
+    Select image to upload:
+    <input type="file" name="fileToUpload" id="fileToUpload" (change)="onFileSelected($event)">
+    <button type="submit">Submit</button>
+</form>
+
+
+<!-- -->
 
 
 
