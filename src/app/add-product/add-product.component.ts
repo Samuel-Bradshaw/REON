@@ -8,7 +8,7 @@ import { Category } from '../product';
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.css']
 })
-export class AddProductComponent implements OnInit {
+export class AddProductComponent implements OnInit  {
 
 	categories: Category[];
 	category: string;
@@ -16,10 +16,12 @@ export class AddProductComponent implements OnInit {
 	category_name: string;
 	category_description: string;
 
-	category_tile_pic: File = null;
-	category_page_pic: File = null;
-
   selectedFile = null;
+
+  range_link_image = null;
+  range_link_image_url: any;
+  range_page_image = null;
+  range_page_image_url: any;
 
 
 	product_name: string;
@@ -70,18 +72,17 @@ export class AddProductComponent implements OnInit {
       options: any = {
         category_name: this.category_name,
         category_description: this.category_description,
-
-        picture_1_filepath: "",
-        picture_2_filepath: "",
+        picture_1_filepath: "/images/"+this.category_name.replace(' ','_')+"/"+this.range_link_image.name,
+        picture_2_filepath: "/images/"+this.category_name.replace(' ','_')+"/"+this.range_page_image.name,
         
       },
       url: any = 
       /////////////////
-      'localhost:80/REON/php/add_new_range.php';
+      'http://localhost:80/REON/php/add_new_range.php';
       /////////////////
     this.http.post(url, JSON.stringify(options), headers).subscribe(
       (data: any) => {
-        //this.addAuction(data);
+        
       },
       (error: any) => {
         // If there is an error, notify the user.
@@ -92,9 +93,6 @@ export class AddProductComponent implements OnInit {
         //);
       }
     );
-
-
-
 
   }
 
@@ -122,6 +120,70 @@ export class AddProductComponent implements OnInit {
 
         (error: any) => { console.log(error);}
       );}
+
+
+    //Uploads range pics to server
+    categoryImagesUpload(){
+      const formdata = new FormData();
+      formdata.append('dir', this.category_name); //will be used to create a new directory for range images on server
+      formdata.append('range_link_image', this.range_link_image, this.range_link_image.name);
+      formdata.append('range_page_image', this.range_page_image, this.range_page_image.name);
+
+      const headers = new HttpHeaders();
+      headers.set('Content-Type', null);
+      headers.append('Content-Type', 'multipart/form-data');
+      headers.append('Accept', 'application/json');
+
+      this.http.post(
+        /*////////////////*/
+        'http://localhost:80/REON/php/upload_range_images.php',
+        ////////////////////////////
+        formdata, {headers: headers})
+        .subscribe(res => {
+            let result = res;
+            console.log(result);
+            if(result === "Sucess! Images uploaded"){
+              //upload new category to database
+              this.addNewProductRange();
+              }
+            },
+          (error: any) => { console.log(error);}
+      );
+      }
+
+    onRangeLinkImageSelected(event){
+      this.range_link_image = <File>event.target.files[0];
+      console.log(this.range_link_image);
+
+      //Display pictures on pages before uploading 
+      if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+      target:EventTarget;
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      reader.onload = (imgsrc: any) => { // called once readAsDataURL is completed
+        this.range_link_image_url = imgsrc.target.result;
+      }
+    }
+
+   
+    }
+
+   onRangePageImageSelected(event){
+    this.range_page_image = <File>event.target.files[0];
+    console.log(this.range_page_image);
+
+       //Display pictures on pages before uploading 
+      if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+      target:EventTarget;
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      reader.onload = (imgsrc: any) => { // called once readAsDataURL is completed
+        this.range_page_image_url = imgsrc.target.result;
+      }
+    }
+  }
 
 
 }

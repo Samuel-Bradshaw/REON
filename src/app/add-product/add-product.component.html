@@ -72,7 +72,7 @@
 
 <!-- extend form to upload product category-->
 <div *ngIf="category ==='Add new range'">
-
+<form #form="ngForm" (ngSubmit)="categoryImagesUpload()">
 	<h2>Enter new range details</h2>
 
 	<label for="category-name">Name of range:</label>
@@ -83,30 +83,34 @@
 	<textarea form="newproductform"  name="category-description" [(ngModel)]="category_description"></textarea>
 	<br>
 
-	<label for="categoryimage1">Upload 'tile' image:</label>
-	<input type="file" id="categoryimage1" (change)="onFileSelected($event)">
-	<!-- https://www.youtube.com/watch?v=aDWgEOhxbOo-->
+
+	<label for="categoryimage1">Upload 'range link' image:</label>
+	<input type="file" name="range_link_image" id="categoryimage1" (change)="onRangeLinkImageSelected($event)">
+	<!--<img *ngIf="range_link_image_url" id="range_link_pic" [src]="range_link_image_url" width="200">
+	--><br>
+
+	<label for="categoryimage2">Upload 'range page' image:</label>
+	<input type="file" name="range_page_image" id="categoryimage2" (change)="onRangePageImageSelected($event)">
+	<!--<img *ngIf="range_page_image_url" id="range_page_pic" [src]="range_page_image_url" width="200">
+	-->
 	<br>
 
-	<label for="photo2">Upload range page image:</label>
-	<input type="file" id="categoryimage2">
-	<br>
+	 <button type="submit">Submit</button>
+</form>
 </div>
 
 
 
 </form>
 
-<!--Testing file upload -->
+<!--Testing file upload 
 
 <form #form="ngForm" (ngSubmit)="onUpload()">
     Select image to upload:
     <input type="file" name="fileToUpload" id="fileToUpload" (change)="onFileSelected($event)">
     <button type="submit">Submit</button>
 </form>
-
-
-<!-- -->
+ -->
 
 
 
