@@ -11,7 +11,9 @@ import { Category } from '../product';
 export class AddProductComponent implements OnInit  {
 
 	categories: Category[];
+  new_category: string;
 	category: string;
+  new_cat_id: number;
 
 	category_name: string;
 	category_description: string;
@@ -66,14 +68,17 @@ export class AddProductComponent implements OnInit  {
 
 
   addNewProductRange():void{
+    let pic1 = "/images/"+this.category_name.replace(' ','_')+"/"+this.range_link_image.name;
+    let pic2 =  "/images/"+this.category_name.replace(' ','_')+"/"+this.range_page_image.name;
+
     const headers: any = new HttpHeaders({
         'Content-Type': 'application/json'
       }),
       options: any = {
         category_name: this.category_name,
         category_description: this.category_description,
-        picture_1_filepath: "/images/"+this.category_name.replace(' ','_')+"/"+this.range_link_image.name,
-        picture_2_filepath: "/images/"+this.category_name.replace(' ','_')+"/"+this.range_page_image.name,
+        picture_1_filepath: pic1,
+        picture_2_filepath: pic2,
         
       },
       url: any = 
@@ -82,7 +87,9 @@ export class AddProductComponent implements OnInit  {
       /////////////////
     this.http.post(url, JSON.stringify(options), headers).subscribe(
       (data: any) => {
-        
+         this.new_cat_id = data;
+         this.new_category = this.category_name;
+         this.category = this.new_category;
       },
       (error: any) => {
         // If there is an error, notify the user.
@@ -95,7 +102,7 @@ export class AddProductComponent implements OnInit  {
     );
 
   }
-
+/*
   onFileSelected(event){
     this.selectedFile = <File>event.target.files[0];
     console.log(this.selectedFile);
@@ -111,7 +118,7 @@ export class AddProductComponent implements OnInit  {
     headers.append('Accept', 'application/json');
 
     this.http.post(
-      /*////////////////*/
+      ////////////////
       'http://localhost:80/REON/php/upload_image.php',
       ////////////////////////////
       formdata, {headers: headers})
@@ -120,8 +127,7 @@ export class AddProductComponent implements OnInit  {
 
         (error: any) => { console.log(error);}
       );}
-
-
+*/
     //Uploads range pics to server
     categoryImagesUpload(){
       const formdata = new FormData();

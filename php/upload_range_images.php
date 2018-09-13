@@ -48,12 +48,12 @@ try{
     } 
 
     // Check file size                    
-    if ($_FILES["range_link_image"]["size"] > 12000000) {
-        $errorMsg .= " Error: your 'range link' file is too large (MAX size 12MB).";
+    if ($_FILES["range_link_image"]["size"] > 15000000) {
+        $errorMsg .= " Error: your 'range link' file is too large (MAX size 15MB).";
         $uploadOk = 0;
     }
-      if ($_FILES["range_page_image"]["size"] > 12000000) {
-        $errorMsg .= " Error: your 'range page' file is too large (MAX size 12MB).";
+      if ($_FILES["range_page_image"]["size"] > 15000000) {
+        $errorMsg .= " Error: your 'range page' file is too large (MAX size 15MB).";
         $uploadOk = 0;
     }
 
