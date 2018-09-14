@@ -1,118 +1,158 @@
 <div class="container">
-<h2>Add new product to database</h2>
+<h1>Add new product to database</h1>
 
-<form id="newproductform" #form="ngForm" (ngSubmit)="onUpload()">
 
-	<label for="category">Select the range that the product is from:</label>
-	        <select id="category" [(ngModel)]="category" name="category">
-	          	<option  value="" disabled selected> -- select which range the product is from -- </option>
-	          	<option *ngFor="let category_i of categories">{{category_i.category_name}}</option>
-	          	<option *ngIf="new_category">{{new_category}}</option>
-	          	<option>The product is from a new range</option> 
-	        </select>
+<form id="newproductform" #form="ngForm" (ngSubmit)="productImagesUpload()" class="pure-form pure-form-stacked">
+	<div class="form-group">
+		<label for="category">Product Range:</label>
+	    <select id="category" [(ngModel)]="category" name="category">
+	        <option  value="" disabled selected> -- select which range the product is from -- </option>
+	      	<option *ngFor="let category_i of categories">{{category_i.category_name}}</option>
+	       	<option *ngIf="new_category">{{new_category}}</option>
+         	<option>The product is from a new range</option> 
+	    </select>
+	</div>
 	<br>
+
 
 
 
 	<!-- extend form to upload product category-->
-	<div *ngIf="category ==='The product is from a new range'">
+	<div *ngIf="category ==='The product is from a new range'" class="newcat">
+		<h2>Enter new range details</h2>
 		<form name="new_range_form">
-			<h2>Enter new range details</h2>
-
-			<label for="category-name">Name of range:</label>
-			<input type="text" id="category-name" name="category-name" [(ngModel)]="category_name">
+			
+			<div class="form-group">
+				<label for="category-name">Name of Range:</label>
+				<input class="width100" type="text" id="category-name" name="category-name" [(ngModel)]="category_name">
+			</div>
 			<br>
 
-			<label for="category-description">Description of range:</label>
-			<textarea form="newproductform"  name="category-description" [(ngModel)]="category_description"></textarea>
+			<div class="form-group">
+				<label for="category-description">Description of Range:</label>
+				<textarea form="newproductform"  name="category-description" [(ngModel)]="category_description"></textarea>
+			</div>
+			<br>
 			<br>
 
+			<div class="inlineblock form-group" title="This image is the background image on the /product page for the tile that links to the range's main page ">
+				<label for="categoryimage1">Upload 'Range tile' Image:  </label>
+				<input type="file" name="range_link_image" id="categoryimage1" (change)="onRangeLinkImageSelected($event)">
+				
+			</div>
 
-			<label for="categoryimage1">Upload 'range link' image:</label>
-			<input type="file" name="range_link_image" id="categoryimage1" (change)="onRangeLinkImageSelected($event)">
-			<img *ngIf="range_link_image_url" id="range_link_pic" [src]="range_link_image_url" width="200">
+			<br>
 			<br>
 
-			<label for="categoryimage2">Upload 'range page' image:</label>
-			<input type="file" name="range_page_image" id="categoryimage2" (change)="onRangePageImageSelected($event)">
-			<img *ngIf="range_page_image_url" id="range_page_pic" [src]="range_page_image_url" width="200">
-			<br>
+			<div class="inlineblock form-group">
+				<label for="categoryimage2">Upload 'Range page' Image:  </label>
+				<input type="file" name="range_page_image" id="categoryimage2" (change)="onRangePageImageSelected($event)">
+			</div>
 
-			 <input type="button" (click)="categoryImagesUpload()" value="Create new range">
+<!--
+			<div class="inlineblock">
+				<img *ngIf="range_link_image_url" id="range_link_pic" [src]="range_link_image_url">
+				<img *ngIf="range_page_image_url" id="range_page_pic" [src]="range_page_image_url">
+			</div>
+					-->
+			<br>
+			<br>
+			<div style="text-align: center;">
+			 	<button class="submitbtn" (click)="categoryImagesUpload()">Add New Range</button>
+			</div>
 		</form>
+	
 	</div>
 
-
-
 	<br>
-
-	<label for="product-name">Product Name:</label>
-	<input type="text" id="product-name" name="product-name" 
+	<div *ngIf="category !='The product is from a new range'">
+	<div class="form-group">
+		<label for="product-name">Product Name:</label>
+		<input type="text" class="width100" id="product-name" name="product-name" 
 		[(ngModel)]="product_name">
+	</div>
+	
 	<br>
-
-	<label for="short-description">Short description:</label>
-	<input type="text" id="short-description" name="short_description" 
-		[(ngModel)]="short_description">
-	<br>
-
-	<label for="price">Price: £</label>
-	<input type="number" id="price" min="0" step="0.01" name="price" 
-		[(ngModel)]="price">
-	<br>
-	<label for="details">Details:</label>
-	<input type="text" id="short-description" [(ngModel)]="detail" name="detail">
-	<input type=button (click)="addDetail()" title="Add new detail" value="+">
-
-	<div *ngIf="details?.length > 0">
-		<ul *ngFor="let detail of details; let i = index; trackBy:trackByFn">
-			<li>
-			<input [(ngModel)]="details[i]" name="details[{{i}}]">
-				<button (click)="deleteDetail(i)" title="Remove">&#10060;</button>
-			</li>
-		</ul>
+	<div class="form-group">
+		<label for="short-description">Short Description:</label>
+		<input type="text" class="width100" id="short-description" name="short_description" 
+			[(ngModel)]="short_description">
 	</div>
 	<br>
 
-	<label for="long-description">Long description:</label>
-	<textarea form="newproductform"  name="long-description" [(ngModel)]="long_description"></textarea>
-	<br>
+	<div class="form-group">
+	<div class="inlineblock" id="price">
+		<label for="price">Price:</label>
+		
+			<span class="input-symbol">
+			<input type="number" class="width100" id="price" min="0" step="1" name="price"
+			[(ngModel)]="price">
+		</span>
+		
+	</div>
 
-
-	<label for="availability">Available from:</label>
-
-	<input type="text" id="availability" name="availability" 
+	<div class="inlineblock marginleft" id="avail">
+		<label for="availability">Available from:</label>
+		<input type="text" id="availability" class="width100" name="availability" 
 		[(ngModel)]="availability" placeholder="e.g. 'Nov 2018'">
+	</div>
+	</div>
+
+	<br>
+	<div class="form-group">
+		<label for="details">Details:</label>
+		<div class="nowrap">
+			<input type="text" id="short-description" [(ngModel)]="detail" name="detail" class="inputwithbutton" title="These will appear as bullet points on the product's page" placeholder="Enter product detail and click '+' button" >
+			<button (click)="addDetail()" title="Add new product detail" class="inputwithbutton add">+</button>
+		</div>
+		<div *ngIf="details?.length > 0">
+			<ul *ngFor="let detail of details; let i = index; trackBy:trackByFn">
+				<li class="nowrap">
+				<input [(ngModel)]="details[i]" title="Edit detail here or remove by clicking '-' button" name="details[{{i}}]" class="inputwithbutton">
+				<button (click)="deleteDetail(i)" title="Remove" class="inputwithbutton remove">-</button>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<br>
+	<div class="form-group">
+		<label for="long-description">Long Description:</label>
+		<textarea class="width100" placeholder="Enter the more detailed product description..." form="newproductform"  name="long-description" [(ngModel)]="long_description"></textarea>
+	</div>
+
+	<br>
+	<div class="form-group" title='Go to youtube video, click "share", then "Embed", and copy the URL indicated by src="[Copy URL link from here]"'>
+		<label for="short-description">Video demonstartion URL:</label>
+		<input type="text" class="width100" id="short-description" name="short_description" placeholder="Copy 'https://www.youtube.com/embed/...' URL from youtube" 
+			[(ngModel)]="youtube_url">
+	</div>
+
+
 
 	<br>
 
-	<h3>Add product images</h3>
-
-	<label for="photo1">Choose main photo:</label>
-	<input type="file" id="photo1">
-	<!-- https://www.youtube.com/watch?v=aDWgEOhxbOo-->
+	<h3>Add product images: </h3>
+	<div class="form-group" title="This image will act as the link to the product's page.">
+		<label for="photo1">Choose main image:</label>
+		<input type="file" id="photo1" name="main_image" (change)="onMainImageSelected($event)">
+	</div>
+	
+	<br>
+	<div class="form-group">
+		<label for="photos">Upload other images:</label>
+		<input type="file" id="photos" name="product_images" multiple (change)="onProductImageSelected($event)"> 
+	</div>
+	<br>
 	<br>
 
-	<label for="photos">Upload other photos:</label>
-	<input type="file" id="photos" multiple>
-	<br>
-	<br>
 
 
-
-
-    <button type="submit">Add new product</button>
+	<div style="text-align: center;">
+    	<button type="submit" class="submitbtn">Add Product</button>
+	</div>
+	</div>
 </form>
-
-<!--Testing file upload 
-
-<form #form="ngForm" (ngSubmit)="onUpload()">
-    Select image to upload:
-    <input type="file" name="fileToUpload" id="fileToUpload" (change)="onFileSelected($event)">
-    <button type="submit">Submit</button>
-</form>
- -->
-
 
 
 </div>

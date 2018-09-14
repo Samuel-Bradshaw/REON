@@ -1,0 +1,174 @@
+.container{
+  background-color: black;
+  padding-left: 20%;
+  padding-right: 20%;
+  padding-top: 30px;
+  font-family: Questrial;  color: white;
+  display: block;
+}
+
+
+
+
+h2, h1{
+	text-align: center;
+}
+
+h3{
+	margin-left: 10%;
+}
+
+input, label {
+    display:block;
+}
+
+.inlineblock > span, input{
+	display: inline-block;
+}
+
+
+
+textarea {
+	
+	min-height:300px;
+	min-width: 300px;
+}
+
+input {
+	margin-bottom: 10px;
+	height: 20px;
+	border-width: 0 0 1px;
+    border-color: #fff;
+    color: white;
+    background-color: black; 
+    font-size: 17px;
+    height: 20px;
+    margin-top: 3px;
+}
+
+.form-group select{
+	width: 60%;
+	min-width: 100px;
+	height: 25px;
+	font-size: 16px;
+	margin-top: 5px;
+}
+
+img{
+	display: inline-block;
+	text-align: center;
+	width:45%;
+}
+
+.newcat{
+	min-width: 300px;
+	border-radius: 10px;
+	margin-top: 20px;
+}
+
+.inlineblock > img {
+	padding: 5px;
+}
+
+.newcat textarea{
+	width: 80%;
+}
+
+.form-group{
+	margin-left: 10%;
+	margin-right: 10%;
+	width: 80%;
+}
+
+.width100{
+	width: 100%;
+}
+
+.input-symbol {
+    position: relative;
+    width: 90px;
+}
+.input-symbol input {
+    padding-left:18px;
+}
+.input-symbol:before {
+    position: absolute;
+    top: 6px;
+    content:"£";
+    left: 5px;
+}
+
+#price{
+	width:30%;
+}
+
+#avail{
+	width: 60%;
+}
+
+input.inputwithbutton{
+	width: 94%;
+	margin-right: 1%;
+}
+
+button.inputwithbutton{
+	width: 5%;
+	border-radius: 8px;
+	border-color: white;
+	font-weight: bold;
+	background-color: #ddd;
+	text-align: center;
+
+}
+
+button.inputwithbutton.add:hover{
+	background-color: #008B8B;
+	color: white;
+}
+
+button.inputwithbutton.remove:hover{
+	background-color: #ff6666;
+	color: white;
+}
+
+.inlineblock {
+	display: inline-block;
+}
+.nowrap{
+white-space: nowrap;
+}
+
+
+
+.marginleft{
+	margin-left: 10%;
+}
+
+input#price{
+	width: 100%;
+}
+
+textarea{
+	border-radius: 5px;
+	padding: 5px;
+	margin-top: 3px;
+	font-family: Questrial;
+	font-size: 16px;
+}
+
+.submitbtn{
+	font-size: 18px;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+.submitbtn:hover{
+	color: white;
+	background-color: #008B8B;
+
+}
+
+button:hover{
+	cursor: pointer;
+}
+

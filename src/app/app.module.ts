@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms'
 import { HttpClientModule }    from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
-import { MatCardModule } from '@angular/material/card';
+import { MatCardModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -15,6 +15,8 @@ import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { DialogComponent } from './dialog.component';
+
 
 
 @NgModule({
@@ -25,6 +27,7 @@ import { AddProductComponent } from './add-product/add-product.component';
     MessagesComponent,
     DashboardComponent,
     AddProductComponent,
+    DialogComponent,
 
   ],
   imports: [
@@ -32,15 +35,16 @@ import { AddProductComponent } from './add-product/add-product.component';
     FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatDialogModule,
     MatCardModule,
     HttpClientModule,
+    MatDialogModule
     //HttpClientInMemoryWebApiModule,
     // HttpClientInMemoryWebApiModule.forRoot(
     //InMemoryDataService, { dataEncapsulation: false }
     //)
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogComponent]
 })
 export class AppModule { }
