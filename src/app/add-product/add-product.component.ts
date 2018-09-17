@@ -39,6 +39,8 @@ export class AddProductComponent implements OnInit  {
 
   new_product_id: number;
 
+  success: number = 1;
+
   constructor(private http: HttpClient,
               public dialog: MatDialog) { }
 
@@ -76,8 +78,8 @@ export class AddProductComponent implements OnInit  {
   //Category upload
 
   addNewProductRange():void{
-    let pic1 = "/images/"+this.category_name.replace(' ','_')+"/"+this.range_link_image.name;
-    let pic2 =  "/images/"+this.category_name.replace(' ','_')+"/"+this.range_page_image.name;
+    let pic1 = "/images/"+this.category_name.replace(/ /g,'_')+"/"+this.range_link_image.name;
+    let pic2 =  "/images/"+this.category_name.replace(/ /g,'_')+"/"+this.range_page_image.name;
 
     const headers: any = new HttpHeaders({
         'Content-Type': 'application/json'
@@ -181,35 +183,23 @@ export class AddProductComponent implements OnInit  {
     }
   }  
 
-    //product upload
-
-    onMainImageSelected(event){
-    this.product_main_image = <File>event.target.files[0];
-    console.log(this.product_main_image);
-  }  
-
-    onProductImageSelected(event){
-      for(let i = 0; i < event.target.files.length; i ++){
-        this.product_images.push(<File>event.target.files[i]);
-      }
-
-    console.log(this.product_images);
-  }  
+   
+ //PRODUCT UPLOAD
 
 
+  //UPLOADS IMAGES AND UPDATES DATABASE
     productImagesUpload():void {
-     /* this.uploadImage(this.product_main_image,this.product_main_image.name, this.category.category_name+"/"+this.product_name);
+
+     this.uploadImage(this.product_main_image,this.product_main_image.name, this.category.category_name+"/"+this.product_name);
       for(let i = 0; i < this.product_images.length; i++){
         this.uploadImage(this.product_images[i], this.product_images[i].name, this.category.category_name+"/"+this.product_name);
       }
-      this.addNewProduct();*/
-      this.new_product_id = 1;
-      this.insertDetails();
+      this.insertNewProduct();
     }
 
-  addNewProduct():void{
+  insertNewProduct():void{
 
-    let pic = "/images/"+this.category.category_name.replace(' ','_')+"/"+this.product_name.replace(' ','_')+"/"+this.product_main_image.name;
+    let pic = "/images/"+this.category.category_name.replace(/ /g,'_')+"/"+this.product_name.replace(/ /g,'_')+"/"+this.product_main_image.name;
     
     const headers: any = new HttpHeaders({
         'Content-Type': 'application/json'
@@ -231,11 +221,18 @@ export class AddProductComponent implements OnInit  {
       /////////////////
     this.http.post(url, JSON.stringify(options), headers).subscribe(
       (data: any) => {
+        console.log("Successfully inserted new product data");
          this.new_product_id = data;
-         this.openDialog("New product added to database.");
+         console.log(data);
+         if(this.new_product_id == null){
+           this.success = 0; 
+         }
+         this.insertDetails();
+         this.insertImageInfo();
       },
       (error: any) => {
-        this.openDialog(error);
+        this.openDialog("Error inserting product data.");
+        this.success = 0;
       }
     );
   }  
@@ -245,9 +242,11 @@ export class AddProductComponent implements OnInit  {
     //Define options for post request 
     let opts = {};
     opts["product_id"] = this.new_product_id;
-     for(let i = 0; i < this.details.length; i++){
-         opts["detail"+i] = this.details[i];
-      }
+     //for(let i = 0; i < this.details.length; i++){
+      //   opts["detail"+i] = this.details[i];
+      //}
+
+    opts["details"]=this.details;
 
     const headers: any = new HttpHeaders({
         'Content-Type': 'application/json'
@@ -260,14 +259,67 @@ export class AddProductComponent implements OnInit  {
     this.http.post(url, JSON.stringify(options), headers).subscribe(
       (data: any) => {
         console.log(data);
-        console.log("details added to database");
+        if(data !== "Product details added to database"){
+         this.success = 0;
+       }
       },
       (error: any) => {
-        this.openDialog(error);
+        this.openDialog("Error inserting product details.");
+        this.success = 0;
       }
     );
     
   }
+
+
+  insertImageInfo():void{
+
+    //Define options for post request 
+    let opts = {};
+    opts["product_id"] = this.new_product_id;
+    const filepaths = [];
+     for(let i = 0; i < this.product_images.length; i++){
+
+         filepaths.push("/images/"+this.category.category_name.replace(/ /g,'_')+
+             "/"+this.product_name.replace(/ /g,'_')+"/"+this.product_images[i].name);
+      }
+
+    opts["image_filepaths"]= filepaths;
+
+    const headers: any = new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      options: any = opts,     
+      url: any = 
+      /////////////////
+      'http://localhost:80/REON/php/insert_image_info.php';
+      /////////////////
+    this.http.post(url, JSON.stringify(options), headers).subscribe(
+      (data: any) => {
+        console.log(data);
+        if(data ==="Image details added to database"){}
+          else{this.success = 0};
+      },
+      (error: any) => {
+        this.openDialog("Error inserting image info to database");
+        this.success = 0;
+      }
+    );
+    
+  }
+
+  onMainImageSelected(event){
+    this.product_main_image = <File>event.target.files[0];
+    console.log(this.product_main_image);
+  }  
+
+    onProductImageSelected(event){
+      for(let i = 0; i < event.target.files.length; i ++){
+        this.product_images.push(<File>event.target.files[i]);
+      }
+
+    console.log(this.product_images);
+  }  
 
   uploadImage(file: File, fileName: string, directory: string):void{
 
@@ -279,7 +331,7 @@ export class AddProductComponent implements OnInit  {
 
       //send main image
       const formdata = new FormData();
-      formdata.append('dir', directory); //will be used to create a new directory for range images on server
+      formdata.append('dir', directory.replace(/ /g, '_')); //will be used to create a new directory for range images on server
       formdata.append('FileToUpload', file, fileName);
 
       const headers = new HttpHeaders();
@@ -295,7 +347,7 @@ export class AddProductComponent implements OnInit  {
         .subscribe((data: any) => {
             console.log(data);
             if(data === "Success!"){
-              this.openDialog("Image "+fileName+" successfully uploaded.");
+              console.log("Image "+fileName+" successfully uploaded.");
               } else {
                 this.openDialog(data);
               }

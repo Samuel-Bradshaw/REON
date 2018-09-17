@@ -12,7 +12,8 @@
     $category_id = filter_var($obj->category_id,  FILTER_SANITIZE_NUMBER_INT);
     $leading_photo_filepath = filter_var($obj->leading_photo_filepath, FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW);
     $long_description =  filter_var($obj->long_description, FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW);
-    $youtube_url =  filter_var($obj->youtube_url, FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW);
+    
+    $youtube_url =  parse_str(parse_url($obj->youtube_url, PHP_URL_QUERY));
 
 
     try {
@@ -31,7 +32,7 @@
         echo json_encode($pdo->lastInsertId());
       }
     catch (Exception $e) {
-        $error = $e->getMessage();
+        echo json_encode($error = $e->getMessage());
     }
 
 

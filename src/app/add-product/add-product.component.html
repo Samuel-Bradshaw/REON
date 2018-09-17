@@ -5,7 +5,7 @@
 <form id="newproductform" #form="ngForm" (ngSubmit)="productImagesUpload()" class="pure-form pure-form-stacked">
 	<div class="form-group">
 		<label for="category">Product Range:</label>
-	    <select id="category" [(ngModel)]="category" name="category">
+	    <select id="category" [(ngModel)]="category" name="category" required>
 	        <option  value="" disabled selected> -- select which range the product is from -- </option>
 	      	<option *ngFor="let category_i of categories" [ngValue]="category_i">{{category_i.category_name}}</option>
 	       	<option *ngIf="new_cat_id" [ngValue]="new_category">{{new_category.category_name}}</option>
@@ -68,14 +68,14 @@
 	<div *ngIf="category !='The product is from a new range'">
 	<div class="form-group">
 		<label for="product-name">Product Name:</label>
-		<input type="text" class="width100" id="product-name" name="product-name" 
+		<input type="text" class="width100" id="product-name" name="product-name" required 
 		[(ngModel)]="product_name">
 	</div>
 	
 	<br>
 	<div class="form-group">
 		<label for="short-description">Short Description:</label>
-		<input type="text" class="width100" id="short-description" name="short_description" 
+		<input type="text" class="width100" id="short-description" name="short_description" required
 			[(ngModel)]="short_description">
 	</div>
 	<br>
@@ -86,7 +86,7 @@
 		
 			<span class="input-symbol">
 			<input type="number" class="width100" id="price" min="0" step="1" name="price"
-			[(ngModel)]="price">
+			[(ngModel)]="price" required>
 		</span>
 		
 	</div>
@@ -94,7 +94,7 @@
 	<div class="inlineblock marginleft" id="avail">
 		<label for="availability">Available from:</label>
 		<input type="text" id="availability" class="width100" name="availability" 
-		[(ngModel)]="availability" placeholder="e.g. 'Nov 2018'">
+		[(ngModel)]="availability" required placeholder="e.g. 'Nov 2018'">
 	</div>
 	</div>
 
@@ -106,10 +106,10 @@
 			<button (click)="addDetail()" title="Add new product detail" class="inputwithbutton add" type="button">+</button>
 		</div>
 		<div *ngIf="details?.length > 0">
-			<ul *ngFor="let detail of details; let i = index; trackBy:trackByFn">
+			<ul *ngFor="let d of details; let i = index; trackBy: trackByFn">
 				<li class="nowrap">
-				<input [(ngModel)]="details[i]" title="Edit detail here or remove by clicking '-' button" name="details[i]" class="inputwithbutton">
-				<button (click)="deleteDetail(i)" title="Remove" class="inputwithbutton remove" type="button">-</button>
+					<input [(ngModel)]="details[i]" title="Edit detail here or remove by clicking '-' button" name="details[{{i}}]" class="inputwithbutton">
+					<button (click)="deleteDetail(i)" title="Remove" class="inputwithbutton remove" type="button">-</button>
 				</li>
 			</ul>
 		</div>
@@ -118,13 +118,13 @@
 	<br>
 	<div class="form-group">
 		<label for="long-description">Long Description:</label>
-		<textarea class="width100" placeholder="Enter the more detailed product description..." form="newproductform"  name="long-description" [(ngModel)]="long_description"></textarea>
+		<textarea class="width100" placeholder="Enter the more detailed product description..." form="newproductform"  name="long-description" [(ngModel)]="long_description" required></textarea>
 	</div>
 
 	<br>
-	<div class="form-group" title='Go to youtube video, click "share", then "Embed", and copy the URL indicated by src="[Copy URL link from here]"'>
+	<div class="form-group">
 		<label for="short-description">Video demonstartion URL:</label>
-		<input type="text" class="width100" id="short-description" name="short_description" placeholder="Copy 'https://www.youtube.com/embed/...' URL from youtube" 
+		<input type="text" class="width100" id="short-description" name="short_description" placeholder="Paste URL of youtube video here" 
 			[(ngModel)]="youtube_url">
 	</div>
 
@@ -135,12 +135,12 @@
 	<h3>Add product images: </h3>
 	<div class="form-group" title="This image will act as the link to the product's page.">
 		<label for="photo1">Choose main image:</label>
-		<input type="file" id="photo1" name="main_image" (change)="onMainImageSelected($event)">
+		<input type="file" id="photo1" name="main_image" (change)="onMainImageSelected($event)" required>
 	</div>
 	
 	<br>
-	<div class="form-group">
-		<label for="photos">Upload other images:</label>
+	<div class="form-group" title="You can select any number of product images to upload here">
+		<label for="photos">Upload other product images:</label>
 		<input type="file" id="photos" name="product_images" multiple (change)="onProductImageSelected($event)"> 
 	</div>
 	<br>

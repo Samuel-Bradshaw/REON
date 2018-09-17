@@ -8,19 +8,20 @@
 
 
     $product_id = filter_var($obj->product_id,  FILTER_SANITIZE_NUMBER_INT);
-    $details = $obj->details;
+    $filepaths = $obj->image_filepaths;
 
-    for($i = 0; $i < sizeof($details); $i++){
+    for($i = 0; $i < sizeof($filepaths); $i++){
         
             try {
 
-                $detail = filter_var($details[$i], FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW); 
+                $filepath = filter_var($filepaths[$i], FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW); 
 
-                $query = "INSERT INTO detail (`detail`, `product_id`) VALUES (?, ?)";
+                $query = "INSERT INTO picture (`product_id`, `filepath`) VALUES (?, ?)";
                 
                 $insertItem = $pdo->prepare($query);
-                $insertItem->bindParam(1, $detail, PDO::PARAM_STR);
-                $insertItem->bindParam(2, $product_id, PDO::PARAM_INT);
+                $insertItem->bindParam(1, $product_id, PDO::PARAM_INT);
+                $insertItem->bindParam(2, $filepath, PDO::PARAM_STR);
+     
 
                 $insertItem->execute();
 
@@ -32,6 +33,6 @@
         
         }
 
-        echo(json_encode("Product details added to database"));
+        echo(json_encode("Image details added to database"));
 
 ?>

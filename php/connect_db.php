@@ -18,6 +18,6 @@
         // Creating a PDO instance (connecting to the database).
         $pdo 	= new PDO($dsn, $username, $pwd, $opt);  
     } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
+        echo json_encode("Error: " . $e->getMessage());
     }
 ?>
