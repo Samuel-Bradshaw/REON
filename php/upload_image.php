@@ -10,7 +10,7 @@ if (!file_exists("../images/".$new_dir_name."/")) {
 
 $target_dir = "../images/".$new_dir_name."/";
 $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-$target_file = $target_dir . basename($_FILES["range_link_image"]["name"]);
+$target_file = $target_dir . basename($_FILES["FileToUpload"]["name"]);
                    
 $uploadOk = 1;
 
@@ -29,7 +29,7 @@ try{
         if($check !== false ) {
             $uploadOk = 1;
         } else {
-            $errorMsg = " Error: File selected is not an image.";
+            $errorMsg = " Error: File " . basename($_FILES["FileToUpload"]["name"])." is not an image.";
             $uploadOk = 0;
         }
     } else {
@@ -40,13 +40,13 @@ try{
 
     // Check if file already exists
     if (file_exists($target_file)) {
-        $errorMsg .= " Error: File already exists.";
+        $errorMsg .= " Error: File ". basename($_FILES["FileToUpload"]["name"])." already exists.";
         $uploadOk = 0;
     } 
 
     // Check file size                    
     if ($_FILES["FileToUpload"]["size"] > 30000000) {
-        $errorMsg .= " Error: your 'range link' file is too large (MAX size 30MB).";
+        $errorMsg .= " Error: your file ". basename($_FILES["FileToUpload"]["name"])." is too large (MAX size 30MB).";
         $uploadOk = 0;
     }
       
@@ -67,10 +67,10 @@ try{
     // if everything is ok, try to upload file
     } else {
         if (move_uploaded_file($_FILES["FileToUpload"]["tmp_name"], $target_file)) {
-            echo json_encode("Sucess!");
+            echo json_encode("Success!");
       
         } else {
-            echo json_encode("Error: upload failed.");
+            echo json_encode("Error: upload of ". basename($_FILES["FileToUpload"]["name"])." failed.");
         }
     }
   

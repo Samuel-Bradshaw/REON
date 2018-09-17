@@ -14,7 +14,8 @@ export class AddProductComponent implements OnInit  {
   max_post_size: number = 100000000;
 
 	categories: Category[];
-	category: string;
+	category: Category;
+  new_category: Category;
   new_cat_id: number;
 	category_name: string;
 	category_description: string;
@@ -35,6 +36,8 @@ export class AddProductComponent implements OnInit  {
   long_description: string;
   youtube_url: string;
 	availability: string;
+
+  new_product_id: number;
 
   constructor(private http: HttpClient,
               public dialog: MatDialog) { }
@@ -93,8 +96,13 @@ export class AddProductComponent implements OnInit  {
     this.http.post(url, JSON.stringify(options), headers).subscribe(
       (data: any) => {
          this.new_cat_id = data;
-         this.category = this.category_name;
-         this.openDialog("New range added to database.");
+         this.new_category = {category_id: this.new_cat_id, 
+                              category_name: this.category_name, 
+                              category_description:this.category_description, 
+                              picture_1_filepath: pic1, 
+                              picture_2_filepath: pic2};
+         this.category = this.new_category;
+         this.openDialog("New range "+this.category_name+" added to database.");
       },
       (error: any) => {
         this.openDialog(error);
@@ -130,7 +138,7 @@ export class AddProductComponent implements OnInit  {
             console.log(result);
             if(result === "Sucess! Images uploaded"){
               //upload new category to database
-              this.openDialog("Images successfully uploaded.");
+              this.openDialog("Images "+ this.range_page_image.name +",\n"+ this.range_page_image.name +"\nsuccessfully uploaded.");
               this.addNewProductRange();
               }
             },
@@ -189,16 +197,77 @@ export class AddProductComponent implements OnInit  {
   }  
 
 
-    productImagesUpload():void{
-      this.uploadImage(this.product_main_image,this.product_main_image.name, this.category);
+    productImagesUpload():void {
+     /* this.uploadImage(this.product_main_image,this.product_main_image.name, this.category.category_name+"/"+this.product_name);
       for(let i = 0; i < this.product_images.length; i++){
-        this.uploadImage(this.product_images[i], this.product_images[i].name, this.category);
+        this.uploadImage(this.product_images[i], this.product_images[i].name, this.category.category_name+"/"+this.product_name);
       }
+      this.addNewProduct();*/
+      this.new_product_id = 1;
+      this.insertDetails();
     }
 
   addNewProduct():void{
 
+    let pic = "/images/"+this.category.category_name.replace(' ','_')+"/"+this.product_name.replace(' ','_')+"/"+this.product_main_image.name;
+    
+    const headers: any = new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      options: any = {
+        name: this.product_name,
+        description: this.short_description,
+        price: this.price,
+        available: this.availability,
+        category_id: this.category.category_id,
+        leading_photo_filepath: pic,
+        long_description: this.long_description,
+        youtube_url: this.youtube_url,
+        
+      },
+      url: any = 
+      /////////////////
+      'http://localhost:80/REON/php/insert_new_product.php';
+      /////////////////
+    this.http.post(url, JSON.stringify(options), headers).subscribe(
+      (data: any) => {
+         this.new_product_id = data;
+         this.openDialog("New product added to database.");
+      },
+      (error: any) => {
+        this.openDialog(error);
+      }
+    );
   }  
+
+  insertDetails():void{
+
+    //Define options for post request 
+    let opts = {};
+    opts["product_id"] = this.new_product_id;
+     for(let i = 0; i < this.details.length; i++){
+         opts["detail"+i] = this.details[i];
+      }
+
+    const headers: any = new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      options: any = opts,     
+      url: any = 
+      /////////////////
+      'http://localhost:80/REON/php/insert_details.php';
+      /////////////////
+    this.http.post(url, JSON.stringify(options), headers).subscribe(
+      (data: any) => {
+        console.log(data);
+        console.log("details added to database");
+      },
+      (error: any) => {
+        this.openDialog(error);
+      }
+    );
+    
+  }
 
   uploadImage(file: File, fileName: string, directory: string):void{
 
@@ -225,15 +294,16 @@ export class AddProductComponent implements OnInit  {
         formdata, {headers: headers})
         .subscribe((data: any) => {
             console.log(data);
-            if(data === "Sucess!"){
+            if(data === "Success!"){
               this.openDialog("Image "+fileName+" successfully uploaded.");
+              } else {
+                this.openDialog(data);
               }
             },
           (error: any) => {
             console.log(error);
-            this.openDialog('Error');}
+            this.openDialog('Error uploading image.\n See console for details.');}
         );}
-
   }
 
   openDialog(message: string): void {

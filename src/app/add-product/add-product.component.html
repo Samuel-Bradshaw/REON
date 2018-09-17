@@ -7,8 +7,8 @@
 		<label for="category">Product Range:</label>
 	    <select id="category" [(ngModel)]="category" name="category">
 	        <option  value="" disabled selected> -- select which range the product is from -- </option>
-	      	<option *ngFor="let category_i of categories">{{category_i.category_name}}</option>
-	       	<option *ngIf="new_category">{{new_category}}</option>
+	      	<option *ngFor="let category_i of categories" [ngValue]="category_i">{{category_i.category_name}}</option>
+	       	<option *ngIf="new_cat_id" [ngValue]="new_category">{{new_category.category_name}}</option>
          	<option>The product is from a new range</option> 
 	    </select>
 	</div>
@@ -103,13 +103,13 @@
 		<label for="details">Details:</label>
 		<div class="nowrap">
 			<input type="text" id="short-description" [(ngModel)]="detail" name="detail" class="inputwithbutton" title="These will appear as bullet points on the product's page" placeholder="Enter product detail and click '+' button" >
-			<button (click)="addDetail()" title="Add new product detail" class="inputwithbutton add">+</button>
+			<button (click)="addDetail()" title="Add new product detail" class="inputwithbutton add" type="button">+</button>
 		</div>
 		<div *ngIf="details?.length > 0">
 			<ul *ngFor="let detail of details; let i = index; trackBy:trackByFn">
 				<li class="nowrap">
-				<input [(ngModel)]="details[i]" title="Edit detail here or remove by clicking '-' button" name="details[{{i}}]" class="inputwithbutton">
-				<button (click)="deleteDetail(i)" title="Remove" class="inputwithbutton remove">-</button>
+				<input [(ngModel)]="details[i]" title="Edit detail here or remove by clicking '-' button" name="details[i]" class="inputwithbutton">
+				<button (click)="deleteDetail(i)" title="Remove" class="inputwithbutton remove" type="button">-</button>
 				</li>
 			</ul>
 		</div>
