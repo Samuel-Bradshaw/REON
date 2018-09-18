@@ -1,45 +1,4 @@
 
-.nav-container{
-  background-color: #ddd;
-  opacity: 0.75;
-  margin: 0;
-}
-
-.nav-bar {
-  overflow: hidden;
-  background-color: #ddd;
-  margin-left: 20%;
-  margin-right: 20%;
-  opacity: 1;
-
-}
-
-a.nav-button {
-   opacity: 1;
-  height: 50px; line-height: 50px;
-  width:150px;
-  color: black;
-  text-align: left;
-  padding-left: 14px;
-  display: inline-block;
-  text-decoration: none;
-  font-size: 20px;
-
-   font-family: 'Allerta Stencil';
-}
-
-.nav-bar a:hover {
-  background-color: gray;
-  color: white;
-}
-
-.nav-bar a.active {
-  opacity: 1;
-  background-color: black;
-  color: white;
-
-}
-
 .logo {
 	display: block;
 	filter: invert(100%);

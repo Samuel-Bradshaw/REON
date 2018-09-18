@@ -1,0 +1,17 @@
+
+	<div class="nav-container">
+		<nav class="nav-bar" id="topnavbar">
+ 		<img src="./assets/images/menu.png" width="8%" class="icon" (click)="toggleMenu()">
+	 		
+		
+			<div class="first">
+				<a routerLink="/home" class="nav-button" [routerLinkActive]="['active']" (click)="toggleMenu()">Home</a>
+				<a routerLink="/news" class="nav-button" [routerLinkActive]="['active']" (click)="toggleMenu()">News</a>
+				<a routerLink="/products" class="nav-button" [routerLinkActive]="['active']" (click)="toggleMenu()">Products</a>
+				<a routerLink="/buy" class="nav-button" [routerLinkActive]="['active']" (click)="toggleMenu()">Buy</a>
+		 		<a routerLink="/support" class="nav-button" [routerLinkActive]="['active']" (click)="toggleMenu()">Support</a>
+		 		<a routerLink="/about" class="nav-button" [routerLinkActive]="['active']" (click)="toggleMenu()">About</a>
+		 	</div>
+
+		</nav>
+	</div>

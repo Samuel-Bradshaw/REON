@@ -16,6 +16,13 @@ import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { DialogComponent } from './dialog.component';
+import { HomeComponent } from './home.component';
+import { NavbarComponent } from './navbar.component';
+import { NewsComponent } from './news.component';
+import { SupportComponent } from './support.component';
+import { BuyComponent } from './buy.component';
+
+
 
 
 
@@ -28,7 +35,11 @@ import { DialogComponent } from './dialog.component';
     DashboardComponent,
     AddProductComponent,
     DialogComponent,
-
+    HomeComponent,
+    NavbarComponent,
+    NewsComponent,
+    SupportComponent,
+    BuyComponent,
   ],
   imports: [
     BrowserModule,

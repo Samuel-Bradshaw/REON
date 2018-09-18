@@ -1,0 +1,147 @@
+.nav-container{
+  background-color: #ddd;
+  opacity: 0.75;
+  margin: 0;
+}
+
+.nav-bar {
+  overflow: hidden;
+  background-color: #ddd;
+  margin-left: 18%;
+  margin-right: 18%;
+  opacity: 1;
+
+}
+
+a.nav-button {
+  /*box-sizing: border-box;*/
+  opacity: 1;
+  height: 50px; 
+  line-height: 50px;
+  width:16.6%;
+  color: black;
+  text-align: center;  
+  display: inline-block;
+  text-decoration: none;
+  font-family: 'Allerta Stencil';
+}
+
+
+.nav-bar a:hover {
+  background-color: gray;
+  color: white;
+}
+
+.nav-bar a.active {
+  opacity: 1;
+  background-color: black;
+  color: white;
+
+}
+
+.icon{
+cursor: pointer;
+float: right;
+margin-top: 10px;
+max-width: 38px;
+min-width: 24px;
+}
+
+
+@media (min-width:1000px){
+
+  a.nav-button{
+      font-size: 20px;
+  }
+
+}
+
+@media (max-width: 999px) and (min-width: 735px){
+
+  a.nav-button{
+      min-width: 72px;
+      font-size: 16px;
+  }
+
+} 
+
+@media (max-width: 734px){
+    a.nav-button{
+      min-width: 65px;
+      font-size: 14px;
+  }
+
+}
+
+@media screen and (min-width: 675px){
+
+  .icon{
+    display: none;
+  }
+
+}
+
+@media screen and (max-width: 674px){
+
+  .nav-bar{
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    margin-right: 0;
+
+  }
+
+  .nav-bar a.nav-button {
+    text-align: left;
+    padding-left: 14px;
+    width: 90px;
+  }
+
+
+
+  a.nav-button:not(.active){
+    display: none;
+  }
+
+  .nav-bar.responsive {
+    position: relative;
+  
+  }
+
+  .nav-bar:not(.responsive) .icon{
+    margin-right: 5px;
+  }
+
+  .nav-bar.responsive .icon {
+    position: absolute;
+    right: 5px;
+  }
+
+  .nav-bar a.nav-button{
+    padding-left: 20%;
+  }
+
+  .nav-bar.responsive a.nav-button {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+
+
+   .nav-bar.responsive .first a.nav-button:not(:first-child){
+    width: 100%;
+   }
+
+   .nav-bar.responsive .first a.nav-button:first-child{
+    width: 69%;
+   }
+
+}
+
+@media (max-width: 280px){
+  .nav-bar.responsive .first a.nav-button:first-child{
+    width: 64%;
+   }
+
+}
+
