@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {Product} from './product';
+
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+import { ProductService } from './product.service';
 
 @Component({
   selector: 'app-product-range',
@@ -7,9 +12,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductRangeComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit() {
+    products: Product[] = [];
+
+    constructor(private productService: ProductService) { }
+
+    ngOnInit() {
+      this.getProducts();
+      }
+
+   getProducts(): void {
+    this.productService.getProducts()
+      .subscribe(products => this.products = products);
   }
-
 }

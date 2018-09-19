@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
-import { Product } from './product';
+import { Product, Category } from './product';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
@@ -20,7 +20,7 @@ export class ProductService {
 
 
   constructor(private messageService: MessageService,
-  	  private http: HttpClient) { }
+  	          private http: HttpClient) { }
 
 getProducts (): Observable<Product[]> {
     return this.http.get<Product[]>(this.productsUrl)
@@ -30,6 +30,7 @@ getProducts (): Observable<Product[]> {
     );
 }
 
+
   /** GET hero by id. Will 404 if id not found */
 getProduct(id: number): Observable<Product> {
   const url = `${this.productsUrl}/${id}`;
@@ -38,6 +39,29 @@ getProduct(id: number): Observable<Product> {
     catchError(this.handleError<Product>(`getProduct id=${id}`))
   );
 }
+
+
+
+getProductRanges():Observable<Category[]>{
+   const url = 'http://localhost:80/REON/php/get_product_ranges.php';
+   return this.http.get<Category[]>(url)
+    .pipe(
+      tap(categories => this.log('fetched categories')),
+      catchError(this.handleError('getProductRanges', []))
+    );
+}
+
+/*getRange(id: number): Observable<Category> {
+  const url = `${this.productsUrl}/${id}`;
+  return this.http.get<Category>(url).pipe(
+    tap(_ => this.log(`fetched product id=${id}`)),
+    catchError(this.handleError<Product>(`getProduct id=${id}`))
+  );
+}*/
+
+
+
+
 
 private log(message: string) {
   this.messageService.add(`ProductService: ${message}`);

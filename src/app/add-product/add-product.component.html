@@ -42,6 +42,20 @@
 			</div>
 
 			<br>
+			<div *ngIf="range_link_image_url" class="form-group">
+			<h4>Preview of image on '/product' page:</h4>
+			<label for="preview" style="color: gray">Click and drag image below up/down to vertically align as desired:</label>  	
+
+				<div class="category-tile-preview" id="preview" (click)="dragElement($event)" 
+					[ngStyle]="{'background-image': 'url('+ this.range_link_image_url +')',
+					'background-position': ''+ this.range_link_position+'% center'}">
+				<h2 *ngIf="category_name">The {{category_name}} range</h2>
+
+				</div>
+
+			</div>
+					
+			<br>
 			<br>
 
 			<div class="inlineblock form-group">
@@ -49,12 +63,6 @@
 				<input type="file" name="range_page_image" id="categoryimage2" (change)="onRangePageImageSelected($event)">
 			</div>
 
-<!--
-			<div class="inlineblock">
-				<img *ngIf="range_link_image_url" id="range_link_pic" [src]="range_link_image_url">
-				<img *ngIf="range_page_image_url" id="range_page_pic" [src]="range_page_image_url">
-			</div>
-					-->
 			<br>
 			<br>
 			<div style="text-align: center;">

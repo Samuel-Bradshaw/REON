@@ -1,6 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
-import {Product} from './product';
+import {Product, Category} from './product';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -13,19 +13,17 @@ import { ProductService } from './product.service';
 })
 export class ProductComponent implements OnInit {
 
-
-
-    products: Product[] = [];
+    categories: Category[] = [];
 
     constructor(private productService: ProductService) { }
 
     ngOnInit() {
-      this.getProducts();
+      this.getProductRanges();
       }
 
-   getProducts(): void {
-    this.productService.getProducts()
-      .subscribe(products => this.products = products);
+   getProductRanges(): void {
+    this.productService.getProductRanges()
+      .subscribe(categories => this.categories = categories);
   }
 
 

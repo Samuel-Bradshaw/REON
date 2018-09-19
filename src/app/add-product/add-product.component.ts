@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Category } from '../product';
 import { MatDialog, MatDialogConfig,  MatDialogRef  } from '@angular/material';
@@ -22,6 +22,8 @@ export class AddProductComponent implements OnInit  {
 
   range_link_image = null;
   range_link_image_url: any;
+  range_link_position: number = 50;
+
   range_page_image = null;
   range_page_image_url: any;
 
@@ -42,11 +44,18 @@ export class AddProductComponent implements OnInit  {
   success: number = 1;
 
   constructor(private http: HttpClient,
-              public dialog: MatDialog) { }
+              public dialog: MatDialog,
+              private elementRef:ElementRef) { }
 
   ngOnInit() {
   	this.getCategories();
+/*    document.getElementById('preview').addEventListener("click", function(event) {
+    this.range_link_position = (event.clientY-this.offsetTop) / this.offsetHeight * 100;
+  
+  });*/
   }
+
+
 
   addDetail(): void{
   	if(this.detail.length > 0){
@@ -78,8 +87,8 @@ export class AddProductComponent implements OnInit  {
   //Category upload
 
   addNewProductRange():void{
-    let pic1 = "/images/"+this.category_name.replace(/ /g,'_')+"/"+this.range_link_image.name;
-    let pic2 =  "/images/"+this.category_name.replace(/ /g,'_')+"/"+this.range_page_image.name;
+    let pic1 = "images/"+this.category_name.replace(/ /g,'_')+"/"+this.range_link_image.name;
+    let pic2 =  "images/"+this.category_name.replace(/ /g,'_')+"/"+this.range_page_image.name;
 
     const headers: any = new HttpHeaders({
         'Content-Type': 'application/json'
@@ -199,7 +208,7 @@ export class AddProductComponent implements OnInit  {
 
   insertNewProduct():void{
 
-    let pic = "/images/"+this.category.category_name.replace(/ /g,'_')+"/"+this.product_name.replace(/ /g,'_')+"/"+this.product_main_image.name;
+    let pic = "images/"+this.category.category_name.replace(/ /g,'_')+"/"+this.product_name.replace(/ /g,'_')+"/"+this.product_main_image.name;
     
     const headers: any = new HttpHeaders({
         'Content-Type': 'application/json'
@@ -280,7 +289,7 @@ export class AddProductComponent implements OnInit  {
     const filepaths = [];
      for(let i = 0; i < this.product_images.length; i++){
 
-         filepaths.push("/images/"+this.category.category_name.replace(/ /g,'_')+
+         filepaths.push("images/"+this.category.category_name.replace(/ /g,'_')+
              "/"+this.product_name.replace(/ /g,'_')+"/"+this.product_images[i].name);
       }
 

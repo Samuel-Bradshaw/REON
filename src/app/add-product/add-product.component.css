@@ -169,3 +169,26 @@ button:hover{
 	cursor: pointer;
 }
 
+.category-tile-preview{
+	width:50vw;
+	height: 15vw;
+	background-size: 100%;
+	background-repeat: no-repeat;
+	display: table;
+}
+
+.category-tile-preview > h2{
+	text-align: right;
+	display: table-cell;
+	vertical-align: bottom;
+	padding-right: 2%;
+	font-size: 48px;
+
+}
+
+@media (max-width: 1050px){
+	.category-tile-preview > h2{
+		font-size: 34px;
+	}
+} 
+
