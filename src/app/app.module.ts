@@ -21,8 +21,9 @@ import { NavbarComponent } from './navbar.component';
 import { NewsComponent } from './news.component';
 import { SupportComponent } from './support.component';
 import { BuyComponent } from './buy.component';
-
-
+import { AdminComponent } from './admin.component';
+import { LoginComponent } from './login.component';
+import { NeedAuthGuard } from './login-auth.guard';
 
 
 
@@ -40,6 +41,9 @@ import { BuyComponent } from './buy.component';
     NewsComponent,
     SupportComponent,
     BuyComponent,
+    AdminComponent,
+    LoginComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -54,7 +58,7 @@ import { BuyComponent } from './buy.component';
     //InMemoryDataService, { dataEncapsulation: false }
     //)
   ],
-  providers: [],
+  providers: [NeedAuthGuard],
   bootstrap: [AppComponent],
   entryComponents: [DialogComponent]
 })
