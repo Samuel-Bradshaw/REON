@@ -14,11 +14,11 @@ export class AdminService {
   }
 
   private loadState(): string {
-    return localStorage.getItem(USER_KEY);
+    return sessionStorage.getItem(USER_KEY);
   }
 
   private saveState(): void {
-    localStorage.setItem(USER_KEY, this.currentUser);
+    sessionStorage.setItem(USER_KEY, this.currentUser);
   }
 
   setUser(user: string): void {
@@ -26,13 +26,13 @@ export class AdminService {
     this.saveState();
   }
 
-  logout(ID: string): void {
+  logout(): void {
     this.currentUser = null;
     this.saveState();
   }
 
   isLogged(){
-  	return localStorage.getItem(USER_KEY) != null;
+  	return sessionStorage.getItem(USER_KEY) != null;
   }
 
 

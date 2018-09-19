@@ -37,9 +37,13 @@ export class LoginComponent implements OnInit {
     this.http.post(url, JSON.stringify(options), headers).subscribe(
       (data: any) => {
       	//If login successful
+        if(data=="Success!"){
         this.adminService.setUser(this.username);
         this.openDialog('Logging in...');
-        this.router.navigateByUrl('/admin');
+        this.router.navigateByUrl('/admin');}
+        else{
+          this.openDialog(data);
+        }
       },
       (error: any) => {
         // If the supplied username and password do not match, notify the user.

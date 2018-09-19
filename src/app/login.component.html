@@ -1,26 +1,18 @@
 <div class="container">
-
 	<h1>REON Admin</h1>
-
 	<form #form="ngForm" (ngSubmit)="login()" class="pure-form pure-form-stacked">
-		<h2>Login</h2>
-		
 		<div class="form-group">
 			<label for="username">Username:</label>
-			<input id="username" type="text" [(ngModel)]="username" name="username">
+			<input id="username" type="text" [(ngModel)]="username" name="username" required>
 		</div>
-
+		<br>
 		<div class="form-group">
 			<label for="password">Password:</label>
-			<input id="password" type="password" [(ngModel)]="password" name="password">
+			<input id="password" type="password" [(ngModel)]="password" name="password" required>
 		</div>
-
-		<button type="submit" class="submitbtn">Login</button>
-
+		<br>
+		<div class="center">
+			<button type="submit" class="submitbtn">Login</button>
+		</div>
 	</form>
-
-
-
-
-
 </div>

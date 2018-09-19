@@ -1,0 +1,13 @@
+.container{
+  background-color: black;
+  padding-left: 20%;
+  padding-right: 20%;
+  padding-top: 20px;
+  font-family: Questrial;  color: white;
+  display: block;
+}
+
+h1{
+	text-align: center;
+	font-size: 36px;
+}
