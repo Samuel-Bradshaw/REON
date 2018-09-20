@@ -1,15 +1,19 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, Output, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Category } from '../product';
 import { MatDialog, MatDialogConfig,  MatDialogRef  } from '@angular/material';
 import { DialogComponent } from '../dialog.component';
 
+
 @Component({
   selector: 'app-add-range',
   templateUrl: './add-range.component.html',
-  styleUrls: ['./add-range.component.css']
+  styleUrls: ['./add-range.component.css'],
+
 })
 export class AddRangeComponent implements OnInit {
+
+	@Output() range_added: EventEmitter<Category>;
 
 	max_post_size: number = 100000000;
 
@@ -26,9 +30,9 @@ export class AddRangeComponent implements OnInit {
 	range_page_image_url: any;
 	opaque_height:number = 33;
 
-  constructor(private http: HttpClient, 
-  			  public dialog: MatDialog,
-              private elementRef:ElementRef) { }
+  constructor(private http: HttpClient, public dialog: MatDialog, private elementRef:ElementRef) {  
+            this.range_added = new EventEmitter(); 
+          }
 
   ngOnInit() {
   }
@@ -41,7 +45,7 @@ export class AddRangeComponent implements OnInit {
         this.opaque_height = this.range_link_position - 34/2;   
     }
 
-    addNewProductRange():void{
+    addNewProductRange():void {
     let pic1 = "images/"+this.category_name.replace(/ /g,'_')+"/"+this.range_link_image.name;
     let pic2 =  "images/"+this.category_name.replace(/ /g,'_')+"/"+this.range_page_image.name;
 
@@ -67,7 +71,10 @@ export class AddRangeComponent implements OnInit {
                               picture_1_filepath: pic1, 
                               picture_2_filepath: pic2,
                               tile_picture_position: this.range_link_position};
-         /*this.category = this.new_category;*/
+         
+         //Pass to parent component
+         this.range_added.emit(this.new_category);
+
          this.openDialog("New range "+this.category_name+" added to database.");
       },
       (error: any) => {

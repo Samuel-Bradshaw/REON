@@ -1,3 +1,20 @@
+.newcatcontainer{
+  background-color: black;
+  font-family: Questrial;  color: white;
+  display: block;
+  padding-left: 20%;
+  padding-right: 20%;
+  padding-top: 30px;
+  margin-top: 0;
+}
+
+.newcatcontainer[_ngcontent-c4], .newcatcontainer[_ngcontent-c3]{
+	padding-left: 0;
+  	padding-right: 0;
+  	padding-top: 30px;
+
+}
+
 h1{
 	text-align: center;
 }
@@ -51,6 +68,8 @@ textarea{
 	margin-top: 3px;
 	font-family: Questrial;
 	font-size: 16px;
+	min-height:300px;
+	min-width: 300px;
 }
 
 button:hover{

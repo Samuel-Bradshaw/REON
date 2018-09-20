@@ -13,7 +13,7 @@ import { AdminComponent } from './admin.component';
 import { LoginComponent } from './login.component';
 import { ProductRangeComponent } from './product-range.component';
 import { NeedAuthGuard } from './login-auth.guard';
-
+import {AddRangeComponent} from './add-range/add-range.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, //sets default URL to home
@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: 'admin/login', component: LoginComponent},
   { path: 'admin/new_product', component: AddProductComponent, canActivate: [NeedAuthGuard]},
   { path: 'admin', component: AdminComponent, canActivate: [NeedAuthGuard]},
-
+  { path: 'admin/add_range', component: AddRangeComponent, canActivate: [NeedAuthGuard]},
 
 ];
 

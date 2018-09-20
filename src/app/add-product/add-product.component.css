@@ -1,4 +1,4 @@
-.container{
+.addprodcontainer{
   background-color: black;
   padding-left: 20%;
   padding-right: 20%;
@@ -8,28 +8,17 @@
 }
 
 
+h2, h1{text-align: center;}
 
+h3{margin-left: 10%;}
 
-h2, h1{
-	text-align: center;
-}
-
-h3{
-	margin-left: 10%;
-}
-
-input, label {
-    display:block;
-}
+input, label {display:block;}
 
 .inlineblock > span, input{
 	display: inline-block;
 }
 
-
-
 textarea {
-	
 	min-height:300px;
 	min-width: 300px;
 }
@@ -55,13 +44,6 @@ input {
 }
 
 
-
-.newcat{
-	min-width: 300px;
-	border-radius: 10px;
-	margin-top: 20px;
-}
-
 .inlineblock > img {
 	padding: 5px;
 }
@@ -84,6 +66,7 @@ input {
 .input-symbol input {
     padding-left:18px;
 }
+
 .input-symbol:before {
     position: absolute;
     top: 6px;
@@ -124,22 +107,15 @@ button.inputwithbutton.remove:hover{
 	color: white;
 }
 
-.inlineblock {
-	display: inline-block;
-}
-.nowrap{
-white-space: nowrap;
-}
+.inlineblock {display: inline-block;}
+.nowrap{ white-space: nowrap;}
 
 
 
 .marginleft{
-	margin-left: 10%;
-}
+	margin-left: 10%;}
 
-input#price{
-	width: 100%;
-}
+input#price{width: 100%;}
 
 textarea{
 	border-radius: 5px;
@@ -165,78 +141,3 @@ button:hover{
 	cursor: pointer;
 }
 
-.category-tile-preview{
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	/*background-size: 100% auto;
-	background-repeat: no-repeat;
-	display: table;*/
-}
-
-.position-box > h2 {
-	text-align: right;
-	display: table-cell;
-	vertical-align: bottom;
-	padding-right: 2%;
-	font-size: 48px;
-
-}
-
-@media (max-width: 1050px){
-	.position-box > h2{
-		font-size: 34px;
-	}
-} 
-
-.position-box{
-	display: table;
-	width:100%;
-	height: 34%;
-	position: absolute;
-	left:0;
-}
-
-.position-box:hover{
-	cursor: pointer;
-}
-
-.preview-container{
-	width:48vw;
-	height: 36vw;
-	position: relative;
-	border: 1px solid white;
-}
-
-.opaque{
-	opacity: 0.5;
-	width: 100%;
-	background-color: rgb(0,0,0);
-	position: absolute;
-	left: 0;
-}
-#opaque1{
-	top:0;
-
-}
-#opaque2{
-	bottom:0;
-	
-}
- .top{
-  width:100%; 
- 	height: 100%; 
- 	opacity: 0;
- 	z-index: 1; 
- 	position: absolute;
- 	top:0; 
- 	left: 0;
- 	 }
-
-.top:hover{
-	cursor: grab;	
-}
-
-.top:active{
-	cursor: grabbing;
-}
