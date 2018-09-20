@@ -25,6 +25,7 @@ import { AdminComponent } from './admin.component';
 import { LoginComponent } from './login.component';
 import { NeedAuthGuard } from './login-auth.guard';
 import { ProductRangeComponent } from './product-range.component';
+import { AddRangeComponent } from './add-range/add-range.component';
 
 
 
@@ -45,6 +46,7 @@ import { ProductRangeComponent } from './product-range.component';
     AdminComponent,
     LoginComponent,
     ProductRangeComponent,
+    AddRangeComponent,
 
   ],
   imports: [

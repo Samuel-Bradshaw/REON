@@ -3,11 +3,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Category } from '../product';
 import { MatDialog, MatDialogConfig,  MatDialogRef  } from '@angular/material';
 import { DialogComponent } from '../dialog.component';
+import { AddRangeComponent } from '../add-range/add-range.component';
 
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.css']
+  styleUrls: ['./add-product.component.css'],
 })
 export class AddProductComponent implements OnInit  {
 
@@ -26,6 +27,7 @@ export class AddProductComponent implements OnInit  {
 
   range_page_image = null;
   range_page_image_url: any;
+  opaque_height:number = 33;
 
   product_main_image = null;
   product_images: any[] = [];
@@ -49,12 +51,15 @@ export class AddProductComponent implements OnInit  {
 
   ngOnInit() {
   	this.getCategories();
-/*    document.getElementById('preview').addEventListener("click", function(event) {
-    this.range_link_position = (event.clientY-this.offsetTop) / this.offsetHeight * 100;
-  
-  });*/
   }
 
+  mousemove(e):void {
+        let height = e.target.clientHeight;
+        let mouseY = e.offsetY;
+        this.range_link_position = (100*mouseY)/height;
+        this.range_link_position = parseFloat(this.range_link_position.toFixed(2));
+        this.opaque_height = this.range_link_position - 34/2;   
+    }
 
 
   addDetail(): void{
@@ -98,8 +103,7 @@ export class AddProductComponent implements OnInit  {
         category_description: this.category_description,
         picture_1_filepath: pic1,
         picture_2_filepath: pic2,
-        
-      },
+        tile_picture_position: this.range_link_position},
       url: any = 
       /////////////////
       'http://localhost:80/REON/php/add_new_range.php';
@@ -111,7 +115,8 @@ export class AddProductComponent implements OnInit  {
                               category_name: this.category_name, 
                               category_description:this.category_description, 
                               picture_1_filepath: pic1, 
-                              picture_2_filepath: pic2};
+                              picture_2_filepath: pic2,
+                              tile_picture_position: this.range_link_position};
          this.category = this.new_category;
          this.openDialog("New range "+this.category_name+" added to database.");
       },

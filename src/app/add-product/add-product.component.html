@@ -43,13 +43,22 @@
 
 			<br>
 			<div *ngIf="range_link_image_url" class="form-group">
-			<h4>Preview of image on '/product' page:</h4>
-			<label for="preview" style="color: gray">Click and drag image below up/down to vertically align as desired:</label>  	
+				<h4>Preview of image on '/product' page:</h4>
+				<label for="preview" style="color: gray">Click and drag image below to vertically align as desired:</label>  	
 
-				<div class="category-tile-preview" id="preview" (click)="dragElement($event)" 
-					[ngStyle]="{'background-image': 'url('+ this.range_link_image_url +')',
-					'background-position': ''+ this.range_link_position+'% center'}">
-				<h2 *ngIf="category_name">The {{category_name}} range</h2>
+				<div class="preview-container"  id="preview" (click)="mousemove($event)">
+	
+					<img class="category-tile-preview" [src]="range_link_image_url">				
+					<div class="opaque" id="opaque1" [ngStyle]="{'height': ''+ this.opaque_height + '%'}">
+					</div>
+						<div class="position-box" [ngStyle]="{'top': ''+ this.opaque_height+'%'}">
+							<h2 *ngIf="category_name">The {{category_name}} range</h2>
+						</div>
+					<div class="opaque" id="opaque2" [ngStyle]="{'height': 'calc(66% - '+ this.opaque_height+ '%)'}">
+					</div>
+					<div class="top">
+					</div>
+					
 
 				</div>
 

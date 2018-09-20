@@ -1,0 +1,61 @@
+	<!-- extend form to upload product category-->
+	<div class="newcat">
+		<h1>Enter new range details</h1>
+		<form name="new_range_form">
+			
+			<div class="form-group">
+				<label for="category-name">Name of Range:</label>
+				<input class="width100" type="text" id="category-name" name="category-name" [(ngModel)]="category_name">
+			</div>
+			<br>
+
+			<div class="form-group">
+				<label for="category-description">Description of Range:</label>
+				<textarea form="newproductform" class="width100" name="category-description" [(ngModel)]="category_description"></textarea>
+			</div>
+			<br>
+			<br>
+
+			<div class="inlineblock form-group" title="This image is the background image on the /product page for the tile that links to the range's main page ">
+				<label for="categoryimage1">Upload 'Range tile' Image:  </label>
+				<input type="file" name="range_link_image" id="categoryimage1" (change)="onRangeLinkImageSelected($event)">
+				
+			</div>
+
+			<br>
+			<div *ngIf="range_link_image_url" class="form-group">
+				<h4>Preview of image on '/product' page:</h4>
+				<label for="preview" style="color: gray">Click and drag image below to vertically align as desired:</label>  	
+
+				<div class="preview-container"  id="preview" (click)="mousemove($event)">
+	
+					<img class="category-tile-preview" [src]="range_link_image_url">				
+					<div class="opaque" id="opaque1" [ngStyle]="{'height': ''+ this.opaque_height + '%'}">
+					</div>
+						<div class="position-box" [ngStyle]="{'top': ''+ this.opaque_height+'%'}">
+							<h2 *ngIf="category_name">The {{category_name}} range</h2>
+						</div>
+					<div class="opaque" id="opaque2" [ngStyle]="{'height': 'calc(66% - '+ this.opaque_height+ '%)'}">
+					</div>
+					<div class="top">
+					</div>
+					
+				</div>
+
+			</div>
+					
+			<br>
+			<br>
+
+			<div class="inlineblock form-group">
+				<label for="categoryimage2">Upload 'Range page' Image:  </label>
+				<input type="file" name="range_page_image" id="categoryimage2" (change)="onRangePageImageSelected($event)">
+			</div>
+
+			<br>
+			<br>
+			<div style="text-align: center;">
+			 	<button class="submitbtn" (click)="categoryImagesUpload()">Add New Range</button>
+			</div>
+		</form>
+	</div>
