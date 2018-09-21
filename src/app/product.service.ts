@@ -16,22 +16,43 @@ const httpOptions = {
 })
 export class ProductService {
 
-	  private productsUrl = 'api/products';  // URL to web api
+	//  private productsUrl = 'api/products';  // URL to web api
+
 
 
   constructor(private messageService: MessageService,
   	          private http: HttpClient) { }
 
-getProducts (): Observable<Product[]> {
-    return this.http.get<Product[]>(this.productsUrl)
+
+getProducts (id: number): Product[] {
+
+   const headers: any = new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      options: any = {
+        category_id: id
+      },
+  url : any = 'http://localhost:80/REON/php/get_products.php';
+  this.http.post(url , JSON.stringify(options), headers).subscribe(
+      (data: any) => {
+        let products: Product[];
+        products = data;
+        return products;
+      },
+    catchError(this.handleError<Product>(`getProducts id=${id}`))
+  );
+  return;
+  
+   /* return this.http.get<Product[]>(this.productsUrl)
     .pipe(
       tap(products => this.log('fetched products')),
       catchError(this.handleError('getProducts', []))
-    );
+    );*/
 }
 
+/*
 
-  /** GET hero by id. Will 404 if id not found */
+  // GET hero by id. Will 404 if id not found //
 getProduct(id: number): Observable<Product> {
   const url = `${this.productsUrl}/${id}`;
   return this.http.get<Product>(url).pipe(
@@ -39,6 +60,8 @@ getProduct(id: number): Observable<Product> {
     catchError(this.handleError<Product>(`getProduct id=${id}`))
   );
 }
+*/
+
 
 
 
@@ -51,13 +74,32 @@ getProductRanges():Observable<Category[]>{
     );
 }
 
-/*getRange(id: number): Observable<Category> {
-  const url = `${this.productsUrl}/${id}`;
-  return this.http.get<Category>(url).pipe(
-    tap(_ => this.log(`fetched product id=${id}`)),
-    catchError(this.handleError<Product>(`getProduct id=${id}`))
+getRange(id: number): Category {
+    const headers: any = new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      options: any = {
+        category_id: id
+      },
+  url : any = 'http://localhost:80/REON/php/get_range.php';
+  this.http.post(url , JSON.stringify(options), headers).subscribe(
+      (data: any) => {
+        let category: Category;
+        category={category_id: data.category_id,
+                  category_name: data.category_name, 
+                  category_description:data.category_description, 
+                  picture_1_filepath: data.picture_1_filepath, 
+                  picture_2_filepath: data.picture_2_filepath,
+                  tile_picture_position: data.tile_picture_position,
+                  tile_picture2_position: data.tile_picture2_position,
+                  main_page_picture: data.main_page_picture};
+        return data;
+
+      },
+    catchError(this.handleError<Category>(`getRange id=${id}`))
   );
-}*/
+  return;
+}
 
 
 
@@ -86,12 +128,12 @@ private handleError<T> (operation = 'operation', result?: T) {
   };
 }
 
-/** PUT: update the hero on the server */
+/** PUT: update the hero on the server 
 updateProduct (product: Product): Observable<any> {
   return this.http.put(this.productsUrl, product, httpOptions).pipe(
     tap(_ => this.log(`updated product id=${product.id}`)),
     catchError(this.handleError<any>('updateProduct'))
   );
 }
-
+*/
 }

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Product} from './product';
-
+import {Product, Category} from './product';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import { ActivatedRoute } from '@angular/router';
 import { ProductService } from './product.service';
 
 @Component({
@@ -12,17 +11,53 @@ import { ProductService } from './product.service';
 })
 export class ProductRangeComponent implements OnInit {
 
-
+    category: Category;
     products: Product[] = [];
 
-    constructor(private productService: ProductService) { }
+    constructor(private productService: ProductService,   private route: ActivatedRoute, private http: HttpClient) {
+      route.params.subscribe(val => {
+      this.getRange();
+      this.getProducts();
+
+    }); }
 
     ngOnInit() {
-      this.getProducts();
       }
 
-   getProducts(): void {
-    this.productService.getProducts()
-      .subscribe(products => this.products = products);
+  
+  getProducts() {
+
+     const headers: any = new HttpHeaders({
+          'Content-Type': 'application/json'
+        }),
+        options: any = {
+          category_id:  +this.route.snapshot.url[1].path,
+        },
+    url : any = 'http://localhost:80/REON/php/get_products.php';
+    this.http.post(url , JSON.stringify(options), headers).subscribe(
+        (data: any) => {
+          this.products = data;
+        
+        },
+      
+    );
   }
+
+  getRange(): void {
+        const headers: any = new HttpHeaders({
+            'Content-Type': 'application/json'
+          }),
+          options: any = {
+              category_id:  +this.route.snapshot.url[1].path,
+          },
+      url : any = 'http://localhost:80/REON/php/get_range.php';
+      this.http.post(url , JSON.stringify(options), headers).subscribe(
+          (data: any) => {
+            this.category = data;
+          },
+      
+      );
+    }
+
+
 }

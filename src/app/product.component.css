@@ -13,10 +13,11 @@ hr{
 
 h1{
 	text-align: left;
-	font-size: 70px;
+	font-size: 60px;
 	margin-top: 0px;
 	margin-bottom:30px;
 	font-weight: 100;
+	font-family: 'Allerta Stencil';
 }
 
 #cf {
@@ -78,7 +79,7 @@ a {
 	right: 5px;
 	z-index: 2;
 	margin:0;
-	text-shadow:2px 2px 5px #000000; 
+	text-shadow:2px 2px 7px #000000; 
 }
 
 

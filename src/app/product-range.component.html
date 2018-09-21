@@ -2,12 +2,12 @@
 
 		<!--<h1 class="title">The drift box range</h1> 
 		-->
-	<div class="category">
+	<div class="category" *ngIf="category!=null">
 
-	<h1>The REON drift box</h1> 
+	<h1>The REON {{category.category_name}} Range</h1> 
 	<div class="intro">
 		<div class="pic-container">
-			<img src="../assets/images/drift_box/DSC_7476.JPG">
+			<img src="http://localhost/REON/{{category.main_page_picture}}">
 	  	</div>
 		<div class="description">
 			<p>
@@ -34,7 +34,7 @@
 		<a *ngFor="let product of products" 
 	    routerLink='/products/{{product.id}}'>
 	    <div class="module product">
-	      <img src="../assets{{product.photo1}}" style="width:100%;">
+	      <img src="http://localhost/REON/{{product.leading_photo_filepath}}" style="width:100%;">
 			<h2>{{ product.name }}</h2>
 			<h3>{{ product.description}} </h3>
 			<h3>£{{product.price}}</h3>  

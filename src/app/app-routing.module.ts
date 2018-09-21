@@ -24,8 +24,8 @@ const routes: Routes = [
   { path: 'about', component: DashboardComponent },
   { path: 'buy', component: BuyComponent },
   { path: 'products', component: ProductComponent },
-  { path: 'products/:category_name', component: ProductRangeComponent },
-  { path: 'products/:category_name/:id', component: ProductDetailComponent },
+  { path: 'products/:category_id', component: ProductRangeComponent },
+  { path: 'products/:category_id/:id', component: ProductDetailComponent },
   //admin pages
   { path: 'admin/login', component: LoginComponent},
   { path: 'admin/new_product', component: AddProductComponent, canActivate: [NeedAuthGuard]},
