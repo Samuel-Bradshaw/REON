@@ -1,37 +1,93 @@
 .container{
   background-color: black;
-  padding-left: 10%;
-  padding-right: 10%;
-  padding-top: 30px;
+  padding-left: 20%;
+  padding-right: 20%;
   font-family: Questrial;  color: white;
+  padding-top: 30px;
 
 }
 
-.category-tile{
-	height: 250px;
-	width:80%;
-	margin-left: 10%;
-	margin-right: 10%;
-	background-size: 100%;
+hr{
+	margin:0;
+}
+
+h1{
+	text-align: left;
+	font-size: 70px;
+	margin-top: 0px;
+	margin-bottom:30px;
+	font-weight: 100;
+}
+
+#cf {
+  	position:relative;
+  	height: 250px;
+	width:100%;
+}
+
+
+#cf .category-tile {
+	width: 100%;
+	height: 100%;
+	background-size: cover;
 	background-repeat: no-repeat;
-	display: table;
+
+	z-index: 0;
+	position: absolute;
+	color: transparent;
+	left:0;
+	top:0;
+	opacity: 0;
+	-webkit-backface-visibility: hidden;
+	-webkit-animation: imageAnimation 12s linear infinite 0s;
+	-moz-animation: imageAnimation 12s linear infinite 0s;
+	-o-animation: imageAnimation 12s linear infinite 0s;
+	-ms-animation: imageAnimation 12s linear infinite 0s;
+	animation: imageAnimation 12s linear infinite 0s; 
 }
+
+
+#cf > .category-tile:nth-child(2)  {
+-webkit-animation-delay: 6s;
+-moz-animation-delay: 6s;
+-o-animation-delay: 6s;
+-ms-animation-delay: 6s;
+animation-delay: 6s; 
+}
+
+#cf .onhover{
+	display: none;
+}
+
+
+
+#cf:hover .onhover{
+	display: inline-block;
+
+}
+
 
 a {
 	text-decoration: none;
 	color: white;
 }
 
-h2{
-	text-align: right;
-	display: table-cell;
-	vertical-align: bottom;
-	padding-right: 2%;
+#cf h2{
+	position: absolute;
+	bottom: 5px;
+	right: 5px;
+	z-index: 2;
+	margin:0;
+	text-shadow:2px 2px 5px #000000; 
 }
+
 
 @media (min-width: 1100px){
 	h2{
 	font-size: 60px;
+	}
+	.onhover{
+		font-size: 44px;
 	}
 
 }
@@ -40,12 +96,22 @@ h2{
 	h2{
 	font-size: 50px;
 	}
+	.onhover{
+		font-size: 36px;
+	}
 
 }
 
 @media (max-width: 850px) and (min-width: 600px){
 	h2{
-	font-size: 34px;
+	font-size: 38px;
+	}
+	.onhover{
+		font-size: 28px;
+	}
+
+	#cf{
+		height:180px;
 	}
 
 }
@@ -53,6 +119,14 @@ h2{
 @media (max-width: 599px) and (min-width: 450px){
 	h2{
 	font-size: 28px;
+	}
+	.onhover{
+		font-size: 18px;
+	}
+
+
+	#cf{
+		height:130px;
 	}
 
 }
@@ -62,5 +136,60 @@ h2{
 	h2{
 	font-size: 24px;
 		}
+		.onhover{
+		font-size: 14px;
+	}
+
+}
+
+ 
+@-webkit-keyframes imageAnimation { 
+0% { opacity: 0;
+-webkit-animation-timing-function: ease-in; }
+20% { opacity: 1;
+     -webkit-animation-timing-function: ease-out; }
+55% { opacity: 1 }
+75% { opacity: 0 }
+100% { opacity: 0 }
+} 
+
+@-moz-keyframes imageAnimation { 
+0% { opacity: 0;
+-moz-animation-timing-function: ease-in; }
+20% { opacity: 1;
+     -moz-animation-timing-function: ease-out; }
+55% { opacity: 1 }
+75% { opacity: 0 }
+100% { opacity: 0 }
+}
+
+@-o-keyframes imageAnimation { 
+0% { opacity: 0;
+-o-animation-timing-function: ease-in; }
+20% { opacity: 1;
+     -o-animation-timing-function: ease-out; }
+55% { opacity: 1 }
+75% { opacity: 0 }
+100% { opacity: 0 }
+}
+
+@-ms-keyframes imageAnimation { 
+0% { opacity: 0;
+-ms-animation-timing-function: ease-in; }
+20% { opacity: 1;
+     -ms-animation-timing-function: ease-out; }
+55% { opacity: 1 }
+75% { opacity: 0 }
+100% { opacity: 0 }
+}
+
+@keyframes imageAnimation { 
+0% { opacity: 0;
+animation-timing-function: ease-in; }
+20% { opacity: 1;
+     animation-timing-function: ease-out; }
+55% { opacity: 1 }
+75% { opacity: 0 }
+100% { opacity: 0 }
 
 }

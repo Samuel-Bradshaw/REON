@@ -7,6 +7,8 @@ import { InMemoryDataService }  from './in-memory-data.service';
 import { MatCardModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatTabsModule} from '@angular/material/tabs';
+
 
 import { AppComponent } from './app.component';
 import { ProductComponent } from './product.component';
@@ -56,7 +58,8 @@ import { AddRangeComponent } from './add-range/add-range.component';
     BrowserAnimationsModule,
     MatCardModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTabsModule,
     //HttpClientInMemoryWebApiModule,
     // HttpClientInMemoryWebApiModule.forRoot(
     //InMemoryDataService, { dataEncapsulation: false }

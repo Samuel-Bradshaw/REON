@@ -2,21 +2,18 @@
   background-color: black;
   font-family: Questrial;  color: white;
   display: block;
+  padding-top: 20px;
   padding-left: 20%;
   padding-right: 20%;
-  padding-top: 30px;
   margin-top: 0;
+  padding-bottom: 30px;
 }
 
-.newcatcontainer[_ngcontent-c4], .newcatcontainer[_ngcontent-c3]{
-	padding-left: 0;
-  	padding-right: 0;
-  	padding-top: 30px;
 
-}
-
-h1{
-	text-align: center;
+h1, h2{
+	text-align: left;
+	margin-left: 10%;
+	padding-bottom: 10px;
 }
 
 
@@ -109,6 +106,7 @@ button:hover{
 	vertical-align: bottom;
 	padding-right: 2%;
 	font-size: 48px;
+	text-shadow:2px 2px 5px #000000; 
 
 }
 
@@ -121,7 +119,7 @@ button:hover{
 .position-box{
 	display: table;
 	width:100%;
-	height: 34%;
+	height: 40%;
 	position: absolute;
 	left:0;
 }
@@ -144,11 +142,11 @@ button:hover{
 	position: absolute;
 	left: 0;
 }
-#opaque1{
+#opaque1, #opaque1b{
 	top:0;
 
 }
-#opaque2{
+#opaque2, #opaque2b{
 	bottom:0;
 	
 }

@@ -1,4 +1,5 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit,  } from '@angular/core';
+import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Category } from '../product';
 import { MatDialog, MatDialogConfig,  MatDialogRef  } from '@angular/material';
@@ -16,8 +17,8 @@ export class AddProductComponent implements OnInit  {
 
 	categories: Category[];
 	category: Category;
-  new_category: Category;
-  new_cat_id: number;
+  /*new_category: Category;
+  new_cat_id: number;*/
 	category_name: string;
 	category_description: string;
 
@@ -47,17 +48,25 @@ export class AddProductComponent implements OnInit  {
 
   constructor(private http: HttpClient,
               public dialog: MatDialog,
-              private elementRef:ElementRef) { }
+              private elementRef:ElementRef,
+              private router: Router) { }
 
   ngOnInit() {
   	this.getCategories();
   }
 
+  visitNewRangePage(e){
+    if(e == 'The product is from a new range'){
+      this.openDialog("Relocating to New Range page...");
+      this.router.navigate(['/admin/add_range']);
+    }
+  }
+/*
   onOutput(new_category: Category){
     this.new_cat_id = new_category.category_id;
     this.new_category = new_category;
     this.category = new_category;
-  }
+  }*/
 
   addDetail(): void{
   	if(this.detail.length > 0){
@@ -226,9 +235,9 @@ export class AddProductComponent implements OnInit  {
 
   uploadImage(file: File, fileName: string, directory: string):void{
 
-      if(this.product_main_image.size > this.max_post_size){
+      if(file.size > this.max_post_size){
          this.openDialog("The files selected are too big to upload:\n"+
-                           "Combined size of images = "+this.product_main_image.size/1000000+"MB.\n"+
+                           "Combined size of images = "+file.size/1000000+"MB.\n"+
                               "Maximum combined size of images = "+this.max_post_size/1000000+"MB.");
        } else {
 

@@ -10,5 +10,7 @@ export interface Category{
 	picture_1_filepath: string;
 	tile_picture_position:number;
 	picture_2_filepath: string;
+	tile_picture2_position: number;
+	main_page_picture: string;
 
 }

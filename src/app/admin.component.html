@@ -1,9 +1,12 @@
 <div class="container">
 
-	<h1>Welcome to REON Admin!</h1>
+	<h1>Welcome to REON Admin.</h1>
 
-	<a routerLink="/admin/new_product">Add New Product</a> 
-	<br>
-	<a routerLink="/admin/add_range">Add New Range</a>
+	<div class="admin-links">
+			<a class="admin-link" routerLink="/admin/add_range"  [routerLinkActive]="['active']">New Product Range</a>
+			<a class="admin-link" routerLink="/admin/new_product"  [routerLinkActive]="['active']">New Product</a>
+	</div>
+
+
 
 </div>
