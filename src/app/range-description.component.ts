@@ -23,7 +23,7 @@ export class RangeDescriptionComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(){
     setTimeout(() => {
      this.loadedEvent.emit('loaded');
-   }, 500);
+   }, 600);
   }
 
 
