@@ -1,0 +1,17 @@
+
+	<div class="category" *ngIf="category!=null">
+	<a routerLink="/products/{{category.category_id}}">
+	<h1>The REON {{category.category_name}} Range</h1> 
+	</a>
+	<div class="intro">
+		<div class="pic-container">
+			<img src="http://localhost/REON/{{category.main_page_picture}}">
+	  	</div>
+		<div class="description" [innerHTML]="category.category_description">	
+		</div>
+	</div>
+	<br>
+	<hr>
+
+	</div>
+

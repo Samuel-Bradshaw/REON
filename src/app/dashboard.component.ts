@@ -17,13 +17,8 @@ export class DashboardComponent implements OnInit {
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
-
-    this.getProducts();
   }
 
 
-  getProducts(): void {
-    this.productService.getProducts()
-      .subscribe(products => this.products = products);
-  }
+ 
 }

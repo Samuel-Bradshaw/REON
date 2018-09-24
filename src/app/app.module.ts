@@ -28,6 +28,8 @@ import { LoginComponent } from './login.component';
 import { NeedAuthGuard } from './login-auth.guard';
 import { ProductRangeComponent } from './product-range.component';
 import { AddRangeComponent } from './add-range/add-range.component';
+import { RangeDescriptionComponent } from './range-description.component';
+
 
 
 
@@ -49,6 +51,8 @@ import { AddRangeComponent } from './add-range/add-range.component';
     LoginComponent,
     ProductRangeComponent,
     AddRangeComponent,
+    RangeDescriptionComponent,
+   
 
   ],
   imports: [

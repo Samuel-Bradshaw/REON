@@ -1,6 +1,13 @@
 export class Product {
   id: number;
   name: string;
+  description:string;
+  price:number;
+  available:string;
+  category_id: number;
+  leading_photo_filepath: string;
+  long_description: string;
+  youtube_url: string;
 }
 
 export interface Category{

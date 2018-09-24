@@ -1,10 +1,11 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
-
+import { Component, OnInit, Input, Inject, ViewChild, ElementRef } from '@angular/core';
 import { Product } from './product';
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { DomSanitizer } from '@angular/platform-browser';
+import{ RangeDescriptionComponent} from './range-description.component'; 
+
 
 import { ProductService }  from './product.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
@@ -21,38 +22,120 @@ export interface DialogModalData {
 })
 export class ProductDetailComponent implements OnInit {
 
-  @Input() product: Product;
+  product: Product;
+  details: string[] = [];
+  product_images: string[] = []; 
+
   slideIndex = 1;
+  refresh: boolean;
   display1: string; slide1: string;
   display2: string; slide2: string;
   display3: string; slide3: string;
   display4: string; slide4: string; 
 
+  @ViewChild(RangeDescriptionComponent) descComp;
+  @ViewChild('scrollto') elemref: ElementRef;
+
 
   constructor( 
+    private http: HttpClient,
   	private route: ActivatedRoute,
   	private productService: ProductService,
   	private location: Location,
     public sanitizer: DomSanitizer,
     public dialog: MatDialog,
-  	) { }
+  	) {      route.params.subscribe(val => {
+          this.refresh = true;
+          });
+   
+    }
 
   ngOnInit() {
 
     this.getProduct();
+    this.getDetails();
+    this.getImages();
     this.showDivs(this.slideIndex);
+      
+
+  }
+
+  
+  isLoaded($event){
+    if(this.refresh){
+      this.elemref.nativeElement.scrollIntoView( {behavior: 'smooth' , block: "start", inline: "nearest"});
+    }
   }
 
   getProduct(): void{
     const id = +this.route.snapshot.paramMap.get('id');
-    this.productService.getProduct(id)
-    .subscribe(product => this.product = product);
+        
+     const headers: any = new HttpHeaders({
+          'Content-Type': 'application/json'
+        }),
+        options: any = {
+          product_id:  id,
+        },
+    url : any = 'http://localhost:80/REON/php/get_product_by_id.php';
+    this.http.post(url , JSON.stringify(options), headers).subscribe(
+        (data: any) => {
+          this.product = data;
+          this.product.youtube_url = "https://www.youtube.com/embed/"+this.product.youtube_url; 
+      
+       
+        },
+          //TODO:
+          //Handle error!
+    );   
   }
 
-save(): void {
-   this.productService.updateProduct(this.product)
-     .subscribe(() => this.goBack());
- }
+  getDetails():void{
+     const id = +this.route.snapshot.paramMap.get('id');
+        
+     const headers: any = new HttpHeaders({
+          'Content-Type': 'application/json'
+        }),
+        options: any = {
+          product_id:  id,
+        },
+    url : any = 'http://localhost:80/REON/php/get_product_details.php';
+    this.http.post(url , JSON.stringify(options), headers).subscribe(
+        (data: any) => {
+           for(let i = 0; i < data.length; i++){
+            this.details.push(data[i].detail);
+          }
+       
+        },
+          //TODO:
+          //Handle error!
+    ); 
+
+  }
+
+
+  getImages():void{
+       const id = +this.route.snapshot.paramMap.get('id');
+        
+     const headers: any = new HttpHeaders({
+          'Content-Type': 'application/json'
+        }),
+        options: any = {
+          product_id:  id,
+        },
+    url : any = 'http://localhost:80/REON/php/get_product_images.php';
+    this.http.post(url , JSON.stringify(options), headers).subscribe(
+        (data: any) => {
+          for(let i = 0; i < data.length; i++){
+            this.product_images.push(data[i].filepath);
+          }
+       
+        },
+          //TODO:
+          //Handle error!
+    ); 
+
+  }
+
 
   goBack(): void {
     this.location.back();

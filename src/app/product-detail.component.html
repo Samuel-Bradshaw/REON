@@ -1,5 +1,8 @@
-<div class="container">
 
+<div class="app-product-detail-container">
+<app-range-description (loadedEvent)="isLoaded($event)"></app-range-description>
+</div>
+<div class="container" id="scrollto" #scrollto>
 <div *ngIf="product">
 
 	<h1 class="center">{{product.name}}</h1>
@@ -12,10 +15,10 @@
 
 			<div class="display-container" style="max-width:800px">
 				
-				  <img class="mySlides" src="../assets{{product.photo1}}" style="width:100%" [style.display]="display1">
-				  <img class="mySlides" src="../assets{{product.photo2}}" style="width:100%" [style.display]="display2">
-				  <img class="mySlides" src="../assets{{product.photo3}}" style="width:100%" [style.display]="display3">
-				  <img class="mySlides" src="../assets{{product.photo4}}" style="width:100%" [style.display]="display4">
+				  <img class="mySlides" src="http://localhost/REON/{{product.leading_photo_filepath}}" style="width:100%" [style.display]="display1">
+				  <img class="mySlides" src="http://localhost/REON/{{product_images[0]}}" style="width:100%" [style.display]="display2">
+				  <img class="mySlides" src="http://localhost/REON/{{product_images[1]}}" style="width:100%" [style.display]="display3">
+				  <img class="mySlides" src="http://localhost/REON/{{product_images[2]}}" style="width:100%" [style.display]="display4">
 
 				  
 				  	<div class="chevs center">
@@ -25,16 +28,16 @@
 
 					<div class="change-slide center">
 				    	<div class="img-background">
-						  <img [ngClass]="slide1" (click)="currentDiv(1)" class="chooseSlide hover-highlight" src="../assets{{product.photo1}}" style="width:100%">
+						  <img [ngClass]="slide1" (click)="currentDiv(1)" class="chooseSlide hover-highlight" src="http://localhost/REON/{{product.leading_photo_filepath}}" style="width:100%">
 						</div>
 						<div class="img-background">
-						  <img [ngClass]="slide2" (click)="currentDiv(2)" class="chooseSlide hover-highlight" src="../assets{{product.photo2}}" style="width:100%">
+						  <img [ngClass]="slide2" (click)="currentDiv(2)" class="chooseSlide hover-highlight" src="http://localhost/REON/{{product_images[0]}}" style="width:100%">
 						</div>
 						  <div class="img-background">
-						  <img [ngClass]="slide3" (click)="currentDiv(3)" class="chooseSlide hover-highlight" src="../assets{{product.photo3}}" style="width:100%">
+						  <img [ngClass]="slide3" (click)="currentDiv(3)" class="chooseSlide hover-highlight" src="http://localhost/REON/{{product_images[1]}}" style="width:100%">
 						</div>
 						<div class="img-background">
-						  <img [ngClass]="slide4" (click)="currentDiv(4)" class="chooseSlide hover-highlight" src="../assets{{product.photo4}}" style="width:100%">
+						  <img [ngClass]="slide4" (click)="currentDiv(4)" class="chooseSlide hover-highlight" src="http://localhost/REON/{{product_images[2]}}" style="width:100%">
 						</div>
 					</div>
 
@@ -44,8 +47,8 @@
 
 		<div class="info">
 			<h2>{{product.description}}</h2>
-			<h2>£{{product.price}}</h2>
-			<ul *ngFor="let detail of product.details">
+			<h2>£{{product.price | number:'1.0-2'}}</h2>
+			<ul *ngFor="let detail of details">
 			  	<li>{{detail}} </li>
 			</ul>
 			<br>
@@ -54,8 +57,11 @@
 
 	</div>
 
+	<div class="long-desc" [innerHTML]="product.long_description">
+	</div>
+
 	<div *ngIf="product.youtubeurl  !== ''" class="videoWrapper center">
-	 <iframe width="560" height="315" [src]='sanitizer.bypassSecurityTrustResourceUrl(product.youtubeurl)' frameborder="0"></iframe>
+	<iframe width="560" height="315" [src]='sanitizer.bypassSecurityTrustResourceUrl(product.youtube_url)' frameborder="0" allow="encrypted-media" allowfullscreen></iframe>-->
 	</div>
 
 

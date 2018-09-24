@@ -55,6 +55,9 @@ export class ProductRangeComponent implements OnInit {
           (data: any) => {
             this.category = data;
           },
+
+          //TODO:
+          //Handle error!
       
       );
     }

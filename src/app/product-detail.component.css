@@ -1,9 +1,26 @@
+.app-product-detail-container{
+	background-color: black;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 30px;
+  font-family: Questrial;  color: white; font-weight: 100;
+}
+
 .container{
   background-color: black;
   padding-left: 15%;
   padding-right: 15%;
-  padding-top: 30px;
+  padding-top: 20px;
   font-family: Questrial;  color: white; font-weight: 100;
+}
+
+.long-desc{
+	font-size: 18px;
+}
+
+h1{
+	font-size: 40px;
+	font-weight: 100;
 }
 
 h2{
@@ -14,6 +31,15 @@ h2{
 	text-align: center;
 	width: 100%;
 }
+
+.change-slide{
+	position: absolute;
+	padding-top: 10px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-gap: 10px;
+}
+
 
 @media (min-width: 1024px){
 	.grid{
@@ -47,6 +73,12 @@ h2{
 	.info > ul {
 		font-size: 12px;
 	}
+
+	.long-desc{
+	font-size: 16px;
+}
+
+
 	.image-container{
 		padding-bottom: 100px;
 	}
@@ -57,6 +89,14 @@ h2{
   		padding-left: 10%;
   		padding-right: 10%;
 	}	
+
+	.change-slide{
+		grid-gap: 5px;
+	}
+
+		.long-desc{
+	font-size: 15px;
+}
 }
 
 .mySlides {
@@ -106,13 +146,6 @@ h2{
 	position: relative;
 }
 
-.change-slide{
-	position: absolute;
-	padding-top: 10px;
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr 1fr;
-	grid-gap: 10px;
-}
 
 .info > ul {
 	list-style: inside;
