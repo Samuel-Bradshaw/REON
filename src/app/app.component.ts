@@ -11,6 +11,7 @@ export class AppComponent {
 
   constructor() {
 	document.body.style.margin = '0';
+	document.body.style.backgroundColor = 'black';
 
 }
 

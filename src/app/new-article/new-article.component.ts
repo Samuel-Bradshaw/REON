@@ -64,6 +64,7 @@ export class NewArticleComponent implements OnInit {
       	console.log("response:"+ data);
       	if(data === "Success!"){
         this.openDialog("Successfully Added Article");
+        this.router.navigate(['/admin']);
    		}else{
    		this.openDialog("Error adding article: "+data);
    		}
@@ -124,4 +125,5 @@ export class NewArticleComponent implements OnInit {
       }
     });
 
+}
 }
