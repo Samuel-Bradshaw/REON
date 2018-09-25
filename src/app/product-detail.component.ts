@@ -44,10 +44,7 @@ export class ProductDetailComponent implements OnInit {
   	private location: Location,
     public sanitizer: DomSanitizer,
     public dialog: MatDialog,
-  	) {      route.params.subscribe(val => {
-          this.refresh = true;
-          });
-   
+  	) {  
     }
 
   ngOnInit() {
@@ -60,12 +57,12 @@ export class ProductDetailComponent implements OnInit {
 
   }
 
-  
+/*  
   isLoaded($event){
     if(this.refresh){
       this.elemref.nativeElement.scrollIntoView( {behavior: 'smooth' , block: "start", inline: "nearest"});
     }
-  }
+  }*/
 
   getProduct(): void{
     const id = +this.route.snapshot.paramMap.get('id');

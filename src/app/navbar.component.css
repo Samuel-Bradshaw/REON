@@ -82,6 +82,11 @@ min-width: 24px;
 }
 
 @media screen and (max-width: 674px){
+/*
+  .nav-container{
+    position: fixed;
+    top:0;
+  }*/
 
   .nav-bar{
     margin-left: 0;

@@ -1,6 +1,6 @@
 .pic-container {
-  padding-top: 18px;
- padding-bottom: 14px;
+  padding-top: 12px;
+ padding-bottom: 12px;
 
 }
 
@@ -8,8 +8,22 @@ hr{
   margin: 0;
 }
 
-a{
+.title-container{
+  position: relative;
+}
+  a.back{
+  color: white;
   text-decoration: none;
+  font-size: 1.7em;
+  }
+
+@media (min-width: 680px){
+    a.back{
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  }
 }
 
 .intro{
@@ -32,7 +46,7 @@ h1 {
       font-weight: 100;
       color: white;
       margin:0;
-      padding-bottom: 20px;
+      margin-bottom: 20px;
       text-align: center;
 }
 
@@ -54,6 +68,10 @@ h1 {
 
 @media (max-width: 899px){
 
+
+h1{
+  margin-bottom: 0px;
+}
 
 .picture-container{
     width: 50%;

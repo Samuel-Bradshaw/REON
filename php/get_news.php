@@ -4,7 +4,7 @@
     $data = array();
     // Attempting to query database table and retrieve data.
     try {
-       $results = $pdo->query('SELECT * FROM news ORDER BY `date`');
+       $results = $pdo->query('SELECT * FROM news ORDER BY `article_id` DESC');
        
        while($row = $results->fetch(PDO::FETCH_OBJ)) {
           // Assigning each row of data to associative array.

@@ -5,6 +5,7 @@ export class Product {
   price:number;
   available:string;
   category_id: number;
+  category_name: string;
   leading_photo_filepath: string;
   long_description: string;
   youtube_url: string;

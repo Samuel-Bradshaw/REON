@@ -1,8 +1,9 @@
 
 	<div class="category" *ngIf="category!=null">
-	<a routerLink="/products/{{category.category_id}}">
-	<h1>The REON {{category.category_name}} Range</h1> 
-	</a>
+	<div class="title-container">
+		<a routerLink="/products" class="back">&#x2B8C;</a>
+		<h1>The REON {{category.category_name}} Range</h1> 
+	</div>
 	<div class="intro">
 		<div class="pic-container">
 			<img src="http://localhost/REON/{{category.main_page_picture}}">

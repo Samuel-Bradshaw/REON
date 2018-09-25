@@ -1,4 +1,8 @@
 
+.big-container{
+  min-height: 100%;
+}
+
 .logo {
 	display: block;
 	filter: invert(100%);
@@ -16,16 +20,17 @@
 	}
 
   .footer{
-    padding-top: 160px;
+    padding-top: 70px;
     background-color: black;
-    position: relative;
+    width: 100%;
+    padding-bottom: 20px;
+    display: table-cell;
+    vertical-align: bottom;
+
   }
 
   .footer > .logo >  img {
-    position: absolute;
-    right: 0;
-    bottom: 10px;
-
+    float: right;
     margin-right: 5%;
     min-width: 100px;
   }

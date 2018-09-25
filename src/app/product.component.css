@@ -1,7 +1,7 @@
 .container{
   background-color: black;
-  padding-left: 20%;
-  padding-right: 20%;
+  padding-left: 10%;
+  padding-right: 10%;
   font-family: Questrial;  color: white;
 /*  padding-top: 30px;
 */
@@ -9,6 +9,8 @@
 
 hr{
 	margin:0;
+	border:0;
+	border-top: 1px solid white;
 }
 
 h1{
@@ -22,7 +24,6 @@ h1{
 
 #cf {
   	position:relative;
-  	height: 250px;
 	width:100%;
 }
 
@@ -91,6 +92,10 @@ a {
 		font-size: 44px;
 	}
 
+	#cf {
+  	height: 250px;
+}
+
 }
 
 @media (max-width: 1099px) and (min-width: 851px){
@@ -100,6 +105,11 @@ a {
 	.onhover{
 		font-size: 36px;
 	}
+
+		#cf {
+  	height: 220px;
+}
+
 
 }
 
@@ -132,6 +142,13 @@ a {
 
 }
 
+@media(max-width: 850px){
+	.container{
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
 
 @media (max-width: 449px){
 	h2{
@@ -140,6 +157,10 @@ a {
 		.onhover{
 		font-size: 14px;
 	}
+		#cf {
+  	height: 110px;
+	}
+
 
 }
 

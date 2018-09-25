@@ -18,17 +18,19 @@ ul, hr{
 
 li.news-item{
 list-style-type: none;
+color:#ddd;
 }
+
+
 
 
 li.news-item:hover{
 cursor: pointer;
-color: #ddd;
+color: white;
 
 }
 
-li.active-article:hover{
-	cursor: auto;
+li.active-article{
 	color: white;
 }
 
@@ -121,6 +123,10 @@ h3{
 h4{
 	font-size: 14px;
 	
+}
+
+p{
+	font-size: 14px;
 }
 
 

@@ -1,12 +1,16 @@
 
 <div class="app-product-detail-container">
+	<!--
 <app-range-description (loadedEvent)="isLoaded($event)"></app-range-description>
+-->
 </div>
 <div class="container" id="scrollto" #scrollto>
-<div *ngIf="product">
 
+<div *ngIf="product">
+	<div class="title-container">
+	<a routerLink="/products/{{product.category_id}}" class="back">&#x2B8C; {{product.category_name}} range</a>
 	<h1 class="center">{{product.name}}</h1>
-	
+	</div>
 
 	<div class="grid">
 
