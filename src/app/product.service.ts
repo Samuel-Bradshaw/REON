@@ -72,6 +72,9 @@ getProductRanges():Observable<Category[]>{
       tap(categories => this.log('fetched categories')),
       catchError(this.handleError('getProductRanges', []))
     );
+
+
+
 }
 
 getRange(id: number): Category {
@@ -88,11 +91,12 @@ getRange(id: number): Category {
         category={category_id: data.category_id,
                   category_name: data.category_name, 
                   category_description:data.category_description, 
-                  picture_1_filepath: data.picture_1_filepath, 
-                  picture_2_filepath: data.picture_2_filepath,
-                  tile_picture_position: data.tile_picture_position,
-                  tile_picture2_position: data.tile_picture2_position,
                   main_page_picture: data.main_page_picture};
+                  //picture_1_filepath: data.picture_1_filepath, 
+                 // picture_2_filepath: data.picture_2_filepath,
+                 // tile_picture_position: data.tile_picture_position,
+                  //tile_picture2_position: data.tile_picture2_position,
+                  
         return data;
 
       },

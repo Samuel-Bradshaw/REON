@@ -16,75 +16,25 @@
 				<textarea form="newproductform" class="width100" name="category-description" [(ngModel)]="category_description"></textarea>
 			</div>
 			<br>
-			<br>
 
-			<div class="inlineblock form-group" title="This image is the background image on the /product page for the tile that links to the range's main page ">
-				<label for="categoryimage1">Upload 'Range tile' Image:  </label>
-				<input type="file" name="range_link_image" id="categoryimage1" (change)="onRangeLinkImageSelected($event)">
-				
-			</div>
-
-			<br>
-			<div *ngIf="range_link_image_url" class="form-group">
-				<h4>Preview of image on '/product' page:</h4>
-				<label for="preview" style="color: gray">Click and drag image below to vertically align as desired:</label>  	
-
-				<div class="preview-container"  id="preview" (click)="mousemove($event)">
-	
-					<img class="category-tile-preview" [src]="range_link_image_url">				
-					<div class="opaque" id="opaque1" [ngStyle]="{'height': ''+ this.opaque_height + '%'}">
-					</div>
-						<div class="position-box" [ngStyle]="{'top': ''+ this.opaque_height+'%'}">
-							<h2 *ngIf="category_name">The {{category_name}} range</h2>
-						</div>
-					<div class="opaque" id="opaque2" [ngStyle]="{'height': 'calc(60% - '+ this.opaque_height+ '%)'}">
-					</div>
-					<div class="top">
-					</div>
-					
-				</div>
-
-			</div>
-					
-	<br>
-	
-			<div class="inlineblock form-group">
-				<label for="categoryimage2">Upload second 'range link' Image:  </label>
-				<input type="file" name="range_link_image2" id="categoryimage2" (change)="onRangeLinkImageSelected2($event)">
-			</div>
-
-			<div *ngIf="range_link_image2" class="form-group">
-				<h4>Preview of image on '/product' page:</h4>
-				<label for="preview2" style="color: gray">Click and drag image below to vertically align as desired:</label>  	
-
-				<div class="preview-container"  id="preview2" (click)="mousemove2($event)">
-	
-					<img class="category-tile-preview" [src]="range_link_image_url2">				
-					<div class="opaque" id="opaque1b" [ngStyle]="{'height': ''+ this.opaque_height2 + '%'}">
-					</div>
-						<div class="position-box" [ngStyle]="{'top': ''+ this.opaque_height2+'%'}">
-							<h2 *ngIf="category_name">The {{category_name}} range</h2>
-						</div>
-					<div class="opaque" id="opaque2b" [ngStyle]="{'height': 'calc(60% - '+ this.opaque_height2+ '%)'}">
-					</div>
-					<div class="top">
-					</div>
-					
-				</div>
-
-			</div>
-					
-<br>
 			<br>
 
 			<div class="inlineblock form-group">
-				<label for="categoryimage3">Upload 'Range page' Image:  </label>
+				<label for="categoryimage3">Upload main Range Image:  </label>
 				<input type="file" name="range_page_image" id="categoryimage3" (change)="onRangePageImageSelected($event)">
 			</div>
 
 			<br>
+
+			<div class="inlineblock form-group">
+				<label for="categoryimages">Upload other range Images:  </label>
+				<input type="file" name="range_page_image" id="categoryimages" (change)="onCategoryImageSelected($event)" multiple>
+			</div>
+
+			<br>
+
 			<div style="text-align: center;">
-			 	<button class="submitbtn" (click)="categoryImagesUpload()">Add New Range</button>
+			 	<button class="submitbtn" (click)="addNewProductRange()">Add New Range</button>
 			</div>
 		</form>
 	</div>

@@ -22,16 +22,7 @@ export class AddRangeComponent implements OnInit {
 	category_name: string;
 	category_description: string;
 
-	range_link_image = null;
-	range_link_image_url: any;
-  range_link_image2 = null;
-  range_link_image_url2: any;
-
-	range_link_position: number = 50;
-  range_link_position2: number = 50; 
-  opaque_height:number = 30;
-  opaque_height2:number = 30;
-
+  category_images: any[] = [];
 	range_page_image = null;
 	range_page_image_url: any;
 
@@ -43,28 +34,13 @@ export class AddRangeComponent implements OnInit {
   ngOnInit() {
   }
 
-  mousemove(e):void {
-        let height = e.target.clientHeight;
-        let mouseY = e.offsetY;
-        this.range_link_position = (100*mouseY)/height;
-        this.range_link_position = parseFloat(this.range_link_position.toFixed(2));
-           console.log(this.range_link_position);
-        this.opaque_height = this.range_link_position - 40/2;   
-    }
-
-  mousemove2(e):void {
-        let height = e.target.clientHeight;
-        let mouseY = e.offsetY;
-        this.range_link_position2 = (100*mouseY)/height;
-        this.range_link_position2 = parseFloat(this.range_link_position2.toFixed(2));
-        console.log(this.range_link_position2);
-        this.opaque_height2 = this.range_link_position2 - 40/2;   
-    }
 
     addNewProductRange():void {
-    let pic1 = "images/"+this.category_name.replace(/ /g,'_')+"/"+this.range_link_image.name;
-    let pic2 =  "images/"+this.category_name.replace(/ /g,'_')+"/"+this.range_link_image2.name;
-    let pic3 =  "images/"+this.category_name.replace(/ /g,'_')+"/"+this.range_page_image.name;
+
+    this.uploadImage(this.range_page_image, this.range_page_image.name,  this.category_name);
+
+    let pic1 =  "images/"+this.category_name.replace(/ /g,'_')+"/"+this.range_page_image.name;
+
 
     const headers: any = new HttpHeaders({
         'Content-Type': 'application/json'
@@ -72,11 +48,7 @@ export class AddRangeComponent implements OnInit {
       options: any = {
         category_name: this.category_name,
         category_description: this.category_description,
-        picture_1_filepath: pic1,
-        picture_2_filepath: pic2,
-        tile_picture_position: this.range_link_position,
-        tile_picture2_position: this.range_link_position2,
-        main_page_picture: pic3},
+        main_page_picture: pic1},
       url: any = 
       /////////////////
       'http://localhost:80/REON/php/add_new_range.php';
@@ -84,18 +56,7 @@ export class AddRangeComponent implements OnInit {
     this.http.post(url, JSON.stringify(options), headers).subscribe(
       (data: any) => {
          this.new_cat_id = data;
-         this.new_category = {category_id: this.new_cat_id, 
-                              category_name: this.category_name, 
-                              category_description:this.category_description, 
-                              picture_1_filepath: pic1, 
-                              picture_2_filepath: pic2,
-                              tile_picture_position: this.range_link_position,
-                              tile_picture2_position: this.range_link_position2,
-                              main_page_picture: pic3};
-         
-         //Pass to parent component
-         this.range_added.emit(this.new_category);
-
+         this.uploadImages();
          this.openDialog("New range "+this.category_name+" added to database.");
       },
       (error: any) => {
@@ -105,43 +66,43 @@ export class AddRangeComponent implements OnInit {
 
   }
 
-  //Uploads range pics to server
-    categoryImagesUpload(){
+  uploadImages(){
 
-      if(this.range_link_image.size + this.range_page_image.size > this.max_post_size){
-         this.openDialog("The file selected are too big to upload:\n Maximum combined size of images = "+this.max_post_size/1000000+"MB.");}
-      else {
+    for(let i = 0; i < this.category_images.length; i++){
+        this.uploadImage(this.category_images[i], this.category_images[i].name, this.category_name);
+    }
 
-      const formdata = new FormData();
-      formdata.append('dir', this.category_name); //will be used to create a new directory for range images on server
-      formdata.append('range_link_image', this.range_link_image, this.range_link_image.name);
-      formdata.append('range_page_image', this.range_link_image2, this.range_link_image2.name);
+      //Define options for post request 
+    let opts = {};
+    opts["category_id"] = this.new_cat_id;
+    const filepaths = [];
+     for(let i = 0; i < this.category_images.length; i++){
 
-      const headers = new HttpHeaders();
-      headers.set('Content-Type', null);
-      headers.append('Content-Type', 'multipart/form-data');
-      headers.append('Accept', 'application/json');
-
-      this.http.post(
-        /*////////////////*/
-        'http://localhost:80/REON/php/upload_range_images.php',
-        ////////////////////////////
-        formdata, {headers: headers})
-        .subscribe(res => {
-            let result = res;
-            console.log(result);
-            if(result === "Sucess! Images uploaded"){
-              //upload new category to database
-              this.openDialog("Images "+ this.range_link_image.name +",\n"+ this.range_link_image2.name +"\nsuccessfully uploaded.");
-              this.addNewProductRange();
-              this.uploadImage(this.range_page_image, this.range_page_image.name,  this.category_name);
-              }
-            },
-          (error: any) => {
-            this.openDialog(error);}
-        );}
+         filepaths.push("images/"+this.category_name.replace(/ /g,'_')+
+             "/"+this.category_images[i].name);
       }
 
+    opts["image_filepaths"]= filepaths;
+
+    const headers: any = new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      options: any = opts,     
+      url: any = 
+      /////////////////
+      'http://localhost:80/REON/php/insert_range_image_info.php';
+      /////////////////
+    this.http.post(url, JSON.stringify(options), headers).subscribe(
+      (data: any) => {
+        console.log(data);
+      },
+      (error: any) => {
+        this.openDialog("Error inserting image info to database");
+      }
+    );
+  }
+
+  
      uploadImage(file: File, fileName: string, directory: string):void{
 
       if(file.size > this.max_post_size){
@@ -179,41 +140,14 @@ export class AddRangeComponent implements OnInit {
         );}
   }
 
-    onRangeLinkImageSelected(event){
-      this.range_link_image = <File>event.target.files[0];
-      console.log(this.range_link_image);
-
-      //Display pictures on pages before uploading 
-      if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader();
-      //target:EventTarget;
-      reader.readAsDataURL(event.target.files[0]); // read file as data url
-
-      reader.onload = (imgsrc: any) => { // called once readAsDataURL is completed
-        this.range_link_image_url = imgsrc.target.result;
+   onCategoryImageSelected(event){
+      for(let i = 0; i < event.target.files.length; i ++){
+        this.category_images.push(<File>event.target.files[i]);
       }
-    }
 
-   
-    }
+    console.log(this.category_images);
+  }  
 
-
-    onRangeLinkImageSelected2(event){
-      this.range_link_image2 = <File>event.target.files[0];
-      console.log(this.range_link_image2);
-
-      //Display pictures on pages before uploading 
-      if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader();
-      //target:EventTarget;
-      reader.readAsDataURL(event.target.files[0]); // read file as data url
-
-      reader.onload = (imgsrc: any) => { // called once readAsDataURL is completed
-        this.range_link_image_url2 = imgsrc.target.result;
-      }
-    }
-   
-    }
 
    onRangePageImageSelected(event){
     this.range_page_image = <File>event.target.files[0];

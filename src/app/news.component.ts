@@ -13,6 +13,7 @@ export class NewsComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
+
   	this.getArticles();
   }
 
@@ -24,6 +25,7 @@ export class NewsComponent implements OnInit {
         ///////////////////////////////
       ).subscribe( (data: any) => {
           this.articles = data;
+       
         }, (error: any) => { console.log(error);}
         );
 

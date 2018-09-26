@@ -3,8 +3,8 @@
 
   padding-top: 30px;
   padding-bottom: 30px;
-  padding-left: 15%;
-  padding-right :15%;
+  padding-left: 20%;
+  padding-right :20%;
   background-color: black;
   color: white;
   font-family: Questrial;
@@ -16,7 +16,7 @@
 p{
 	white-space: pre-line;
 	margin: 0;
-	 font-size: 21px;
+	 font-size: 18px;
 }
 
 a{

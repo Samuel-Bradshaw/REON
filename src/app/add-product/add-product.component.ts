@@ -22,10 +22,6 @@ export class AddProductComponent implements OnInit  {
 	category_name: string;
 	category_description: string;
 
-  range_link_image = null;
-  range_link_image_url: any;
-  range_link_position: number = 50;
-
   range_page_image = null;
   range_page_image_url: any;
   opaque_height:number = 33;
