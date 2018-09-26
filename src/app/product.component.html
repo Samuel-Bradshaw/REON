@@ -1,7 +1,23 @@
 <div class="container">
-<hr>
+
+
+
+<div>
 <a *ngFor="let category Of categories" 
 routerLink='/products/{{category.category_id}}'>
+<div style="
+			background-image: url('../assets/images/re501rm.jpg')">
+<!--<img src="../assets/images/re501rm.jpg" width="50%" style="margin: 30px 0">
+-->
+</div>
+</a>
+</div>
+
+
+<!--
+
+
+
 <div id="cf">
 	<div class="category-tile top"
 		[ngStyle]="{
@@ -18,7 +34,13 @@ routerLink='/products/{{category.category_id}}'>
 	<h2>The {{category.category_name}} range<span class="onhover">&nbsp; &#10095;</span></h2>
 
 </div>
-<hr>
+
 </a>
+-->
+
+
+
+
+
 
 </div>

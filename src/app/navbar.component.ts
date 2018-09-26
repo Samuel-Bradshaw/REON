@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Category } from './product';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  categories: Category[];
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
+    //this.getCategories();
   }
 
   toggleMenu():void{
@@ -22,4 +26,16 @@ export class NavbarComponent implements OnInit {
 
   }
 
+/*
+  getCategories(): void {
+    this.http.get(
+        ////////////////////////////
+        'http://localhost:80/REON/php/get_product_ranges.php'
+        ///////////////////////////////
+      ).subscribe( (data: any) => {
+          this.categories = data;
+        }, (error: any) => { console.log(error);}
+        );
+  }
+*/
 }

@@ -14,9 +14,9 @@ export class NewArticleComponent implements OnInit {
   max_post_size: number = 100000000;
   title:string;
   article: string;
-  article_image = null;
+  /*article_image = null;
   article_image_url: any;
-
+  */
   constructor(private http: HttpClient,
               public dialog: MatDialog,
               private router: Router) { }
@@ -24,27 +24,28 @@ export class NewArticleComponent implements OnInit {
   ngOnInit() {
   }
 
+/*
   onImageSelected(event):void{
   	this.article_image = <File>event.target.files[0];
     console.log(this.article_image);
 
-  }
+  }*/
 
   uploadArticle():void{
 
-  	if(this.article_image!=null){
+  	/*if(this.article_image!=null){
      this.uploadImage(this.article_image,this.article_image.name, "Articles");
- 	}
+ 	   }*/
      this.insertNewArticle();
 
   }
 
   insertNewArticle():void{
 
-  	let pic = null;
+  	/*let pic = null;
   	if(this.article_image != null){
   		pic = "Articles/"+this.article_image.name;
-  	}
+  	}*/
 
     const headers: any = new HttpHeaders({
         'Content-Type': 'application/json'
@@ -52,7 +53,7 @@ export class NewArticleComponent implements OnInit {
       options: any = {
         title: this.title,
         article: this.article,
-        image_filepath: pic,
+       // image_filepath: pic,
         
       },
       url: any = 
@@ -79,7 +80,7 @@ export class NewArticleComponent implements OnInit {
 
 
   }
-
+/*
    uploadImage(file: File, fileName: string, directory: string):void{
 
       if(file.size > this.max_post_size){
@@ -99,7 +100,7 @@ export class NewArticleComponent implements OnInit {
       headers.append('Accept', 'application/json');
 
       this.http.post(
-        /*////////////////*/
+        ////////////////
         'http://localhost:80/REON/php/upload_image.php',
         ////////////////////////////
         formdata, {headers: headers})
@@ -115,7 +116,7 @@ export class NewArticleComponent implements OnInit {
             console.log(error);
             this.openDialog('Error uploading image.\n See console for details.');}
         );}
-  }
+  }*/
 
    openDialog(message: string): void {
     const dialogConfig = new MatDialogConfig();

@@ -3,8 +3,7 @@
   padding-left: 10%;
   padding-right: 10%;
   font-family: Questrial;  color: white;
-/*  padding-top: 30px;
-*/
+padding-top: 0;
 }
 
 hr{
@@ -12,6 +11,7 @@ hr{
 	border:0;
 	border-top: 1px solid white;
 }
+
 
 h1{
 	text-align: left;
@@ -21,7 +21,7 @@ h1{
 	font-weight: 100;
 	font-family: 'Allerta Stencil';
 }
-
+/*
 #cf {
   	position:relative;
 	width:100%;
@@ -215,3 +215,87 @@ animation-timing-function: ease-in; }
 100% { opacity: 0 }
 
 }
+*/
+/*
+.products{
+    width: 100%;
+  display: grid;
+  grid-gap: 40px;
+}
+
+.product > h2,h3,a {
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: white;
+  text-decoration: none;
+}
+
+
+.product > img {
+  min-width: 120px;
+  border-radius: 8px;
+}
+
+.product > h3 {
+  font-weight: 100;
+}
+
+
+
+
+h1 {  font-family: Questrial;
+      font-weight: 100;
+      color: white;
+      margin:0;
+      padding-bottom: 20px;
+
+}
+
+@media (min-width: 900px){
+
+  h1 {
+       font-size: 44px; 
+  }
+  .products{
+  grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 899px){
+
+
+
+  h1{
+    font-size: 34px;
+  }
+  h2{
+    font-size: 16px;
+  }
+  h3{
+    font-size: 14px;
+  }
+
+  .products{
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+@media (min-width: 501px){
+.products{
+  padding-top: 20px;
+  }
+
+}
+
+
+
+@media (max-width: 500px){
+  .products{
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
+  }
+
+}
+*/

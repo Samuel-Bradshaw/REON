@@ -42,6 +42,7 @@ li.active-article{
 p{
 	white-space: pre-line;
 	display: none;
+	padding-bottom: 12px;
 }
 
 span{
