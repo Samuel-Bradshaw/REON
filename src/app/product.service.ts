@@ -50,17 +50,6 @@ getProducts (id: number): Product[] {
     );*/
 }
 
-/*
-
-  // GET hero by id. Will 404 if id not found //
-getProduct(id: number): Observable<Product> {
-  const url = `${this.productsUrl}/${id}`;
-  return this.http.get<Product>(url).pipe(
-    tap(_ => this.log(`fetched product id=${id}`)),
-    catchError(this.handleError<Product>(`getProduct id=${id}`))
-  );
-}
-*/
 
 
 
@@ -76,7 +65,7 @@ getProductRanges():Observable<Category[]>{
 
 
 }
-
+/*
 getRange(id: number): Category {
     const headers: any = new HttpHeaders({
         'Content-Type': 'application/json'
@@ -87,15 +76,8 @@ getRange(id: number): Category {
   url : any = 'http://localhost:80/REON/php/get_range.php';
   this.http.post(url , JSON.stringify(options), headers).subscribe(
       (data: any) => {
-        let category: Category;
-        category={category_id: data.category_id,
-                  category_name: data.category_name, 
-                  category_description:data.category_description, 
-                  main_page_picture: data.main_page_picture};
-                  //picture_1_filepath: data.picture_1_filepath, 
-                 // picture_2_filepath: data.picture_2_filepath,
-                 // tile_picture_position: data.tile_picture_position,
-                  //tile_picture2_position: data.tile_picture2_position,
+       //let category: Category;
+        //
                   
         return data;
 
@@ -104,7 +86,7 @@ getRange(id: number): Category {
   );
   return;
 }
-
+*/
 
 
 

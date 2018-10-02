@@ -1,0 +1,39 @@
+<app-admin></app-admin>
+	<!-- extend form to upload product category-->
+	<div class="container">
+
+		<h2>Add new supporting downloadable document(s)</h2>
+		<form name="new_downloadable_form">
+
+			<div class="form-group">
+			<h3>Is the supporting downloadable related to a specific product?</h3>
+				<label for="product">Product name(?):</label>
+	    		<select id="product" [(ngModel)]="product" name="product" required>
+	        		<option  value="" disabled selected> -- select which product the downloadable is for -- </option>
+	      			<option *ngFor="let product_i of products" [ngValue]="product_i">{{product_i.name}}</option>
+         			<option>The file(s) are not for a particular product</option> 
+	    		</select>
+			</div>
+	
+			<br>
+			<div *ngIf="product === 'The file(s) are not for a particular product'" class="form-group">
+				<br>
+				<label for="name">Name of Downloadable File/Folder:</label>
+				<input class="width100" type="text" id="name" name="name" [(ngModel)]="name" required>
+			</div>
+			<br>
+			
+			<div class="inlineblock form-group">
+				<label for="files">Upload Files to download: </label>
+				<input type="file" name="files" id="files" (change)="onFilesSelected($event)" multiple required>
+			</div>
+
+			<br>
+			<br>
+			<br>
+
+			<div style="text-align: center;">
+			 	<button class="submitbtn" (click)="addNewFiles()">Upload Downloadble Files</button>
+			</div>
+		</form>
+</div>

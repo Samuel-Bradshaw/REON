@@ -15,6 +15,7 @@ export class ProductComponent implements OnInit {
 
     categories: Category[] = [];
     products: Product[];
+    range_pics: string[];
 
     constructor(private productService: ProductService, private http: HttpClient, private route: Router) { }
 
@@ -28,7 +29,7 @@ export class ProductComponent implements OnInit {
       .subscribe(categories => {
         this.categories = categories;
         if(this.categories.length = 1){
-         // this.route.navigate(['/products/'+this.categories[0].category_id]);
+          //this.route.navigate(['/products/'+this.categories[0].category_id]);
         }}
         );
   }
@@ -43,10 +44,20 @@ export class ProductComponent implements OnInit {
         }, (error: any) => { console.log(error);}
         );
         
-  
   }
 
+  getRangePictures():void{
+    this.http.get(
+        ////////////////////////////
+        'http://localhost:80/REON/php/get_range_pics.php'
+        ///////////////////////////////
+      ).subscribe( (data: any) => {
+          this.range_pics = data;
+        }, (error: any) => { console.log(error);}
+        );
+        
 
+  }
 
 }
 

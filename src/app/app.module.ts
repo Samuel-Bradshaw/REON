@@ -30,6 +30,7 @@ import { ProductRangeComponent } from './product-range.component';
 import { AddRangeComponent } from './add-range/add-range.component';
 import { RangeDescriptionComponent } from './range-description.component';
 import { NewArticleComponent } from './new-article/new-article.component';
+import { AddDownloadableComponent } from './add-downloadable/add-downloadable.component';
 
 
 
@@ -54,6 +55,7 @@ import { NewArticleComponent } from './new-article/new-article.component';
     AddRangeComponent,
     RangeDescriptionComponent,
     NewArticleComponent,
+    AddDownloadableComponent,
    
 
   ],

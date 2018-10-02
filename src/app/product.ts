@@ -1,5 +1,5 @@
 export class Product {
-  id: number;
+  product_id: number;
   name: string;
   description:string;
   price:number;
@@ -16,5 +16,5 @@ export interface Category{
 	category_name: string;
 	category_description: string;
 	main_page_picture: string;
-  images_filePaths: string[];
+  //images_filePaths: string[];
 }
