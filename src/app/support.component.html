@@ -1,5 +1,9 @@
 <div class="container">
 	<h3>Find supporting downloads for REON products below:</h3>
 
-
+	<div *ngIf="downloads">
+		<ul *ngFor="let download of downloads">
+			<li><button (click)="download(download.id)">{{download.folder}}</button> </li>
+		</ul>
+	</div>
 </div>

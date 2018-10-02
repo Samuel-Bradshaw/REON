@@ -14,15 +14,16 @@
     }
 
     $folder = filter_var($obj->folder, FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW);
-    $filepaths = $obj->filepaths;
+    //$filepaths = $obj->filepaths;
 
+    $filepath = filter_var($obj->filepath, FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW);
     try{
 
-    for($i = 0; $i < sizeof($filepaths); $i++){
+   // for($i = 0; $i < sizeof($filepaths); $i++){
         
             //try {
 
-                $filepath = filter_var($filepaths[$i], FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW); 
+            //    $filepath = filter_var($filepaths[$i], FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW); 
 
                 $query = "INSERT INTO downloadable (folder, `product_id`, `filepath`) VALUES (?, ?, ?)";
                 
@@ -40,7 +41,7 @@
                 echo json_encode($error);
             }*/
         
-    }
+   // }
 
     echo(json_encode("File details added to database"));
 

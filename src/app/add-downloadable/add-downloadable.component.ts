@@ -49,14 +49,15 @@ export class AddDownloadableComponent implements OnInit {
 	  	//Define options for post request 
 	    let opts = {};
 	    opts["folder"] = folder;
-	    const filepaths = [];
+	   /* const filepaths = [];
 	     for(let i = 0; i < this.files.length; i++){
 	         filepaths.push(
 	         	"support/"+folder.replace(/ /g,'_')+"/"+this.files[i].name
 	         	);
 	      }
 
-	    opts["filepaths"]= filepaths;
+	    opts["filepaths"]= filepaths;*/
+	    opts["filepath"] = filepath;
 	    opts["product_id"] =  this.product.product_id;
 
 	    const headers: any = new HttpHeaders({
@@ -69,7 +70,6 @@ export class AddDownloadableComponent implements OnInit {
 	      /////////////////
 	    this.http.post(url, JSON.stringify(options), headers).subscribe(
 	      (data: any) => {
-	        console.log(data);
 	        if(data ==="File details added to database"){
 	        	this.openDialog("Support docs successfully added!");
 	        } else{
@@ -91,8 +91,6 @@ export class AddDownloadableComponent implements OnInit {
   	if(this.name){ folder = this.name;}
   	else{ folder = this.product.name; }
 
-
-
   	var promises = [];
   	for(let i = 0; i < this.files.length; i++){
   		let promise = this.uploadFile(this.files[i], this.files[i].name, folder.replace(/ /g,'_'));
@@ -100,7 +98,8 @@ export class AddDownloadableComponent implements OnInit {
   	}
   	Promise.all(promises)
   		.then(values => {
-  			this.uploadFileInfo(folder)
+  			this.createZip(folder.replace(/ /g,'_'));
+  			this.uploadFileInfo(folder);
   		});
 
   }
@@ -129,7 +128,8 @@ export class AddDownloadableComponent implements OnInit {
 	            if(data === "Success!"){
 	              console.log("File "+fileName+" successfully uploaded.");
 	              resolve(data);
-	              } else {
+	              } 
+	              else {
 	              	this.openDialog('Error uploading File.\n See console for details.');
 	                console.log(data);
 	                reject('Error uploading File.\n See console for details.');
@@ -144,6 +144,33 @@ export class AddDownloadableComponent implements OnInit {
     	
 	}
 
+	createZip(folder: string){
+
+    const headers: any = new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      options: any = {
+        dir: folder
+      },
+      url: any = 
+      /////////////////
+      'http://localhost:80/REON/php/create_zip_files.php';
+      /////////////////
+    this.http.post(url, JSON.stringify(options), headers).subscribe(
+      (data: any) => {
+      	if(data ==="Zip file created"){
+        console.log("Successfully zipped files for download");
+    }else{
+    	this.openDialog("Error creating zip file for download: "+data);
+    }
+      },
+      (error: any) => {
+        this.openDialog("Error zipping file: See console");
+        console.log(error);
+      }
+    );
+
+	}
 
 
   openDialog(message: string): void {
