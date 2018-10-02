@@ -91,26 +91,18 @@ export class AddDownloadableComponent implements OnInit {
   	if(this.name){ folder = this.name;}
   	else{ folder = this.product.name; }
 
-  	//Uploading files to server
-  	let i = 0;
-  	while(i < this.files.length){
-  		if(i < this.files.length - 1){
-      		this.uploadFile(this.files[i], this.files[i].name, folder.replace(/ /g,'_')).
-       			then((data:any)=>{
-       				i++;
-       				console.log(i);
-				})
-       	}
-       	else{
-      		this.uploadFile(this.files[i], this.files[i].name, folder.replace(/ /g,'_')).
-   				then((data:any)=>{
-    				this.uploadFileInfo(folder);
-     	 			i++;
-				})
-        	}
-    }
-		
-	
+
+
+  	var promises = [];
+  	for(let i = 0; i < this.files.length; i++){
+  		let promise = this.uploadFile(this.files[i], this.files[i].name, folder.replace(/ /g,'_'));
+  		promises.push(promise);
+  	}
+  	Promise.all(promises)
+  		.then(values => {
+  			this.uploadFileInfo(folder)
+  		});
+
   }
 
 
@@ -126,6 +118,7 @@ export class AddDownloadableComponent implements OnInit {
       headers.append('Content-Type', 'multipart/form-data');
       headers.append('Accept', 'application/json');
 
+      return new Promise((resolve, reject) => {
 	      this.http.post(
 	        ////////////////
 	        'http://localhost:80/REON/php/upload_file.php',
@@ -139,12 +132,15 @@ export class AddDownloadableComponent implements OnInit {
 	              } else {
 	              	this.openDialog('Error uploading File.\n See console for details.');
 	                console.log(data);
+	                reject('Error uploading File.\n See console for details.');
 	              }
 	            },
 	          (error: any) => {
 	            console.log(error);
-	            this.openDialog('Error uploading Files.\n See console for details.');}
+	            this.openDialog('Error uploading Files.\n See console for details.');
+	            reject("Error uploading Files.\n See console for details.");}
 	        );
+	        })
     	
 	}
 
