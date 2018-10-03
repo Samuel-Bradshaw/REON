@@ -8,20 +8,23 @@ header("Access-Control-Allow-Origin: *");
     // Sanitising URL supplied values.
 
     $dir_name = filter_var($obj->dir, FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW);
+    //$dir_name="RE501SE drift box SE";
     $dir_name = str_replace(' ','_',$dir_name);
 
 
 //$dir_name =  str_replace(' ','_',$_POST['dir']);
 
-$target_dir = "../support/".$dir_name;
+$target_dir = "../support/".$dir_name."/";
 
 // Get real path for our folder
 $rootPath = realpath($target_dir);
+
 try{
 
     // Initialize archive object
     $zip = new ZipArchive();
-    $zip->open($target_dir, ZipArchive::CREATE | ZipArchive::OVERWRITE);
+    $zipname = $target_dir.$dir_name.".zip";
+    $zip->open($zipname, ZipArchive::CREATE | ZipArchive::OVERWRITE);
 
     // Create recursive directory iterator
     // @var SplFileInfo[] $files //
@@ -29,6 +32,15 @@ try{
         new RecursiveDirectoryIterator($rootPath),
         RecursiveIteratorIterator::LEAVES_ONLY
     );
+
+/*
+    $iterator = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($target_dir));
+
+    foreach ($iterator as $key=>$value) {
+        $zip->addFile(realpath($key), $key) or die ("ERROR: Could not add file: $key");
+    }
+
+*/
 
     foreach ($files as $name => $file)
     {
@@ -46,13 +58,14 @@ try{
 
     // Zip archive will be created only after closing object
     $zip->close();
-    echo json_encode('Zip file created');
+    
+    echo json_encode("Zip file created");
+    
 
 } 
 
 catch(Exception $e) {
         echo json_encode($e->getMessage());
 }
-
 
 ?>
