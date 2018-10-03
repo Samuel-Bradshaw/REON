@@ -20,17 +20,49 @@
 	}
 
   .footer{
-    padding-top: 70px;
+    position: absolute;
+    height: 0;        /*dynamic size */
+    padding-top: 22%;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+
+
     background-color: black;
     width: 100%;
     padding-bottom: 20px;
     display: table-cell;
-    vertical-align: bottom;
+    background-position: bottom;
+
+    background-size: 100%;  
+    background-repeat: no-repeat; 
+    box-shadow: 0 50px 50px 15px black inset;
 
   }
 
+    @media(max-width: 900px) {
+
+    .footer{
+       box-shadow: 0 30px 30px 15px black inset;
+    }
+  }
+
+
+  @media(max-width: 520px) {
+
+    .footer{
+       box-shadow: 0 20px 20px 15px black inset;
+       padding-top: 30%;
+    }
+  }
+
+
+
+
   .footer > .logo >  img {
-    float: right;
+    position: absolute;
+    bottom: 0;
+    right: 8%;
     margin-right: 5%;
     min-width: 100px;
   }
@@ -39,5 +71,7 @@
 
   .footer {
     padding-right: 10%;
+    background-size: contain;
     }
+
   }

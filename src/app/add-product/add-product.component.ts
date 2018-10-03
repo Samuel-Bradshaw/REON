@@ -137,6 +137,7 @@ export class AddProductComponent implements OnInit  {
          }
          this.insertDetails();
          this.insertImageInfo();
+         this.openDialog('Product successfully added!');
       },
       (error: any) => {
         this.openDialog("Error inserting product data.");
