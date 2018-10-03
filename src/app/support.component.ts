@@ -8,6 +8,8 @@ import { HttpClient, HttpHeaders}  from '@angular/common/http';
 })
 export class SupportComponent implements OnInit {
 
+  url: string = "http://localhost:80/REON";
+
 	downloads: any[];
 
   	constructor(private http: HttpClient) { }

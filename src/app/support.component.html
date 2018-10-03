@@ -1,9 +1,12 @@
 <div class="container">
-	<h3>Find supporting downloads for REON products below:</h3>
+	<h2>Download supporting documents for REON products:</h2>
 
 	<div *ngIf="downloads">
 		<ul *ngFor="let download of downloads">
-			<li><button (click)="download(download.id)">{{download.folder}}</button> </li>
+			<li title="click to download">
+				<a href="{{url}}/{{download.filepath}}" download>{{download.folder}}<span *ngIf="download.product_id !== null"> manual</span>
+				</a> 
+			</li>
 		</ul>
 	</div>
 </div>

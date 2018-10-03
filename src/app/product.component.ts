@@ -20,19 +20,20 @@ export class ProductComponent implements OnInit {
     constructor(private productService: ProductService, private http: HttpClient, private route: Router) { }
 
     ngOnInit() {
-      this.getProductRanges();
+      this.getCategories();
       this.getProducts();
       }
-
+/*
    getProductRanges(): void {
     this.productService.getProductRanges()
       .subscribe(categories => {
         this.categories = categories;
+        console.log(categories);
         if(this.categories.length = 1){
           //this.route.navigate(['/products/'+this.categories[0].category_id]);
         }}
         );
-  }
+  }*/
 
   getProducts():void{
    this.http.get(
@@ -57,6 +58,17 @@ export class ProductComponent implements OnInit {
         );
         
 
+  }
+
+    getCategories(): void {
+    this.http.get(
+        ////////////////////////////
+        'http://localhost:80/REON/php/get_product_ranges.php'
+        ///////////////////////////////
+      ).subscribe( (data: any) => {
+          this.categories = data;
+        }, (error: any) => { console.log(error);}
+        );
   }
 
 }

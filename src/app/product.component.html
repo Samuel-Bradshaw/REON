@@ -2,16 +2,13 @@
 
 
 
-<div>
+<div class="range-links">
 
-<a *ngFor="let category Of categories" 
-routerLink='/products/{{category.category_id}}'>
-<div style="display: inline-block;" width="50%">
-<img src="../assets/images/re501rm.jpg" width="40%">
-</div>
-<div  style="display: inline-block;" width="50%">
-<img src="../assets/images/re501rm.jpg" width="40%">
-</div>
+<a *ngFor="let category Of categories" routerLink='/products/{{category.category_id}}' class="range-tile">
+
+		<img src="http://localhost/REON/{{category.main_page_picture}}" width="100%">
+		<h2>The {{category.category_name}} range<span class="onhover">&nbsp; &#10095;</span></h2>
+
 </a>
 </div>
 

@@ -21,6 +21,51 @@ h1{
 	font-weight: 100;
 	font-family: 'Allerta Stencil';
 }
+
+.range-links{
+	display: grid;
+	margin-top: 30px;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 20px;
+}
+
+
+.range-tile h2{
+	position: absolute;
+	font-size: 40px;
+	bottom: 10px;
+	right: 10px;
+	margin: 0;
+	text-shadow:2px 2px 10px #000000; 
+
+
+}
+
+.onhover{
+	display: none;
+}
+
+
+
+.range-tile:hover .onhover{
+	display: inline-block;
+
+}
+
+a.range-tile{
+	text-decoration: none;
+	color: white;
+	position: relative;
+	overflow: hidden;
+	border-radius: 5px;
+
+}
+
+.range-tile img{
+	border-radius: 5px;
+}
+
+
 /*
 #cf {
   	position:relative;

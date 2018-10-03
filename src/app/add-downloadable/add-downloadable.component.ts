@@ -44,7 +44,7 @@ export class AddDownloadableComponent implements OnInit {
 
   uploadFileInfo(folder: string):void{
 
-  	let filepath = 'support/'+folder.replace(/ /g,'_');
+  	let downloadfilepath = 'support/'+folder.replace(/ /g,'_')+"/"+folder.replace(/ /g,'_')+".zip";
 
 	  	//Define options for post request 
 	    let opts = {};
@@ -57,7 +57,7 @@ export class AddDownloadableComponent implements OnInit {
 	      }
 
 	    opts["filepaths"]= filepaths;*/
-	    opts["filepath"] = filepath;
+	    opts["filepath"] = downloadfilepath;
 	    opts["product_id"] =  this.product.product_id;
 
 	    const headers: any = new HttpHeaders({
