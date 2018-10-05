@@ -40,24 +40,6 @@
 
   }
 
-    @media(max-width: 900px) {
-
-    .footer{
-       box-shadow: 0 30px 30px 15px black inset;
-    }
-  }
-
-
-  @media(max-width: 520px) {
-
-    .footer{
-       box-shadow: 0 20px 20px 15px black inset;
-       padding-top: 30%;
-    }
-  }
-
-
-
 
   .footer > .logo >  img {
     position: absolute;
@@ -67,11 +49,38 @@
     min-width: 100px;
   }
 
+
+    @media(max-width: 900px) and (min-width: 520px)  {
+
+    .footer{
+       box-shadow: 0 30px 30px 15px black inset;
+    }
+  }
+
+
+  @media(max-width: 519px) {
+
+    .footer{
+       box-shadow: 0 22px 22px 12px black inset;
+       padding-top: 26%;
+        padding-right: 10%;
+
+    }
+
+     .footer > .logo >  img {
+    bottom:-10px;
+  }
+
+
+  }
+
+
+
+
   @media(max-width: 500px){
 
   .footer {
-    padding-right: 10%;
-    background-size: contain;
+   
     }
 
   }

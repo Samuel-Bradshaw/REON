@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-buy',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BuyComponent implements OnInit {
 
-  constructor() { }
+  constructor( public sanitizer: DomSanitizer,) { }
 
   ngOnInit() {
   }
