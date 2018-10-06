@@ -1,0 +1,65 @@
+<app-admin></app-admin>
+<div class="container">
+
+<form id="editpageform">
+
+	<h2>Select page to edit:</h2>
+	<div class="form-group">
+		<label for="page">Select Page:</label>
+	    <select id="page" [(ngModel)]="page" name="page" required>
+	        <option  value="" disabled selected> -- select page to edit -- </option>
+	      	<option *ngFor="let page_i of pages" [ngValue]="page_i">{{page_i.page_name}}</option>
+	    </select>
+	</div>
+	<br>
+	<br>
+	<div *ngIf="page">
+
+		<div class="form-group">
+			<label for="copy">Page Copy: &nbsp;<button  title="html tags are accepted (e.g. if a hyperlink is required)" style="border-radius: 50%; color: white; background-color: black; float: right;">?</button></label>
+			<textarea class="width100" form="editpageform"  name="copy" [(ngModel)]="page.copy" required></textarea>
+		</div>
+		<br>
+		<br>
+
+		<div class="form-group">
+			<label for="video_url">Change embedded video on page (Optional):</label>
+			<input type="text" class="width100" id="video_url" name="video_url" placeholder="Paste URL of youtube video here" 
+			[(ngModel)]="video_url">
+			<br>
+			<label for="video_link" class="inlineblock">Current video: &nbsp;</label>
+			<a *ngIf="page.video_url" href="http://youtube.com/watch/{{page.video_url}}" target="_blank"  class="inlineblock">http://youtube.com/watch/{{page.video_url}}</a>
+			<button *ngIf="page.video_url" class="inlineblock rightfloat" (click)="removeVideo()" title="click if you want the page to have no video">Remove from {{page.page_name}} page</button>
+			<span *ngIf="!page.video_url"  class="inlineblock">No video on {{page.page_name}} page</span> 
+
+
+		</div>
+		<br>
+		<br>
+		<br>
+		<div class="form-group">
+
+			<label for="photo1" class="inlineblock">Change image on page (Optional): &nbsp;</label>
+			<input type="file" id="photo1" name="image" (change)="onImageSelected($event)" class="inlineblock">
+			<br>
+			<br>
+				<label for="currentImg" class="inlineblock">Current image:  &nbsp;</label>
+				<button *ngIf="page.image_filepath" class="inlineblock rightfloat" (click)="removeImg()" title="click if you want the page to have no image">Remove image from {{page.page_name}} page</button>
+				<span *ngIf="!page.image_filepath" class="inlineblock">No image on {{page.page_name}} page</span>
+				<br>
+				<img *ngIf="page.image_filepath" id="currentImg" src="http://localhost/REON/{{page.image_filepath}}" class="imagepreview">
+		</div>
+
+		<br>
+
+			<div style="text-align: center;">
+			 	<button class="submitbtn" (click)="updatePage()">Save Changes</button>
+			</div>
+
+
+
+
+	</div>
+
+</form>
+</div>

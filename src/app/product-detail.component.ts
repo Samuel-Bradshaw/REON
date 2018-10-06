@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Inject, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, Inject, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { Product } from './product';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
@@ -20,7 +20,7 @@ export interface DialogModalData {
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css']
 })
-export class ProductDetailComponent implements OnInit {
+export class ProductDetailComponent implements OnInit, AfterViewInit {
 
   product: Product;
   details: string[] = [];
@@ -33,7 +33,6 @@ export class ProductDetailComponent implements OnInit {
   display3: string; slide3: string;
   display4: string; slide4: string; 
 
-  @ViewChild(RangeDescriptionComponent) descComp;
   @ViewChild('scrollto') elemref: ElementRef;
 
 
@@ -57,12 +56,22 @@ export class ProductDetailComponent implements OnInit {
 
   }
 
+    ngAfterViewInit() {
+    // Hack: Scrolls to top of Page after page view initialized
+    let top = document.getElementById('scrollto');
+    if (top !== null) {
+      top.scrollIntoView();
+      top = null;
+    }
+  }
+
 /*  
   isLoaded($event){
     if(this.refresh){
       this.elemref.nativeElement.scrollIntoView( {behavior: 'smooth' , block: "start", inline: "nearest"});
     }
   }*/
+
 
   getProduct(): void{
     const id = +this.route.snapshot.paramMap.get('id');

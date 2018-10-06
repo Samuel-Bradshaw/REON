@@ -83,6 +83,7 @@ button:hover{
 .submitbtn:hover{
 	color: white;
 	background-color: #008B8B;
+	cursor: pointer;
 
 }
 

@@ -17,6 +17,8 @@ import {AddRangeComponent} from './add-range/add-range.component';
 import {NewArticleComponent} from './new-article/new-article.component';
 import {AddDownloadableComponent} from './add-downloadable/add-downloadable.component';
 import {AddDealerComponent}  from './add-dealer/add-dealer.component';
+import {EditPageComponent}  from './edit-page/edit-page.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, //sets default URL to home
@@ -37,6 +39,8 @@ const routes: Routes = [
   { path: 'admin/add_article', component: NewArticleComponent, canActivate: [NeedAuthGuard]},
   { path: 'admin/add_support_docs', component: AddDownloadableComponent, canActivate: [NeedAuthGuard]},
   { path: 'admin/add_dealer', component: AddDealerComponent, canActivate: [NeedAuthGuard]},
+  { path: 'admin/edit_page', component: EditPageComponent, canActivate: [NeedAuthGuard]},
+
 
 ];
 

@@ -15,6 +15,8 @@
     
     $youtube_url =  parse_str(parse_url($obj->youtube_url, PHP_URL_QUERY));
 
+   // parse_str(parse_url($obj->youtube_url, PHP_URL_QUERY), $youtube_url);
+//$youtube_url = $youtube_url['v'];
 
     try {
         $query = "INSERT INTO product (`name`, `description`, `price`, `available`, `category_id`, `leading_photo_filepath`, `long_description`, `youtube_url`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
