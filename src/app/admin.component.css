@@ -1,7 +1,7 @@
 .container{
   background-color: black;
-  padding-left: 20%;
-  padding-right: 20%;
+  padding-left: 15%;
+  padding-right: 15%;
   padding-top: 20px;
   font-family: Questrial;  color: white;
   display: block;
@@ -29,7 +29,7 @@ h1{
   margin: 5px;
   height: 40px;
   line-height: 40px;
-  width: 180px;
+  width: 160px;
   background-color: grey;
  }
 

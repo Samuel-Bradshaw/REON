@@ -16,6 +16,7 @@ import { NeedAuthGuard } from './login-auth.guard';
 import {AddRangeComponent} from './add-range/add-range.component';
 import {NewArticleComponent} from './new-article/new-article.component';
 import {AddDownloadableComponent} from './add-downloadable/add-downloadable.component';
+import {AddDealerComponent}  from './add-dealer/add-dealer.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, //sets default URL to home
@@ -30,11 +31,12 @@ const routes: Routes = [
   { path: 'products/:category_id/:id', component: ProductDetailComponent },
   //admin pages
   { path: 'admin/login', component: LoginComponent},
-  { path: 'admin/new_product', component: AddProductComponent, canActivate: [NeedAuthGuard]},
   { path: 'admin', component: AdminComponent, canActivate: [NeedAuthGuard]},
+  { path: 'admin/new_product', component: AddProductComponent, canActivate: [NeedAuthGuard]},
   { path: 'admin/add_range', component: AddRangeComponent, canActivate: [NeedAuthGuard]},
   { path: 'admin/add_article', component: NewArticleComponent, canActivate: [NeedAuthGuard]},
   { path: 'admin/add_support_docs', component: AddDownloadableComponent, canActivate: [NeedAuthGuard]},
+  { path: 'admin/add_dealer', component: AddDealerComponent, canActivate: [NeedAuthGuard]},
 
 ];
 

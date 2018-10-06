@@ -1,10 +1,14 @@
-<div class="container">
-<p>
-Welcome to the REON, we are extremely proud to be distributed and represented in the UK and ROI, by one of the most innovative brands in the music industry - <a href="https://www.korg.com/uk/" target="_blank">KORG</a>. The synergy created by combining both brands allows us to bring a wealth of knowledge and experience rarely found. With this backdrop REON is destined to evolve to the next level!
-<br>
-Due to the "boutique" nature of our products, we have made them available exclusively through our hand-picked <a routerLink="/buy">agency network</a>. By adopting this approach, you can be assured of dealing with like-minded synthesizer enthusiasts that are driven by a common passion and love for electronic music.
-</p>
+<div class="container" *ngIf="page_components">
 
+	<div class="Driftbox-group" *ngIf="page_components.image_filepath !== null">
+  		<img src="http://localhost/REON/{{page_components.image_filepath}}">
+	</div>
 
+	<p *ngIf="page_components.copy != null" [innerHTML]="page_components.copy">
+	</p>
+
+	<div class="videoWrapper" *ngIf="page_components.video_url !== null">
+ 		<iframe width="560" height="315" [src]=' sanitizer.bypassSecurityTrustResourceUrl(page_components.video_url)' frameborder="0"></iframe>
+	</div>
 
 </div>

@@ -31,6 +31,7 @@ import { AddRangeComponent } from './add-range/add-range.component';
 import { RangeDescriptionComponent } from './range-description.component';
 import { NewArticleComponent } from './new-article/new-article.component';
 import { AddDownloadableComponent } from './add-downloadable/add-downloadable.component';
+import { AddDealerComponent } from './add-dealer/add-dealer.component';
 
 
 
@@ -56,6 +57,7 @@ import { AddDownloadableComponent } from './add-downloadable/add-downloadable.co
     RangeDescriptionComponent,
     NewArticleComponent,
     AddDownloadableComponent,
+    AddDealerComponent,
    
 
   ],

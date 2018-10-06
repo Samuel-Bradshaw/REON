@@ -1,27 +1,18 @@
 
-<div class="container">
+<div class="container" *ngIf="page_components">
 <div class="intro">
-<div class="Driftbox-group">
-  <img src="../assets/images/ReonGroupShots/ReonGroupShots/Jpeg-RGB/DriftBox_Collection_01.jpg">
+<div class="Driftbox-group" *ngIf="page_components.image_filepath !== null">
+  <img src="http://localhost/REON/{{page_components.image_filepath}}">
 </div>
 
-  <div class="text">
-
-    The REON Corporation is a Japanese boutique synthesizer manufacturer founded in 2007 by Shin Arakawa. Based in Osaka, Japan’s second largest metropolitan area, REON’s founder came from an engineering background having worked for Japanese electronics giant Panasonic, pioneering solar and LED technology. 
-    <br><br>
-    Prior to the incorporation of REON, Shin was also a musician often performing using portable synthesizers of his own creation which over time went on to be the 1st prototype Driftbox. Five years later REON appeared at the annual Musik Messe in Frankfurt with his range of desktop analogue synthesizers as well as his Mark I modular system. 
-    <br><br>
-    The pathway from here becomes quite unconventional, REON deliberately avoided mass internet marketing to target the underground synth community of OSAKA. By limiting availability to modular and Euro rack specialist implant4, this created a high level of desirability, a quality often associated with equipment used by experimental and underground musicians. With implant4’s reputation and unique offering, REON products were quickly recognised as simpler alternative to complex modular systems while at the same time delivering a rich analogue sound.
-    <br>
-    <br>
-    By 2015, now with a strong foundation in Osaka’s synth culture, REON underwent a complete change. The product line up was completely refreshed with a united range of Driftboxes, all retaining the same “Hand-made-in-Japan” quality. By adopting this approach, REON will continue to deliver a range of desirable boutique products
+  <div class="text" [innerHTML]="page_components.copy">
 
   </div>
 
 </div>
   
-<div class="videoWrapper">
- <iframe width="560" height="315" src="https://www.youtube.com/embed/RHK8ATM81YE" frameborder="0"></iframe>
+<div class="videoWrapper" *ngIf="page_components.video_url !== null">
+ <iframe width="560" height="315" [src]=' sanitizer.bypassSecurityTrustResourceUrl(page_components.video_url)' frameborder="0"></iframe>
 </div>
 
 </div>
