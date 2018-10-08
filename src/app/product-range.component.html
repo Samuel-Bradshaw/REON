@@ -1,7 +1,7 @@
 <div class="container">
 
 	<app-range-description></app-range-description>
-
+	<hr *ngIf="products.length > 0">
 	<div class="products">
 
 		<a *ngFor="let product of products" 

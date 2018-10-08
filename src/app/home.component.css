@@ -10,14 +10,17 @@
   font-style: normal; font-variant: normal; font-weight: 100;
 
 
+  display: table;
+
+
 }
 
-.Driftbox-group {
-  max-width:30%;
+.Driftbox-group.wideimg, .Driftbox-group.tallimg {
+
+  max-height:100%;
   float: right;
-  margin-left: 5px;
-  margin-right: 5px;
-  margin-bottom: 5px;
+  margin-left: 10px;
+  margin-bottom: 30px;
 }
 
 p{
@@ -29,6 +32,19 @@ p{
 
 }
 
+.wideimg{
+  max-width: 50%;
+  max-height: 100%;
+}
+
+.tallimg{
+  max-width: 25%;
+  max-height: 100%;
+  margin-left: 20px;
+}
+
+
+
 
 
 >>> a{
@@ -38,12 +54,11 @@ p{
 
 .videoWrapper {
   position: relative;
-  padding-top: 25px;
   height: 0;
   padding-bottom: 56.25%;
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-top: 50px;
+
+  margin-top: 15%;
+  margin-bottom: 5%;
 }
 
 .videoWrapper iframe {
@@ -55,9 +70,14 @@ p{
 }
 
 @media(max-width: 800px){
-  .Driftbox-group {
+  .Driftbox-group.wideimg, .Driftbox-group.tallimg {
     max-width:40%;
     min-width: 100px;
+  }
+
+    .videoWrapper{
+     margin-top: 100px;
+
   }
 }
 
@@ -71,24 +91,28 @@ p{
 
   }
 
+  .wideimg{
+    max-width: 100%;
+
+  }
+
   p{
      font-size: 17px;
   }
 
+
+
 } 
 
 @media(max-width: 332px){
-.Driftbox-group {
-    float: none;
-    width: 100%;
-    display:table-cell; vertical-align:middle; text-align:center;
-    padding-bottom: 10px;
-  }
+
+  
 }
 
 
 
 .Driftbox-group img{
   width: 100%;
+  overflow: inherit;
 }
 

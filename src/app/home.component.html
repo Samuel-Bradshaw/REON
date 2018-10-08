@@ -1,13 +1,13 @@
-<div class="container" *ngIf="page_components">
+<div class="container">
 
-	<div class="Driftbox-group" *ngIf="page_components.image_filepath !== null">
-  		<img src="http://localhost/REON/{{page_components.image_filepath}}">
+	<div class="Driftbox-group" id="homeimage" #homeimage>
+  	<!--	<img src="http://localhost/REON/{{page_components.image_filepath}}" >-->
 	</div>
-
-	<p *ngIf="page_components.copy != null" [innerHTML]="page_components.copy">
+<div *ngIf="page_components && page_components.copy !== null" style="max-width: 100%;">
+	<p [innerHTML]="page_components.copy">
 	</p>
-
-	<div class="videoWrapper" *ngIf="page_components.video_url !== null">
+</div>
+	<div class="videoWrapper" *ngIf="page_components && page_components.video_url !== null">
  		<iframe width="560" height="315" [src]=' sanitizer.bypassSecurityTrustResourceUrl(page_components.video_url)' frameborder="0"></iframe>
 	</div>
 
