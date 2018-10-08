@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
           if(this.page_components.video_url !== null){
           		this.page_components.video_url =  "https://www.youtube.com/embed/"+this.page_components.video_url; 
       	  }
-      	  console.log(this.page_components);
+   
        
         },(error: any) => { console.log(error);}
         

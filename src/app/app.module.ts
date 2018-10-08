@@ -33,7 +33,7 @@ import { NewArticleComponent } from './new-article/new-article.component';
 import { AddDownloadableComponent } from './add-downloadable/add-downloadable.component';
 import { AddDealerComponent } from './add-dealer/add-dealer.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
-
+import { FilterPipe} from './filter.pipe';
 
 
 
@@ -60,7 +60,7 @@ import { EditPageComponent } from './edit-page/edit-page.component';
     AddDownloadableComponent,
     AddDealerComponent,
     EditPageComponent,
-   
+    FilterPipe,
 
   ],
   imports: [

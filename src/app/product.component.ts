@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { ProductService } from './product.service';
 
+
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -16,6 +17,8 @@ export class ProductComponent implements OnInit {
     categories: Category[] = [];
     products: Product[];
     range_pics: string[];
+
+    searchText: string;
 
     constructor(private productService: ProductService, private http: HttpClient, private route: Router) { }
 
@@ -46,7 +49,7 @@ export class ProductComponent implements OnInit {
         );
         
   }
-
+/*
   getRangePictures():void{
     this.http.get(
         ////////////////////////////
@@ -58,7 +61,7 @@ export class ProductComponent implements OnInit {
         );
         
 
-  }
+  }*/
 
     getCategories(): void {
     this.http.get(

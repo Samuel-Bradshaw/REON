@@ -15,10 +15,16 @@
 <br>
 <br>
 
-<h1>All Products:   *search bar here*</h1>
+<div class="searchalign">
+<h1 class="inlineblock producttitle" >All Products: </h1>
+<div class="searchbox inlineblock">
+<i class="fa fa-search"></i>
+<input [(ngModel)]="searchText" id="searcher" placeholder="Search products" class="searcher">
+</div>
+</div>	
 	<div class="products">
 
-		<a *ngFor="let product of products" 
+		<a *ngFor="let product of products | filter : searchText" 
 	    routerLink='/products/{{product.category_id}}/{{product.product_id}}'>
 	    <div class="module product">
 	      <img src="http://localhost/REON/{{product.leading_photo_filepath}}" style="width:100%;">
