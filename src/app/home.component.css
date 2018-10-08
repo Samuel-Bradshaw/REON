@@ -12,16 +12,21 @@
 
   display: table;
 
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  box-shadow: 0 0 30px 20px black inset;
+   padding-bottom: 10%;
+
 
 }
-
+/*
 .Driftbox-group.wideimg, .Driftbox-group.tallimg {
 
   max-height:100%;
   float: right;
   margin-left: 10px;
   margin-bottom: 30px;
-}
+}*/
 
 p{
 	white-space: pre-line;
@@ -31,7 +36,7 @@ p{
   color: white;
 
 }
-
+/*
 .wideimg{
   max-width: 50%;
   max-height: 100%;
@@ -41,7 +46,7 @@ p{
   max-width: 25%;
   max-height: 100%;
   margin-left: 20px;
-}
+}*/
 
 
 

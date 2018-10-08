@@ -34,11 +34,11 @@
     display: table-cell;
     background-position: bottom;
 
-    opacity:0.8;
+    opacity:0.5;
 
-    background-size: 100%;  
+    background-size: cover;  
     background-repeat: no-repeat; 
-    box-shadow: 0 50px 50px 15px black inset;
+    box-shadow: 0 0 15px 15px black inset;
 
   }
 
@@ -55,7 +55,7 @@
     @media(max-width: 900px) and (min-width: 520px)  {
 
     .footer{
-       box-shadow: 0 30px 30px 15px black inset;
+       box-shadow: 0 0 15px 15px black inset;
     }
   }
 
@@ -63,7 +63,7 @@
   @media(max-width: 519px) {
 
     .footer{
-       box-shadow: 0 22px 22px 12px black inset;
+       box-shadow: 0 0 10px 12px black inset;
        padding-top: 26%;
         padding-right: 10%;
 

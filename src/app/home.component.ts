@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit,  ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit,  ElementRef, ViewChild } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -7,23 +7,15 @@ import { DomSanitizer } from '@angular/platform-browser';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit, AfterViewInit {
+export class HomeComponent implements OnInit {
 
   constructor(private http: HttpClient, public sanitizer: DomSanitizer) { }
 
   page_components: any;
-  @ViewChild('homeimage') homeimage: ElementRef;
+  //@ViewChild('homeimage') homeimage: ElementRef;
 
   ngOnInit() {
   	this.getPageInfo();
-  }
-
-  ngAfterViewInit(){
-
-
-
-
-
   }
 
 
@@ -44,13 +36,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
           		this.page_components.video_url =  "https://www.youtube.com/embed/"+this.page_components.video_url; 
       	  }
           //add image to page
+          /*
             if(this.page_components.image_filepath !== null){
 
                 let img = document.createElement("img");
                 img.src = "http://localhost/REON/"+this.page_components.image_filepath;
 
                 let container = this.homeimage.nativeElement;
-                container.appendChild(img);
+              //  container.appendChild(img);
                 img.style.maxWidth = "100%";
 
                 img.addEventListener('load', function(){
@@ -62,6 +55,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
                     container.classList.add("tallimg");
                    }
                 });
+                */
 
                
    
