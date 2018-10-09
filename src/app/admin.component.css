@@ -37,3 +37,17 @@ h1{
   background-color: #ddd;
  }
 
+ button.logout{
+  float: right;
+  margin-top: 20px;
+  margin-right: 20px;
+  border-radius: 5px;
+  color: white;
+  background-color: rgb(80,80,80);
+  font-family: Questrial; 
+  border: 1px solid white;
+  height: 20px;
+  cursor: pointer;
+
+ }
+

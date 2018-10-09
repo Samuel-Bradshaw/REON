@@ -13,8 +13,10 @@ export class NeedAuthGuard implements CanActivate {
     if (this.adminService.isLogged()) {
       return true;
     }
+    else{
 
     this.router.navigate(['/admin/login'], { queryParams: { returnUrl: state.url }});
     return false;
   }
+	}
 }

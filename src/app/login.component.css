@@ -2,9 +2,10 @@
   background-color: black;
   padding-left: 20%;
   padding-right: 20%;
-  padding-top: 70px;
+  padding-top: 30px;
   font-family: Questrial;  color: white; 
   display: block;
+  padding-bottom: 40px;
 }
 
 h1, h2, .center{
@@ -44,7 +45,15 @@ button{
 	border-radius: 5px;
 	width: 70px;
 	color: black;
-	background-color: #ddd;
+
+  color: white;
+  background-color: rgb(80,80,80);
+  font-family: Questrial; 
+  border: 1px solid white;
+  height: 28px;
+  cursor: pointer;
+
+ 
 
 
 }

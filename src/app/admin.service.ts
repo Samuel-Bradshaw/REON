@@ -29,10 +29,12 @@ export class AdminService {
   logout(): void {
     this.currentUser = null;
     this.saveState();
+    sessionStorage.clear();
   }
 
-  isLogged(){
-  	return sessionStorage.getItem(USER_KEY) != null;
+  isLogged(): boolean{
+    let logged = sessionStorage.getItem(USER_KEY) != null;
+  	return logged;
   }
 
 

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MatDialog, MatDialogConfig,  MatDialogRef  } from '@angular/material';
 import { DialogComponent } from '../dialog.component';
 import { Router } from '@angular/router';
+import { AdminService } from '../admin.service';
 
 @Component({
   selector: 'app-edit-page',
@@ -17,10 +18,16 @@ export class EditPageComponent implements OnInit {
   video_url: string;
 
 
-  constructor(private http: HttpClient, public dialog: MatDialog, private route: Router) { }
+  constructor(private http: HttpClient, public dialog: MatDialog, private route: Router,private adminService: AdminService) { }
 
   ngOnInit() {
   	this.getPages();
+  }
+
+    ngAfterViewInit(){
+    if(!this.adminService.isLogged()){
+      this.route.navigate(['/admin/login']);
+    }
   }
 
   getPages(){

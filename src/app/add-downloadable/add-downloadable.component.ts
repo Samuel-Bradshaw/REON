@@ -1,24 +1,32 @@
-import { Component, OnInit } from '@angular/core';
-import{Product} from '../product';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Product } from '../product';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MatDialog, MatDialogConfig,  MatDialogRef  } from '@angular/material';
 import { DialogComponent } from '../dialog.component';
+import { AdminService } from '../admin.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-downloadable',
   templateUrl: './add-downloadable.component.html',
   styleUrls: ['./add-downloadable.component.css']
 })
-export class AddDownloadableComponent implements OnInit {
+export class AddDownloadableComponent implements OnInit, AfterViewInit {
 
 	products:Product[];
 	product: Product;
 	name: string;
 	files: any[] = [];
 
-  constructor(private http: HttpClient, public dialog: MatDialog,) { }
+  constructor(private http: HttpClient, public dialog: MatDialog, private adminService: AdminService,  private router: Router) { }
 
   ngOnInit() {
   	this.getProducts();
+  }
+
+    ngAfterViewInit(){
+    if(!this.adminService.isLogged()){
+      this.router.navigate(['/admin/login']);
+    }
   }
 
     getProducts():void{

@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { MatDialog, MatDialogConfig,  MatDialogRef  } from '@angular/material';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { DialogComponent } from '../dialog.component';
+import { AdminService } from '../admin.service';
 
 @Component({
   selector: 'app-new-article',
   templateUrl: './new-article.component.html',
   styleUrls: ['./new-article.component.css']
 })
-export class NewArticleComponent implements OnInit {
+export class NewArticleComponent implements AfterViewInit{
 
   max_post_size: number = 100000000;
   title:string;
@@ -19,10 +20,15 @@ export class NewArticleComponent implements OnInit {
   */
   constructor(private http: HttpClient,
               public dialog: MatDialog,
-              private router: Router) { }
+              private router: Router, private adminService: AdminService) { }
 
-  ngOnInit() {
+  ngAfterViewInit(){
+    if(!this.adminService.isLogged()){
+      this.router.navigate(['/admin/login']);
+    }
   }
+
+
 
 /*
   onImageSelected(event):void{

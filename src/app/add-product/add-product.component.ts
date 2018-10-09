@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit,  } from '@angular/core';
+import { Component, ElementRef, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Category } from '../product';
@@ -6,12 +6,14 @@ import { MatDialog, MatDialogConfig,  MatDialogRef  } from '@angular/material';
 import { DialogComponent } from '../dialog.component';
 import { AddRangeComponent } from '../add-range/add-range.component';
 
+import { AdminService } from '../admin.service';
+
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
   styleUrls: ['./add-product.component.css'],
 })
-export class AddProductComponent implements OnInit  {
+export class AddProductComponent implements OnInit, AfterViewInit {
 
   max_post_size: number = 100000000;
 
@@ -45,7 +47,15 @@ export class AddProductComponent implements OnInit  {
   constructor(private http: HttpClient,
               public dialog: MatDialog,
               private elementRef:ElementRef,
-              private router: Router) { }
+              private router: Router,
+              private adminService: AdminService,
+              ) { }
+
+  ngAfterViewInit(){
+    if(!this.adminService.isLogged()){
+      this.router.navigate(['/admin/login']);
+    }
+  }
 
   ngOnInit() {
   	this.getCategories();

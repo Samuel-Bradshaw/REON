@@ -1,21 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MatDialog, MatDialogConfig,  MatDialogRef  } from '@angular/material';
 import { DialogComponent } from '../dialog.component';
+import { AdminService } from '../admin.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-add-dealer',
   templateUrl: './add-dealer.component.html',
   styleUrls: ['./add-dealer.component.css']
 })
-export class AddDealerComponent implements OnInit {
+export class AddDealerComponent implements AfterViewInit {
 
 	name: string;
 	link: string;
 
-  constructor(private http: HttpClient, public dialog: MatDialog) { }
+  constructor(private http: HttpClient, public dialog: MatDialog,private adminService: AdminService,  private router: Router) { }
 
-  ngOnInit() {
+    ngAfterViewInit(){
+    if(!this.adminService.isLogged()){
+      this.router.navigate(['/admin/login']);
+    }
   }
+
+
 
   addDealer(){
 

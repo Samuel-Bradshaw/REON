@@ -1,9 +1,10 @@
-import { Component, OnInit, ElementRef, Output, EventEmitter } from '@angular/core';
+import { Component, ElementRef, Output, EventEmitter, AfterViewInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Category } from '../product';
 import { MatDialog, MatDialogConfig,  MatDialogRef  } from '@angular/material';
 import { DialogComponent } from '../dialog.component';
-
+import { AdminService } from '../admin.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-range',
@@ -11,7 +12,7 @@ import { DialogComponent } from '../dialog.component';
   styleUrls: ['./add-range.component.css'],
 
 })
-export class AddRangeComponent implements OnInit {
+export class AddRangeComponent implements AfterViewInit {
 
 	@Output() range_added: EventEmitter<Category>;
 
@@ -28,13 +29,18 @@ export class AddRangeComponent implements OnInit {
 	range_page_image_url: any;
 
 
-  constructor(private http: HttpClient, public dialog: MatDialog, private elementRef:ElementRef) {  
+  constructor(private http: HttpClient, public dialog: MatDialog, private elementRef:ElementRef, 
+    private adminService: AdminService,  private router: Router
+    ) {  
             this.range_added = new EventEmitter(); 
           }
 
-  ngOnInit() {
+  ngAfterViewInit(){
+    if(!this.adminService.isLogged()){
+      this.router.navigate(['/admin/login']);
+    }
   }
-
+ 
 
     addNewProductRange():void {
 

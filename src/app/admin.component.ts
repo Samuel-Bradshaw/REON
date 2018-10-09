@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AdminService  } from './admin.service';
 
@@ -8,15 +8,28 @@ import { AdminService  } from './admin.service';
   styleUrls: ['./admin.component.css'],
   encapsulation: ViewEncapsulation.None,
 })
-export class AdminComponent implements OnInit {
+export class AdminComponent implements OnInit, AfterViewInit {
 
   constructor(private router: Router,
   	    private adminService: AdminService,) { }
 
   ngOnInit() {
-  	//if(this.adminService.getUser()===null){
-  	//	this.router.navigate(['/admin/login']);
-  	//}
+ 
   }
+
+  ngAfterViewInit(){
+       if(!this.adminService.isLogged()){
+      this.router.navigate(['/admin/login']);
+    }
+
+  }
+
+  Logout():void{
+    this.adminService.logout();
+    this.router.navigate(['/admin/login']);
+
+  }
+
+
 
 }
