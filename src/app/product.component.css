@@ -3,23 +3,13 @@
   padding-left: 10%;
   padding-right: 10%;
   font-family: Questrial;  color: white;
-padding-top: 0;
+		padding-top: 0;
 }
 
 hr{
 	margin:0;
 	border:0;
 	border-top: 1px solid white;
-}
-
-.shadow {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    box-shadow: inset 0 0 20px 1px #000000;
-
-    top: 0;
-    left: 0;
 }
 
 .searchbox{
@@ -63,12 +53,17 @@ hr{
 	margin: 0;
 	vertical-align:bottom;
 
-	
 }
 
 .range-links{
+
+background-color: black;
+  
+  font-family: Questrial;  color: white;
+	padding-top: 0;
+	margin-top: 0;
+
 	display: grid;
-	margin-top: 30px;
 	grid-template-columns: 1fr 1fr;
 	
 }
@@ -76,24 +71,23 @@ hr{
 
 .range-tile h2{
 	position: absolute;
-	font-size: 40px;
+	font-size: 44px;
 	bottom: 15px;
 	right: 20px;
 	margin: 0;
-	text-shadow:3px 3px 10px #000000; 
+	text-shadow:3px 3px 5px #000000; 
+	z-index: 2;
 
 
 }
 
-.onhover{
-	display: none;
-}
-
-
-
-.range-tile:hover .onhover{
-	display: inline-block;
-
+.shadow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 5px 1px white;
+    top: 0;
+    left: 0;
 }
 
 a.range-tile{
@@ -101,14 +95,46 @@ a.range-tile{
 	color: white;
 	position: relative;
 	overflow: hidden;
-	  border-radius: 1px;
+	margin: 0;
 
+	max-height:350px;
 
 }
 
 .range-tile img{
-  border-radius: 1px;
+ 
+  object-fit: cover;
+  object-position: center center;
+  display: block;
 }
+
+
+.onhover{
+	display: none;
+}
+
+/*
+.range-tile:hover .onhover{
+	display: inline-block;
+
+}*/
+
+.range-tile:hover .shadow{
+	background-color: black;
+	opacity:0.2; 
+	z-index: 1;
+	box-shadow: none;
+}
+
+.odd-children.range-links a.range-tile:last-child{
+	grid-column: 1/3;
+}
+
+.odd-children.range-links a.range-tile:last-child h2{
+	right: 10%;
+}
+
+
 
 @media(max-width: 900px){
 
@@ -123,6 +149,10 @@ a.range-tile{
 	grid-template-columns: 1fr;
 	}
 
+	.range-tile h2{
+		font-size: 40px;
+	}
+
 }
 
 @media(max-width: 500px){
@@ -135,6 +165,10 @@ a.range-tile{
 padding-left: 6%;
   padding-right: 6%;
 }
+
+	.range-tile h2{
+		font-size: 30px;
+	}
 
 }
 /* **************************** */

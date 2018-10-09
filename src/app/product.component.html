@@ -1,20 +1,21 @@
-<div class="container">
 
-<div class="range-links">
+
+<div class="range-links" id="range-tiles">
 
 <a *ngFor="let category Of categories" routerLink='/products/{{category.category_id}}' class="range-tile">
 
-		<img src="http://localhost/REON/{{category.main_page_picture}}" width="100%">
+		<img src="http://localhost/REON/{{category.product_page_picture}}" width="100%">
 		<h2>The {{category.category_name}} range<span class="onhover">&nbsp;&#10095;</span></h2>
 		<div class="shadow"></div>
 
 </a>
 </div>
-<br>
-<br>
+
+
 <hr>
 <br>
-
+<br>
+<div class="container">
 <div class="searchalign">
 <h1 class="inlineblock producttitle" >All Products: </h1>
 <div class="searchbox inlineblock">
@@ -34,37 +35,6 @@
 	    </div>
 	  </a>
 	</div>
-
-
-
-
-<!--
-
-
-
-<div id="cf">
-	<div class="category-tile top"
-		[ngStyle]="{
-			'background-image': 'url(http://localhost/REON/' + category.picture_1_filepath + ')', 
-			'background-position': 'center '+ category.tile_picture_position+'%'}">
-		
-	</div>
-	<div class="category-tile bottom"
-		[ngStyle]="{
-			'background-image': 'url(http://localhost/REON/' + category.picture_2_filepath + ')', 
-			'background-position': 'center '+ category.tile_picture2_position+'%'}">
-		
-	</div>
-	<h2>The {{category.category_name}} range<span class="onhover">&nbsp; &#10095;</span></h2>
-
-</div>
-
-</a>
--->
-
-
-
-
 
 
 </div>

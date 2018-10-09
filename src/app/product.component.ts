@@ -70,6 +70,10 @@ export class ProductComponent implements OnInit {
         ///////////////////////////////
       ).subscribe( (data: any) => {
           this.categories = data;
+          if(this.categories.length%2 == 1){
+            document.getElementById("range-tiles").classList.add("odd-children");
+
+          }
         }, (error: any) => { console.log(error);}
         );
   }

@@ -19,16 +19,16 @@
 
 			<br>
 
-			<div class="inlineblock form-group">
-				<label for="categoryimage3">Upload main Range Image:  </label>
-				<input type="file" name="range_page_image" id="categoryimage3" (change)="onRangePageImageSelected($event)">
+			<div class="inlineblock form-group" title="This image will appear on the page dedicated to the range">
+				<label for="categoryimage3">Upload Range Page Image:  </label>
+				<input type="file" name="range_page_image" id="categoryimage3" (change)="onRangePageImageSelected($event)" >
 			</div>
 
 			<br>
 
-			<div class="inlineblock form-group">
-				<label for="categoryimages">Upload other range Images:  </label>
-				<input type="file" name="range_page_image" id="categoryimages" (change)="onCategoryImageSelected($event)" multiple>
+			<div class="inlineblock form-group" title="This image will appear on the on the /product page, on the tile acting as link to the range page.">
+				<label for="categoryimages">Upload Range Tile Image:  </label>
+				<input type="file" name="range_page_image" id="categoryimages" (change)="onCategoryImageSelected($event)" >
 			</div>
 
 			<br>

@@ -30,13 +30,12 @@ a.dealer-link{
 
 
 a.dealer-link:hover{
-   color:  rgb(100, 215, 215) !important;
+   color:  rgb(90, 210, 210);
+   text-decoration: underline;
 
 }
 
-a.dealer-link:visited{
-  color: rgb(100, 215, 215);
-}
+
 
 .columns{
   display: grid;
@@ -75,6 +74,26 @@ a.dealer-link:nth-child(even){
   }
 
 }
+@media(min-width: 1000px){
+  .columns{
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 60px;
+  }
+
+  a.dealer-link:nth-child(3n+1){
+  text-align: right;
+}
+ a.dealer-link:nth-child(3n+2){
+  text-align: center;
+}
+
+ a.dealer-link:nth-child(3n){
+  text-align: left;
+}
+
+
+}
+
 
 @media (max-width: 550px){
   .container{

@@ -16,5 +16,5 @@ export interface Category{
 	category_name: string;
 	category_description: string;
 	main_page_picture: string;
-  //images_filePaths: string[];
+  product_page_picture: string;
 }
