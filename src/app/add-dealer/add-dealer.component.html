@@ -1,8 +1,22 @@
 <app-admin></app-admin>
 
 <div class="container">
+	<h2>Enter Dealer Information</h2>
 	<form  id="newdealerform" #form="ngForm" class="pure-form pure-form-stacked">
 
+			<div class="form-group">
+				<label for="name">Name:</label>
+				<input class="width100" type="text" id="category-name" name="name" [(ngModel)]="name" required="">
+			</div>
+			<br>
+			<div class="form-group">
+				<label for="link">Link to page:</label>
+				<input class="width100" type="text" id="link" name="link" [(ngModel)]="link" placeholder="Paste URL of dealer's webpage" required>
+			</div>
+			<br>
+			<div style="text-align: center;">
+			 	<button class="submitbtn" (click)="addDealer()">Add Dealer</button>
+			</div>
 
 	</form>
 </div>

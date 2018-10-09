@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-buy',
@@ -8,9 +9,29 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class BuyComponent implements OnInit {
 
-  constructor( public sanitizer: DomSanitizer,) { }
+	dealers: Dealer[];
+
+  constructor( public sanitizer: DomSanitizer, private http: HttpClient) { }
 
   ngOnInit() {
+  	this.getDealers();
   }
 
+  getDealers(){
+  	this.http.get(
+        ////////////////////////////
+        'http://localhost:80/REON/php/get_dealers.php'
+        ///////////////////////////////
+      ).subscribe( (data: any) => {
+          this.dealers = data;
+        }, (error: any) => { console.log(error);}
+        );    
+  }
+
+}
+
+interface Dealer{
+	id: number;
+	name: string;
+	link: string;
 }

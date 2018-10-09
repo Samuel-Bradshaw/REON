@@ -18,15 +18,15 @@ ul, hr{
 
 li.news-item{
 list-style-type: none;
-color:#ddd;
+color:white;
 }
 
 
 
 
-li.news-item:hover{
+li.news-item:hover:not(.active-article){
 cursor: pointer;
-color: white;
+color: rgb(100, 215, 215)
 
 }
 

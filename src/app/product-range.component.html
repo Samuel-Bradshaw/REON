@@ -1,9 +1,9 @@
 <div class="container">
 
 	<app-range-description></app-range-description>
-<!--	<hr *ngIf="products.length > 0">-->
-	</div>
-	<div  [ngStyle]="{'background-image': 'url(../assets/images/ReonBGAssets/ReonBackGroundcar.jpg)'}" class="bg">
+	<hr *ngIf="products.length > 0">
+	
+	<!--<div  [ngStyle]="{'background-image': 'url(../assets/images/ReonBGAssets/ReonBackGroundcar.jpg)'}" class="bg">-->
 	<div class="products">
 
 		<a *ngFor="let product of products" 
@@ -16,6 +16,5 @@
 	    </div>
 	  </a>
 	</div>
-	</div>
-
+</div>
 
