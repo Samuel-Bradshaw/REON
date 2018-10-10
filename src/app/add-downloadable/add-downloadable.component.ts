@@ -29,7 +29,7 @@ export class AddDownloadableComponent implements OnInit, AfterViewInit {
     }
   }
 
-    getProducts():void{
+  getProducts():void{
    this.http.get(
         ////////////////////////////
         'http://localhost:80/REON/php/get_all_products.php'
@@ -57,14 +57,6 @@ export class AddDownloadableComponent implements OnInit, AfterViewInit {
 	  	//Define options for post request 
 	    let opts = {};
 	    opts["folder"] = folder;
-	   /* const filepaths = [];
-	     for(let i = 0; i < this.files.length; i++){
-	         filepaths.push(
-	         	"support/"+folder.replace(/ /g,'_')+"/"+this.files[i].name
-	         	);
-	      }
-
-	    opts["filepaths"]= filepaths;*/
 	    opts["filepath"] = downloadfilepath;
 	    opts["product_id"] =  this.product.product_id;
 
@@ -80,6 +72,8 @@ export class AddDownloadableComponent implements OnInit, AfterViewInit {
 	      (data: any) => {
 	        if(data ==="File details added to database"){
 	        	this.openDialog("Support docs successfully added!");
+            this.files = [];
+            location.reload();
 	        } else{
 	        	this.openDialog("Error adding file data:  See console for details");
 	      		console.log(data);
@@ -106,8 +100,7 @@ export class AddDownloadableComponent implements OnInit, AfterViewInit {
   	}
   	Promise.all(promises)
   		.then(values => {
-  			this.createZip(folder.replace(/ /g,'_'));
-  			this.uploadFileInfo(folder);
+  			this.createZip(folder);
   		});
 
   }
@@ -154,11 +147,13 @@ export class AddDownloadableComponent implements OnInit, AfterViewInit {
 
 	createZip(folder: string){
 
+    let folder2 = folder.replace(/ /g,'_');
+
     const headers: any = new HttpHeaders({
         'Content-Type': 'application/json'
       }),
       options: any = {
-        dir: folder
+        dir: folder2
       },
       url: any = 
       /////////////////
@@ -167,6 +162,7 @@ export class AddDownloadableComponent implements OnInit, AfterViewInit {
     this.http.post(url, JSON.stringify(options), headers).subscribe(
       (data: any) => {
       	if(data ==="Zip file created"){
+          this.uploadFileInfo(folder);
         console.log("Successfully zipped files for download");
     }else{
     	this.openDialog("Error creating zip file for download: "+data);

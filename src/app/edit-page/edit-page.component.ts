@@ -92,9 +92,9 @@ export class EditPageComponent implements OnInit {
     this.http.post(url, JSON.stringify(options), headers).subscribe(
       (data: any) => {
         if(data==="Success!"){
+          
          this.openDialog(this.page.page_name+' page updated!');
          this.route.navigate(['/'+this.page.page_name+'/']);
-         
       
        }else{
          this.openDialog("Error updating page:" + data);

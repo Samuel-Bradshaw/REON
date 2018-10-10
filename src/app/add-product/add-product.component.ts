@@ -108,11 +108,16 @@ export class AddProductComponent implements OnInit, AfterViewInit {
   //UPLOADS IMAGES AND UPDATES DATABASE
     productImagesUpload():void {
 
-     this.uploadImage(this.product_main_image,this.product_main_image.name, this.category.category_name+"/"+this.product_name);
+      let promises = [];
+
+      promises.push(this.uploadImage(this.product_main_image,this.product_main_image.name, this.category.category_name+"/"+this.product_name));
       for(let i = 0; i < this.product_images.length; i++){
-        this.uploadImage(this.product_images[i], this.product_images[i].name, this.category.category_name+"/"+this.product_name);
+        promises.push(this.uploadImage(this.product_images[i], this.product_images[i].name, this.category.category_name+"/"+this.product_name));
       }
-      this.insertNewProduct();
+      Promise.all(promises)
+        .then(values => {
+          this.insertNewProduct();
+        });
     }
 
   insertNewProduct():void{
@@ -142,12 +147,7 @@ export class AddProductComponent implements OnInit, AfterViewInit {
         console.log("Successfully inserted new product data");
          this.new_product_id = data;
          console.log(data);
-         if(this.new_product_id == null){
-           this.success = 0; 
-         }
          this.insertDetails();
-         this.insertImageInfo();
-         this.openDialog('Product successfully added!');
       },
       (error: any) => {
         this.openDialog("Error inserting product data.");
@@ -161,10 +161,6 @@ export class AddProductComponent implements OnInit, AfterViewInit {
     //Define options for post request 
     let opts = {};
     opts["product_id"] = this.new_product_id;
-     //for(let i = 0; i < this.details.length; i++){
-      //   opts["detail"+i] = this.details[i];
-      //}
-
     opts["details"]=this.details;
 
     const headers: any = new HttpHeaders({
@@ -178,13 +174,15 @@ export class AddProductComponent implements OnInit, AfterViewInit {
     this.http.post(url, JSON.stringify(options), headers).subscribe(
       (data: any) => {
         console.log(data);
-        if(data !== "Product details added to database"){
-         this.success = 0;
+        if(data === "Product details added to database"){
+         this.insertImageInfo();
+       }else{
+         this.openDialog("Error adding details to database: "+ data);
        }
       },
       (error: any) => {
-        this.openDialog("Error inserting product details.");
-        this.success = 0;
+        this.openDialog("Error inserting product details. See console for details");
+        console.log(error);
       }
     );
     
@@ -216,12 +214,15 @@ export class AddProductComponent implements OnInit, AfterViewInit {
     this.http.post(url, JSON.stringify(options), headers).subscribe(
       (data: any) => {
         console.log(data);
-        if(data ==="Image details added to database"){}
-          else{this.success = 0};
+        if(data ==="Image details added to database"){
+         this.openDialog('Product successfully added!');
+         location.reload();
+        }
+          else{this.openDialog("Error inserting image details to database: "+data)};
       },
       (error: any) => {
-        this.openDialog("Error inserting image info to database");
-        this.success = 0;
+        this.openDialog("Error inserting image info to database. See console for details.");
+        console.log(error);
       }
     );
     
@@ -240,7 +241,7 @@ export class AddProductComponent implements OnInit, AfterViewInit {
     console.log(this.product_images);
   }  
 
-  uploadImage(file: File, fileName: string, directory: string):void{
+  uploadImage(file: File, fileName: string, directory: string){
 
       if(file.size > this.max_post_size){
          this.openDialog("The files selected are too big to upload:\n"+
@@ -258,7 +259,8 @@ export class AddProductComponent implements OnInit, AfterViewInit {
       headers.append('Content-Type', 'multipart/form-data');
       headers.append('Accept', 'application/json');
 
-      this.http.post(
+      return new Promise((resolve, reject) => {
+        this.http.post(
         /*////////////////*/
         'http://localhost:80/REON/php/upload_image.php',
         ////////////////////////////
@@ -267,14 +269,19 @@ export class AddProductComponent implements OnInit, AfterViewInit {
             console.log(data);
             if(data === "Success!"){
               console.log("Image "+fileName+" successfully uploaded.");
+              resolve(data);
               } else {
                 this.openDialog(data);
+                reject(data);
               }
             },
           (error: any) => {
             console.log(error);
-            this.openDialog('Error uploading image.\n See console for details.');}
-        );}
+            this.openDialog('Error uploading image.\n See console for details.');
+            reject('Error uploading image.\n See console for details.');
+          });
+      })
+    }
   }
 
   openDialog(message: string): void {

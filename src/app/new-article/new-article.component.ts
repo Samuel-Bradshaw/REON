@@ -28,8 +28,6 @@ export class NewArticleComponent implements AfterViewInit{
     }
   }
 
-
-
 /*
   onImageSelected(event):void{
   	this.article_image = <File>event.target.files[0];
@@ -70,8 +68,8 @@ export class NewArticleComponent implements AfterViewInit{
       (data: any) => {
       	console.log("response:"+ data);
       	if(data === "Success!"){
-        this.openDialog("Successfully Added Article");
-        this.router.navigate(['/admin']);
+        this.openDialog("Successfully Added new Article!");
+        location.reload();
    		}else{
    		this.openDialog("Error adding article: "+data);
    		}
