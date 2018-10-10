@@ -34,7 +34,8 @@ import { AddDownloadableComponent } from './add-downloadable/add-downloadable.co
 import { AddDealerComponent } from './add-dealer/add-dealer.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
 import { FilterPipe} from './filter.pipe';
-
+import { FilterarticlePipe } from './filterarticle.pipe';
+import { PrivacyComponent } from './privacy/privacy.component';
 
 
 @NgModule({
@@ -61,6 +62,8 @@ import { FilterPipe} from './filter.pipe';
     AddDealerComponent,
     EditPageComponent,
     FilterPipe,
+    FilterarticlePipe,
+    PrivacyComponent,
 
   ],
   imports: [

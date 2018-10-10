@@ -18,6 +18,7 @@ import {NewArticleComponent} from './new-article/new-article.component';
 import {AddDownloadableComponent} from './add-downloadable/add-downloadable.component';
 import {AddDealerComponent}  from './add-dealer/add-dealer.component';
 import {EditPageComponent}  from './edit-page/edit-page.component';
+import {PrivacyComponent} from './privacy/privacy.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,8 @@ const routes: Routes = [
   { path: 'products', component: ProductComponent },
   { path: 'products/:category_id', component: ProductRangeComponent },
   { path: 'products/:category_id/:id', component: ProductDetailComponent },
+  { path: 'terms_of_use', component: PrivacyComponent },
+
   //admin pages
   { path: 'admin/login', component: LoginComponent},
   { path: 'admin', component: AdminComponent, canActivate: [NeedAuthGuard]},

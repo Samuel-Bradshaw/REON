@@ -51,7 +51,7 @@ export class NewsComponent implements OnInit {
 
 }
 
-interface Article{
+export interface Article{
 	article_id: number;
 	title: string;
 	article: string;

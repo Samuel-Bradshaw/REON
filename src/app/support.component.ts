@@ -27,13 +27,8 @@ export class SupportComponent implements OnInit {
         ///////////////////////////////
       ).subscribe( (data: any) => {
           this.downloads = data;
-          console.log(this.downloads);
         }, (error: any) => { console.log(error);}
         );
-  }
-
-  download(product_id:number):void{
-    
   }
 
 }
