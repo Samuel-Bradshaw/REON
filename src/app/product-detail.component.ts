@@ -82,7 +82,7 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
         options: any = {
           product_id:  id,
         },
-    url : any = 'http://localhost:80/REON/php/get_product_by_id.php';
+    url : any = 'http://reonsynth.com/php/get_product_by_id.php';
     this.http.post(url , JSON.stringify(options), headers).subscribe(
         (data: any) => {
           this.product = data;
@@ -104,7 +104,7 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
         options: any = {
           product_id:  id,
         },
-    url : any = 'http://localhost:80/REON/php/get_product_details.php';
+    url : any = 'http://reonsynth.com/php/get_product_details.php';
     this.http.post(url , JSON.stringify(options), headers).subscribe(
         (data: any) => {
            for(let i = 0; i < data.length; i++){
@@ -128,7 +128,7 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
         options: any = {
           product_id:  id,
         },
-    url : any = 'http://localhost:80/REON/php/get_product_images.php';
+    url : any = 'http://reonsynth.com/php/get_product_images.php';
     this.http.post(url , JSON.stringify(options), headers).subscribe(
         (data: any) => {
           for(let i = 0; i < data.length; i++){

@@ -8,7 +8,7 @@ import { HttpClient, HttpHeaders}  from '@angular/common/http';
 })
 export class SupportComponent implements OnInit {
 
-  url: string = "http://localhost:80/REON";
+  url: string = "http://reonsynth.com";
 
 	downloads: any[];
 
@@ -23,7 +23,7 @@ export class SupportComponent implements OnInit {
 
   	this.http.get(
       	////////////////////////////
-        'http://localhost:80/REON/php/get_downloads.php'
+        'http://reonsynth.com/get_downloads.php'
         ///////////////////////////////
       ).subscribe( (data: any) => {
           this.downloads = data;

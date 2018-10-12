@@ -20,7 +20,7 @@ export class BuyComponent implements OnInit {
   getDealers(){
   	this.http.get(
         ////////////////////////////
-        'http://localhost:80/REON/php/get_dealers.php'
+        'http://reonsynth.com/php/get_dealers.php'
         ///////////////////////////////
       ).subscribe( (data: any) => {
           this.dealers = data;

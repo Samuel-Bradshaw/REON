@@ -23,7 +23,7 @@
   .footer{
     position: absolute;
     height: 0;        /*dynamic size */
-    padding-top: 22%;
+    padding-top: 20%;
     bottom: 0;
     left: 0;
 
@@ -32,12 +32,10 @@
     width:100%;
     padding-bottom: 20px;
     display: table-cell;
-    background-position: bottom;
-
-
-    background-size: cover;  
+    background-position: center bottom;
+    background-size: contain;  
     background-repeat: no-repeat; 
-    box-shadow: 0 0 15px 15px black inset;
+    box-shadow: 0 2px 25px 20px black inset;
 
   }
 
@@ -45,8 +43,8 @@
     text-decoration: none;
     color: rgb(180,180,180);
     position: absolute;
-    left: 54%;
-    bottom: 25%;
+    left: 56%;
+    bottom: 32%;
     cursor: pointer;
     font-family: Questrial;
     text-shadow: 1px 1px 1px black;
@@ -66,12 +64,15 @@
     @media(max-width: 1000px) and (min-width: 520px)  {
 
     .footer{
-       box-shadow: 0 0 15px 15px black inset;
+       box-shadow: 0 10px 30px 20px black inset;
     }
 
 
+
   #termslink{
-    left: 50%;
+    left: 54%;
+    bottom: 29%;
+    font-size: 16px;
   }
 
 
@@ -80,7 +81,7 @@
 
   @media (max-width: 700px){
       #termslink{
-      bottom: 26%;
+      bottom: 28%;
       font-size: 14px;
     }
 
@@ -96,13 +97,14 @@
   @media(max-width: 519px) {
 
     .footer{
-       box-shadow: 0 0 10px 12px black inset;
-       padding-top: 26%;
+       box-shadow: 0 10px 15px 15px black inset;
+   
     }
 
        #termslink{
-        left: 60%;
-      bottom: 60%;
+        left: 50%;
+      bottom: 22%;
+      font-size: 13px;
     }
 
   .footer >  img.logo  {

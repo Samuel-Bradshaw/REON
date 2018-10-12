@@ -30,7 +30,7 @@ export class DashboardComponent implements OnInit {
         options: any = {
           page_id:  2,
         },
-    url : any = 'http://localhost:80/REON/php/get_page.php';
+    url : any = 'http://reonsynth.com/php/get_page.php';
     this.http.post(url , JSON.stringify(options), headers).subscribe(
         (data: any) => {
           this.page_components = data;

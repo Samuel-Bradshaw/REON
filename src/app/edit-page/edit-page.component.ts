@@ -12,6 +12,8 @@ import { AdminService } from '../admin.service';
 })
 export class EditPageComponent implements OnInit {
 
+  max_post_size: number = 80000000;
+
 	pages: Page[];
 	page: Page;
 	image: any = null;
@@ -34,7 +36,7 @@ export class EditPageComponent implements OnInit {
 
   	   this.http.get(
         ////////////////////////////
-        'http://localhost:80/REON/php/get_pages.php'
+        'http://REONsynth.com/php/get_pages.php'
         ///////////////////////////////
       ).subscribe( (data: any) => {
           this.pages = data;
@@ -87,7 +89,7 @@ export class EditPageComponent implements OnInit {
       },
       url: any = 
       /////////////////
-      'http://localhost:80/REON/php/update_page.php';
+      'http://REONsynth.com/php/update_page.php';
       /////////////////
     this.http.post(url, JSON.stringify(options), headers).subscribe(
       (data: any) => {
@@ -123,6 +125,13 @@ export class EditPageComponent implements OnInit {
   
    uploadImage(file: File, fileName: string, directory: string){
 
+
+      if(file.size > this.max_post_size){
+         this.openDialog("The files selected are too big to upload:\n"+
+                           "Size of image = "+file.size/1000000+"MB.\n"+
+                              "Maximum combined size of images = "+this.max_post_size/1000000+"MB.");
+       } else {
+
       //send main image
       const formdata = new FormData();
       formdata.append('dir', directory.replace(/ /g, '_')); //will be used to create a new directory for range images on server
@@ -136,7 +145,7 @@ export class EditPageComponent implements OnInit {
       return new Promise((resolve, reject) => {
         this.http.post(
           ////////////////
-          'http://localhost:80/REON/php/upload_image.php',
+          'http://REONsynth.com/php/upload_image.php',
           ////////////////////////////
           formdata, {headers: headers})
           .subscribe((data: any) => {
@@ -162,6 +171,7 @@ export class EditPageComponent implements OnInit {
               reject("Error uploading Files.\n See console for details.");}
           );
           })
+    }
       
   }
 

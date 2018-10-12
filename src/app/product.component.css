@@ -23,6 +23,7 @@ hr{
 	font-size: 16px;
 	line-height: 24px;
 	width: 250px;
+	font-family: Questrial;
 }
 
 .searchbox .fa-search{
@@ -128,12 +129,16 @@ a.range-tile{
 	box-shadow: none;
 }
 
-.odd-children.range-links a.range-tile:nth-child(3n-2){
+@media (min-width: 701px){ 
+.odd-children.range-links a.range-tile:nth-child(3n), .single-child.range-links a.range-tile{
 	grid-column: 1/3;
 }
 
-.odd-children.range-links a.range-tile:nth-child(3n-2) h2{
+.odd-children.range-links a.range-tile:nth-child(3n) h2, .single-child.range-links a.range-tile h2{
 	right: 10%;
+}
+
+
 }
 
 

@@ -4,7 +4,7 @@
 
 <a *ngFor="let category Of categories" routerLink='/products/{{category.category_id}}' class="range-tile">
 
-		<img src="http://localhost/REON/{{category.product_page_picture}}" width="100%">
+		<img src="http://reonsynth.com/{{category.product_page_picture}}" width="100%">
 		<h2>The {{category.category_name}} range<span class="onhover">&nbsp;&#10095;</span></h2>
 		<div class="shadow"></div>
 
@@ -28,7 +28,7 @@
 		<a *ngFor="let product of products | filter : searchText" 
 	    routerLink='/products/{{product.category_id}}/{{product.product_id}}'>
 	    <div class="module product">
-	      <img src="http://localhost/REON/{{product.leading_photo_filepath}}" style="width:100%;">
+	      <img src="http://reonsynth.com/{{product.leading_photo_filepath}}" style="width:100%;">
 			<h2>{{ product.name }}</h2>
 			<h3>{{ product.description}} </h3>
 			<h3>£{{product.price| number:'1.0-2'}}</h3>  

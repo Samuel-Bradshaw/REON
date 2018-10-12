@@ -15,7 +15,7 @@ import { AdminService } from '../admin.service';
 })
 export class AddProductComponent implements OnInit, AfterViewInit {
 
-  max_post_size: number = 100000000;
+  max_post_size: number = 80000000;
 
 	categories: Category[];
 	category: Category;
@@ -92,7 +92,7 @@ export class AddProductComponent implements OnInit, AfterViewInit {
   getCategories(): void {
     this.http.get(
       	////////////////////////////
-        'http://localhost:80/REON/php/get_product_ranges.php'
+        'http://REONsynth.com/php/get_product_ranges.php'
         ///////////////////////////////
       ).subscribe( (data: any) => {
           this.categories = data;
@@ -124,6 +124,7 @@ export class AddProductComponent implements OnInit, AfterViewInit {
 
     let pic = "images/"+this.category.category_name.replace(/ /g,'_')+"/"+this.product_name.replace(/ /g,'_')+"/"+this.product_main_image.name;
     
+    console.log(this.youtube_url);
     const headers: any = new HttpHeaders({
         'Content-Type': 'application/json'
       }),
@@ -140,14 +141,19 @@ export class AddProductComponent implements OnInit, AfterViewInit {
       },
       url: any = 
       /////////////////
-      'http://localhost:80/REON/php/insert_new_product.php';
+      'http://reonsynth.com/php/insert_new_product.php';
       /////////////////
     this.http.post(url, JSON.stringify(options), headers).subscribe(
       (data: any) => {
+        let num = Number(data);
+        if(Number.isInteger(num)){
         console.log("Successfully inserted new product data");
          this.new_product_id = data;
          console.log(data);
          this.insertDetails();
+       }else{
+         this.openDialog("Error inserting product data: "+data);
+       }
       },
       (error: any) => {
         this.openDialog("Error inserting product data.");
@@ -169,7 +175,7 @@ export class AddProductComponent implements OnInit, AfterViewInit {
       options: any = opts,     
       url: any = 
       /////////////////
-      'http://localhost:80/REON/php/insert_details.php';
+      'http://REONsynth.com/php/insert_details.php';
       /////////////////
     this.http.post(url, JSON.stringify(options), headers).subscribe(
       (data: any) => {
@@ -209,7 +215,7 @@ export class AddProductComponent implements OnInit, AfterViewInit {
       options: any = opts,     
       url: any = 
       /////////////////
-      'http://localhost:80/REON/php/insert_image_info.php';
+      'http://REONsynth.com/php/insert_image_info.php';
       /////////////////
     this.http.post(url, JSON.stringify(options), headers).subscribe(
       (data: any) => {
@@ -262,7 +268,7 @@ export class AddProductComponent implements OnInit, AfterViewInit {
       return new Promise((resolve, reject) => {
         this.http.post(
         /*////////////////*/
-        'http://localhost:80/REON/php/upload_image.php',
+        'http://REONsynth.com/php/upload_image.php',
         ////////////////////////////
         formdata, {headers: headers})
         .subscribe((data: any) => {
@@ -270,6 +276,8 @@ export class AddProductComponent implements OnInit, AfterViewInit {
             if(data === "Success!"){
               console.log("Image "+fileName+" successfully uploaded.");
               resolve(data);
+              }else if(data.trim() === "Upload failed:  Error: File already exists.") {
+                resolve(data);
               } else {
                 this.openDialog(data);
                 reject(data);

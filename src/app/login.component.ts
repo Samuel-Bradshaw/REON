@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       options: any = { username: this.username, 
       				   password: this.password },
       /////////////////////////////////////////////
-      url: any = 'http://localhost:80/REON/php/admin_login.php';
+      url: any = 'http://REONsynth.com/php/admin_login.php';
 	//////////////////////////////////////
     this.http.post(url, JSON.stringify(options), headers).subscribe(
       (data: any) => {

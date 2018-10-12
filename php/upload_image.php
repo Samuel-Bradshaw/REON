@@ -6,6 +6,7 @@ $new_dir_name =  str_replace(' ','_',$_POST['dir']);
 
 if (!file_exists("../images/".$new_dir_name."/")) {
     mkdir("../images/".$new_dir_name);
+    chmod("../images/".$new_dir_name, 0755);
 }
 
 $target_dir = "../images/".$new_dir_name."/";
@@ -67,6 +68,7 @@ try{
     // if everything is ok, try to upload file
     } else {
         if (move_uploaded_file($_FILES["FileToUpload"]["tmp_name"], $target_file)) {
+            chmod($target_file, 0755);
             echo json_encode("Success!");
       
         } else {

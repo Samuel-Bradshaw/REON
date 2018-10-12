@@ -33,7 +33,7 @@ export class ProductRangeComponent implements OnInit {
         options: any = {
           category_id:  +this.route.snapshot.url[1].path,
         },
-    url : any = 'http://localhost:80/REON/php/get_products.php';
+    url : any = 'http://reonsynth.com/php/get_products.php';
     this.http.post(url , JSON.stringify(options), headers).subscribe(
         (data: any) => {
           this.products = data;
@@ -50,7 +50,7 @@ export class ProductRangeComponent implements OnInit {
           options: any = {
               category_id:  +this.route.snapshot.url[1].path,
           },
-      url : any = 'http://localhost:80/REON/php/get_range.php';
+      url : any = 'http://reonsynth.com/php/get_range.php';
       this.http.post(url , JSON.stringify(options), headers).subscribe(
           (data: any) => {
             this.category = data;

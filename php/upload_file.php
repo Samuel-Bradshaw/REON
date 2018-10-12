@@ -6,10 +6,12 @@ $new_dir_name =  str_replace(' ','_',$_POST['dir']);
 
 if (!file_exists("../support/")) {
     mkdir("../support/");
+    chmod("../support/", 0755);
 }
 
 if (!file_exists("../support/".$new_dir_name."/")) {
     mkdir("../support/".$new_dir_name);
+    chmod("../support/".$new_dir_name, 0755);
 }
 
 $target_dir = "../support/".$new_dir_name."/";
@@ -71,6 +73,7 @@ try{
     // if everything is ok, try to upload file
     } else {
         if (move_uploaded_file($_FILES["FileToUpload"]["tmp_name"], $target_file)) {
+            chmod($target_file, 0755);
             echo json_encode("Success!");
       
         } else {

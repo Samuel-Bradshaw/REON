@@ -21,7 +21,7 @@ export class NewsComponent implements OnInit {
 
   	    this.http.get(
       	////////////////////////////
-        'http://localhost:80/REON/php/get_news.php'
+        'http://reonsynth.com/php/get_news.php'
         ///////////////////////////////
       ).subscribe( (data: any) => {
           this.articles = data;

@@ -26,22 +26,11 @@ export class ProductComponent implements OnInit {
       this.getCategories();
       this.getProducts();
       }
-/*
-   getProductRanges(): void {
-    this.productService.getProductRanges()
-      .subscribe(categories => {
-        this.categories = categories;
-        console.log(categories);
-        if(this.categories.length = 1){
-          //this.route.navigate(['/products/'+this.categories[0].category_id]);
-        }}
-        );
-  }*/
 
   getProducts():void{
    this.http.get(
         ////////////////////////////
-        'http://localhost:80/REON/php/get_all_products.php'
+        'http://reonsynth.com/php/get_all_products.php'
         ///////////////////////////////
       ).subscribe( (data: any) => {
           this.products = data;
@@ -49,30 +38,20 @@ export class ProductComponent implements OnInit {
         );
         
   }
-/*
-  getRangePictures():void{
-    this.http.get(
-        ////////////////////////////
-        'http://localhost:80/REON/php/get_range_pics.php'
-        ///////////////////////////////
-      ).subscribe( (data: any) => {
-          this.range_pics = data;
-        }, (error: any) => { console.log(error);}
-        );
-        
-
-  }*/
 
     getCategories(): void {
     this.http.get(
         ////////////////////////////
-        'http://localhost:80/REON/php/get_product_ranges.php'
+        'http://reonsynth.com/php/get_product_ranges.php'
         ///////////////////////////////
       ).subscribe( (data: any) => {
           this.categories = data;
           if(this.categories.length%2 == 1){
             document.getElementById("range-tiles").classList.add("odd-children");
 
+          }
+          if(this.categories.length == 1){
+            document.getElementById("range-tiles").classList.add("single-child");
           }
         }, (error: any) => { console.log(error);}
         );

@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
         options: any = {
           page_id:  1,
         },
-    url : any = 'http://localhost:80/REON/php/get_page.php';
+    url : any = 'http://REONsynth.com/php/get_page.php';
     this.http.post(url , JSON.stringify(options), headers).subscribe(
         (data: any) => {
           this.page_components = data;

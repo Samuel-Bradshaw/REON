@@ -16,7 +16,7 @@ export class AddRangeComponent implements AfterViewInit {
 
 	@Output() range_added: EventEmitter<Category>;
 
-	max_post_size: number = 100000000;
+	max_post_size: number = 80000000;
 
 	new_category: Category;
   new_cat_id: number;
@@ -69,7 +69,7 @@ export class AddRangeComponent implements AfterViewInit {
               product_page_picture: pic2},
             url: any = 
         /////////////////
-        'http://localhost:80/REON/php/add_new_range.php';
+        'http://REONsynth.com/php/add_new_range.php';
         /////////////////
           this.http.post(url, JSON.stringify(options), headers).subscribe(
             (data: any) => {
@@ -143,7 +143,7 @@ export class AddRangeComponent implements AfterViewInit {
 
      return new Promise((resolve, reject) => { this.http.post(
         /*////////////////*/
-        'http://localhost:80/REON/php/upload_image.php',
+        'http://REONsynth.com/php/upload_image.php',
         ////////////////////////////
         formdata, {headers: headers})
         .subscribe((data: any) => {

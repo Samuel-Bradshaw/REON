@@ -32,7 +32,7 @@ export class AddDownloadableComponent implements OnInit, AfterViewInit {
   getProducts():void{
    this.http.get(
         ////////////////////////////
-        'http://localhost:80/REON/php/get_all_products.php'
+        'http://REONsynth.com/php/get_all_products.php'
         ///////////////////////////////
       ).subscribe( (data: any) => {
           this.products = data;
@@ -66,7 +66,7 @@ export class AddDownloadableComponent implements OnInit, AfterViewInit {
 	      options: any = opts,     
 	      url: any = 
 	      /////////////////
-	      'http://localhost:80/REON/php/insert_support_docs.php';
+	      'http://REONsynth.com/php/insert_support_docs.php';
 	      /////////////////
 	    this.http.post(url, JSON.stringify(options), headers).subscribe(
 	      (data: any) => {
@@ -121,7 +121,7 @@ export class AddDownloadableComponent implements OnInit, AfterViewInit {
       return new Promise((resolve, reject) => {
 	      this.http.post(
 	        ////////////////
-	        'http://localhost:80/REON/php/upload_file.php',
+	        'http://REONsynth.com/php/upload_file.php',
 	        ////////////////////////////
 	        formdata, {headers: headers})
 	        .subscribe((data: any) => {
@@ -157,7 +157,7 @@ export class AddDownloadableComponent implements OnInit, AfterViewInit {
       },
       url: any = 
       /////////////////
-      'http://localhost:80/REON/php/create_zip_files.php';
+      'http://REONsynth.com/php/create_zip_files.php';
       /////////////////
     this.http.post(url, JSON.stringify(options), headers).subscribe(
       (data: any) => {

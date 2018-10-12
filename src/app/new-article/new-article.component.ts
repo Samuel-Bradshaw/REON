@@ -12,7 +12,6 @@ import { AdminService } from '../admin.service';
 })
 export class NewArticleComponent implements AfterViewInit{
 
-  max_post_size: number = 100000000;
   title:string;
   article: string;
   /*article_image = null;
@@ -62,7 +61,7 @@ export class NewArticleComponent implements AfterViewInit{
       },
       url: any = 
       /////////////////
-      'http://localhost:80/REON/php/insert_new_article.php';
+      'http://reonsynth.com/php/insert_new_article.php';
       /////////////////
     this.http.post(url, JSON.stringify(options), headers).subscribe(
       (data: any) => {
@@ -84,43 +83,6 @@ export class NewArticleComponent implements AfterViewInit{
 
 
   }
-/*
-   uploadImage(file: File, fileName: string, directory: string):void{
-
-      if(file.size > this.max_post_size){
-         this.openDialog("The files selected are too big to upload:\n"+
-                           "Combined size of images = "+file.size/1000000+"MB.\n"+
-                              "Maximum combined size of images = "+this.max_post_size/1000000+"MB.");
-       } else {
-
-      //send main image
-      const formdata = new FormData();
-      formdata.append('dir', directory.replace(/ /g, '_')); //will be used to create a new directory for range images on server
-      formdata.append('FileToUpload', file, fileName);
-
-      const headers = new HttpHeaders();
-      headers.set('Content-Type', null);
-      headers.append('Content-Type', 'multipart/form-data');
-      headers.append('Accept', 'application/json');
-
-      this.http.post(
-        ////////////////
-        'http://localhost:80/REON/php/upload_image.php',
-        ////////////////////////////
-        formdata, {headers: headers})
-        .subscribe((data: any) => {
-            console.log(data);
-            if(data === "Success!"){
-              console.log("Image "+fileName+" successfully uploaded.");
-              } else {
-                this.openDialog(data);
-              }
-            },
-          (error: any) => {
-            console.log(error);
-            this.openDialog('Error uploading image.\n See console for details.');}
-        );}
-  }*/
 
    openDialog(message: string): void {
     const dialogConfig = new MatDialogConfig();

@@ -9,7 +9,7 @@
 		<a *ngFor="let product of products" 
 	    routerLink='/products/{{product.category_id}}/{{product.product_id}}'>
 	    <div class="module product">
-	      <img src="http://localhost/REON/{{product.leading_photo_filepath}}" style="width:100%;">
+	      <img src="http://reonsynth.com/{{product.leading_photo_filepath}}" style="width:100%;">
 			<h2>{{ product.name }}</h2>
 			<h3>{{ product.description}} </h3>
 			<h3>£{{product.price| number:'1.0-2'}}</h3>  

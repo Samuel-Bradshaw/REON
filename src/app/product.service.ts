@@ -32,7 +32,7 @@ getProducts (id: number): Product[] {
       options: any = {
         category_id: id
       },
-  url : any = 'http://localhost:80/REON/php/get_products.php';
+  url : any = 'http://reonsynth.com/php/get_products.php';
   this.http.post(url , JSON.stringify(options), headers).subscribe(
       (data: any) => {
         let products: Product[];
@@ -55,7 +55,7 @@ getProducts (id: number): Product[] {
 
 
 getProductRanges():Observable<Category[]>{
-   const url = 'http://localhost:80/REON/php/get_product_ranges.php';
+   const url = 'http://reonsynth.com/get_product_ranges.php';
    return this.http.get<Category[]>(url)
     .pipe(
       tap(categories => this.log('fetched categories')),

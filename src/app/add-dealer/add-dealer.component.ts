@@ -1,3 +1,4 @@
+
 import { Component, AfterViewInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MatDialog, MatDialogConfig,  MatDialogRef  } from '@angular/material';
@@ -36,7 +37,7 @@ export class AddDealerComponent implements AfterViewInit {
         },
       url: any = 
       /////////////////
-      'http://localhost:80/REON/php/add_dealer.php';
+      'http://REONsynth.com/php/add_dealer.php';
       /////////////////
     this.http.post(url, JSON.stringify(options), headers).subscribe(
       (data: any) => {
