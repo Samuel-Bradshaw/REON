@@ -23,9 +23,8 @@
 .Driftbox-group {
   max-width:30%;
   float: right;
-  margin-left: 5px;
-  margin-right: 5px;
-  margin-bottom: 5px;
+  margin-left: 10px;
+  margin-bottom: 10px;
 }
 
 @media(max-width: 800px){
@@ -35,6 +34,19 @@
   }
   .text{
     font-size: 0.8em;
+  }
+}
+
+@media(max-width: 500px){
+
+  .container{
+    padding-left: 8%;
+    padding-right: 8%;
+  }
+
+  .Driftbox-group{
+    max-width: 45%;
+    margin-left: 5px;
   }
 }
 
