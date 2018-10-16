@@ -25,6 +25,7 @@ a.back:hover{
 
 .title-container{
 	position: relative;
+	margin-bottom: 30px;
 }
 
 .long-desc{
@@ -35,7 +36,6 @@ a.back:hover{
 h1{
 	font-size: 36px;
 	margin-top: 10px;
-	margin-bottom: 30px;
 	font-weight: 600;
 	width: 	100%;
 	font-family: Questrial;
@@ -129,6 +129,10 @@ h1{
   		padding-right: 10%;
 	}	
 
+	.title-container{
+		margin-bottom: 20px;
+	}
+
 	.change-slide{
 		grid-gap: 5px;
 	}
@@ -149,6 +153,10 @@ h1{
 .chev{
 	font-size: 28px;
 	color: #ddd;
+}
+
+.chev:hover{
+	color: rgb(170,170,170);
 }
 
 .chevs{	
