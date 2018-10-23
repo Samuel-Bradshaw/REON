@@ -7,7 +7,7 @@
   	<img src="http://reonsynth.com/{{page_components.image_filepath}}" >
 	</div>-->
 <div *ngIf="page_components && page_components.copy !== null" style="max-width: 100%;">
-	<p [innerHTML]="page_components.copy" style="text-shadow: 1px 1px 1px black; padding-top: 50px;">
+	<p [innerHTML]="page_components.copy" style="text-shadow: 1px 1px 1px black;">
 	</p>
 </div>
 	<div class="videoWrapper" *ngIf="page_components && page_components.video_url !== null">
