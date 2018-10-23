@@ -36,6 +36,7 @@ import { EditPageComponent } from './edit-page/edit-page.component';
 import { FilterPipe} from './filter.pipe';
 import { FilterarticlePipe } from './filterarticle.pipe';
 import { PrivacyComponent } from './privacy/privacy.component';
+import { Safe } from './home.component';
 
 
 @NgModule({
@@ -64,6 +65,7 @@ import { PrivacyComponent } from './privacy/privacy.component';
     FilterPipe,
     FilterarticlePipe,
     PrivacyComponent,
+    Safe,
 
   ],
   imports: [

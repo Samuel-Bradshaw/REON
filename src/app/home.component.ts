@@ -1,6 +1,16 @@
-import { Component, OnInit,  ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit,  ElementRef, ViewChild, Pipe } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
+
+
+@Pipe({name: 'safeHtml'})
+export class Safe {
+  constructor(private sanitizer:DomSanitizer){}
+
+  transform(html) {
+    return this.sanitizer.bypassSecurityTrustHtml(html);
+  }
+}
 
 @Component({
   selector: 'app-home',

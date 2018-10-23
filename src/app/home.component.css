@@ -1,3 +1,4 @@
+
 .container{
 
   padding-top: 7%;
@@ -14,7 +15,7 @@
 
   background-size: cover; 
   background-repeat: no-repeat; 
-  box-shadow: 0 0px 30px 20px black inset;
+  box-shadow: 0 0px 30px 10px black inset;
    padding-bottom: 10%;
 
 
@@ -48,12 +49,12 @@ p{
   margin-left: 20px;
 }*/
 
+a, p a, p>a{
+  color: white !important;
+}
 
-
-
-
->>> a{
-	color: white;
+a{
+  color: inherit !important;
 }
 
 
@@ -84,13 +85,17 @@ p{
      margin-top: 100px;
 
   }
+
+  .container{
+    padding-top: 14%;
+    padding-bottom: 14%;
+  }
 }
 
 @media (max-width: 700px){
 
   .container{
-
-  padding-top: 25px;
+  padding-top: 18%;
   padding-left: 15%;
   padding-right :15%;
 
@@ -112,18 +117,12 @@ p{
 @media(max-width: 332px){
   .container{
 
-  padding-top: 15px;
+  padding-top: 20%;
+  padding-bottom: 20%;
   padding-left: 10%;
   padding-right :10%;
 
   }
   
-}
-
-
-
-.Driftbox-group img{
-  width: 100%;
-  overflow: inherit;
 }
 

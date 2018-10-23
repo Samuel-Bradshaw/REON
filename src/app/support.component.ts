@@ -23,7 +23,7 @@ export class SupportComponent implements OnInit {
 
   	this.http.get(
       	////////////////////////////
-        'http://reonsynth.com/get_downloads.php'
+        'http://reonsynth.com/php/get_downloads.php'
         ///////////////////////////////
       ).subscribe( (data: any) => {
           this.downloads = data;
