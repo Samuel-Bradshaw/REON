@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class AddDownloadableComponent implements OnInit, AfterViewInit {
 
 	products:Product[];
-	product: Product;
+	product: any;
 	name: string;
 	files: any[] = [];
 

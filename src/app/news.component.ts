@@ -9,6 +9,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class NewsComponent implements OnInit {
 
 	articles: Article[] = [];
+  searchText: string;
 
   constructor(private http: HttpClient) { }
 
