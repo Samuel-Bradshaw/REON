@@ -32,7 +32,7 @@ try{
 
         $check = getimagesize($_FILES["FileToUpload"]["tmp_name"]);
  
-        if($check !== false ) {
+        if($check !== false || $imageFileType == "pdf") {
             $uploadOk = 1;
         } else {
             $errorMsg = " Error: File " . basename($_FILES["FileToUpload"]["name"])." is not an image.";
