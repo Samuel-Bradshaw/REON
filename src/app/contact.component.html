@@ -1,0 +1,40 @@
+<div class="container">
+<h1>Contact Us</h1>
+
+<hr>
+<table>
+		<tr>
+			<td><i class="fa fa-envelope"></i> </td>
+			<td>REON@korg.co.uk</td>
+		</tr>
+		<tr>
+			<td><i class="fa fa-phone"></i></td>
+			<td>xxxxx xxxxxxx</td>
+		</tr>
+
+</table>
+
+<br>
+<div class="msgdiv">
+	<h2>Send us a message</h2>
+	<br>
+	<form  id="messageform" action="samuelbradshaw2718@gmail.com" method="post" enctype="text/plain">
+		<div class="form-group">
+			<label for="email">Your Email Address:</label>
+			<input type="email" class="width100" id="email" name="email" [(ngModel)]="email" required placeholder="Enter your email address here"> 
+			<p id="emailerror" class="error">Please enter a valid email address</p>
+		</div>
+		<br>
+		<div class="form-group">
+			<label for="message">Your Message:</label>
+			<textarea class="width95" placeholder="Enter your message to us here..." form="messageform"  name="message" [(ngModel)]="message" required></textarea>
+			<p id="msgerror" class="error">Please enter a message</p>
+		</div>
+		<button class="submitbutton" (click)="send()">Send</button>
+	</form>
+
+</div>
+
+
+
+</div>

@@ -3,14 +3,17 @@
   min-height: 100%;
 }
 
+.homelink{
+  width: 50%;
+  display: block;
+      margin-left: auto;
+    margin-right: auto;
+    cursor: default;
+}
+
 .logo {
 	display: block;
 	filter: invert(100%);
-}
-
-.header > .logo {
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .logo-container {

@@ -19,6 +19,7 @@ import {AddDownloadableComponent} from './add-downloadable/add-downloadable.comp
 import {AddDealerComponent}  from './add-dealer/add-dealer.component';
 import {EditPageComponent}  from './edit-page/edit-page.component';
 import {PrivacyComponent} from './privacy/privacy.component';
+import {ContactComponent} from './contact.component';
 
 
 const routes: Routes = [
@@ -33,6 +34,8 @@ const routes: Routes = [
   { path: 'products/:category_id', component: ProductRangeComponent },
   { path: 'products/:category_id/:id', component: ProductDetailComponent },
   { path: 'terms_of_use', component: PrivacyComponent },
+  { path: 'contact', component: ContactComponent },
+
 
   //admin pages
   { path: 'admin/login', component: LoginComponent},

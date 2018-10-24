@@ -37,6 +37,7 @@ import { FilterPipe} from './filter.pipe';
 import { FilterarticlePipe } from './filterarticle.pipe';
 import { PrivacyComponent } from './privacy/privacy.component';
 import { Safe } from './home.component';
+import { ContactComponent } from './contact.component';
 
 
 @NgModule({
@@ -66,6 +67,7 @@ import { Safe } from './home.component';
     FilterarticlePipe,
     PrivacyComponent,
     Safe,
+    ContactComponent,
 
   ],
   imports: [
