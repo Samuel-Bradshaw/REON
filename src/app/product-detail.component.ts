@@ -86,12 +86,12 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
     this.http.post(url , JSON.stringify(options), headers).subscribe(
         (data: any) => {
           this.product = data;
+          if(data.youtube_url != null){
           this.product.youtube_url = "https://www.youtube.com/embed/"+this.product.youtube_url; 
-      
+          }
        
         },
-          //TODO:
-          //Handle error!
+          (error: any) => { console.log(error);}
     );   
   }
 
@@ -112,8 +112,7 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
           }
        
         },
-          //TODO:
-          //Handle error!
+          (error: any) => { console.log(error);}
     ); 
 
   }
@@ -136,8 +135,7 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
           }
        
         },
-          //TODO:
-          //Handle error!
+          (error: any) => { console.log(error);}
     ); 
 
   }
