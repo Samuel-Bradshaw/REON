@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { MatDialog, MatDialogConfig,  MatDialogRef  } from '@angular/material';
+import { DialogComponent } from './dialog.component';
+
 
 @Component({
   selector: 'app-contact',
@@ -11,12 +14,14 @@ export class ContactComponent implements OnInit {
 	message: string = '';
 	email: string; 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public dialog: MatDialog) { }
 
   ngOnInit() {
+
+    
   }
 
-  send(){
+  send():void{
 
   	document.getElementById("emailerror").style.display = "none";
   	document.getElementById("msgerror").style.display = "none";
@@ -42,8 +47,9 @@ export class ContactComponent implements OnInit {
          	console.log("success!");
          	this.message = null;
          	this.email = null;
+          this.openDialog("Thank you for your message! \n\nWe will aim to respond as soon as possible.");
          }else{
-         console.log("Error adding dealer to database: "+ data );
+         console.log("Error sending message.");
      		}		
       },
       (error: any) => {
@@ -58,5 +64,17 @@ export class ContactComponent implements OnInit {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(String(email).toLowerCase());
 }
+
+  openDialog(message: string): void {
+    const dialogConfig = new MatDialogConfig();
+    const dialogRef = this.dialog.open(DialogComponent, {
+      data: {
+        message: message,
+      }
+    });
+
+ 
+  }
+
 
 }

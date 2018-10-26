@@ -2,8 +2,8 @@
 
   padding-top: 50px;
   padding-bottom: 30px;
-  padding-left: 20%;
-  padding-right :20%;
+  padding-left: 30%;
+  padding-right :30%;
   background-color: black;
   color: white;
   font-family: Questrial; font-size: 22px;
@@ -12,8 +12,13 @@
 
 }
 
+hr{
+	border: 2px solid white;
+	  border-style: inset;
+}
+
 td{
-	padding: 10px;
+	padding-top: 20px;
 }
 
 td i.fa{
@@ -30,7 +35,7 @@ h1, h2{
 
 input, label {
 	display:block;
-	font-size: 17px;
+	font-size: 16px;
 }
 
 td{
@@ -47,6 +52,8 @@ input {
     font-size: 16px;
     height: 20px;
     margin-top: 3px;
+    outline: none;
+    font-family: "Questrial";
 }
 textarea{
 	border-radius: 5px;
@@ -58,6 +65,12 @@ textarea{
 	padding:1% 1%;
 }
 
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px black inset;
+    -webkit-text-fill-color: white !important;
+}
+
+
 .width95{
 	width: 99%;
 }
@@ -66,34 +79,71 @@ textarea{
 	width: 100%;
 }
 
-.msgdiv{
-	margin-left: 0%;
-	margin-right: 50%;
+.form-group{
+	margin-bottom: 16px;
 }
+
+
 table{
-	margin: 30px 0;
+	padding: 0;
+	margin: 0;
 }
+
+.grid{
+	margin: 30px 0;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr;
+}
+
+.row1{
+	grid-column: 1/2;
+	grid-row: 1/2;
+	margin: 0;
+	padding: 0;
+}
+
+button.iblink{
+	border-radius: 50%;
+	background-color: white;
+	border: none;
+	width: 25px;
+	height: 25px;
+	
+	cursor: pointer;
+	text-align: center;
+}
+
+a.ilink{
+	position: absolute;
+	bottom: 2px;
+	right: 2px;}
+
+.row2{
+	position: relative;
+	grid-column: 2/3;
+	grid-row: 1/2;
+}
+
 
 h2{
 	font-size: 24px;
-	font-weight: 600;
 }
 
 .submitbutton{
-	font-family: Questrial; font-size: 16px;
+	font-family: Questrial; font-size: 15px;
 	text-align: center;
-	border-radius: 3px;
 	padding: 4px 4px;
-	margin: 10px 0;
 	min-width: 50px;
 	color: white;
-	border: 1px solid white;
-	background-color: rgb(150,150,150); 
+	background-color: rgb(100,100,100); 
 	cursor: pointer;
-	float: right;
+	border: none;
+	min-height: 30px;
 }
+
 .submitbutton:hover{
-	background-color:  rgb(120, 250, 250);
+	background-color:  rgb(70, 150, 150);
 }
 
 .error{
@@ -102,4 +152,76 @@ h2{
 	display: none;
 	margin: 5px 0;
 }
+
+.buttwrap{
+	text-align: center;
+}
+
+a{
+	text-decoration: none;
+	color: white;
+	cursor: default;
+}
+
+
+a.curs{
+	cursor: pointer;
+}
+
+@media (max-width: 900px){
+	.container{
+		padding-left: 25%;
+  		padding-right :25%;
+	}
+}
+
+@media (max-width: 600px){
+	.container{
+		padding-top: 30px;
+		padding-left: 15%;
+  		padding-right :15%;
+	}
+
+	h1{
+		font-size: 26px;
+	}
+
+	h2{
+		font-size: 18px;
+	}
+
+	td{
+		font-size: 15px;
+	}
+
+	table{
+	margin: 20px 0;
+}
+
+input, label, textarea {
+	
+	font-size: 14px;
+}
+}
+
+@media (max-width:480px){
+
+	.grid{
+		grid-template-columns: 1fr;
+		grid-template-rows: 2fr 1fr;
+		grid-gap: 20px;
+		padding-bottom: 0;
+		margin-bottom: 10px;
+	}
+
+	.row2{
+		grid-column: 1/2;
+		grid-row: 2/3;
+	}
+
+	a.ilink{position: relative;
+		margin-left: 40px;}
+} 
+
+
 

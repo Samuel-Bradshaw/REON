@@ -2,19 +2,28 @@
 <h1>Contact Us</h1>
 
 <hr>
-<table>
+<div class="grid">
+<table class="row1">
 		<tr>
-			<td><i class="fa fa-envelope"></i> </td>
-			<td>REON@korg.co.uk</td>
+
+			<td><a href="mailto:REON@korg.co.uk?" target="_top" class="curs"><i class="fa fa-envelope"></i></a></td>
+			<td><a href="mailto:REON@korg.co.uk?" target="_top" class="curs">REON@korg.co.uk</a></td>
 		</tr>
 		<tr>
-			<td><i class="fa fa-phone"></i></td>
-			<td>xxxxx xxxxxxx</td>
+			<td><a href="tel:+441908304600"><i class="fa fa-phone"></i></a></td>
+			<td><a href="tel:+441908304600">+441908 304600</a></td>
 		</tr>
 
 </table>
+<div class="row2 socialmedia">
+<a href="https://www.instagram.com/reonsynth/" target="_blank" class="curs ilink">
+	<button class="iblink">
+		<i class="fa fa-instagram" style="color: black; background-color: white;"></i>
+	</button>
+</a>
+</div>
+</div>
 
-<br>
 <div class="msgdiv">
 	<h2>Send us a message</h2>
 	<br>
@@ -24,17 +33,18 @@
 			<input type="email" class="width100" id="email" name="email" [(ngModel)]="email" required placeholder="Enter your email address here"> 
 			<p id="emailerror" class="error">Please enter a valid email address</p>
 		</div>
-		<br>
+
 		<div class="form-group">
 			<label for="message">Your Message:</label>
 			<textarea class="width95" placeholder="Enter your message to us here..." form="messageform"  name="message" [(ngModel)]="message" required></textarea>
 			<p id="msgerror" class="error">Please enter a message</p>
 		</div>
+		<div class="buttwrap">
 		<button class="submitbutton" (click)="send()">Send</button>
+	</div>
 	</form>
 
 </div>
-
 
 
 </div>
