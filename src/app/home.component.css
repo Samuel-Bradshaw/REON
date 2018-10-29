@@ -13,7 +13,16 @@
 
   display: table;
 
+
+   -webkit-background-size: 100%; 
+    -moz-background-size: 100%; 
+    -o-background-size: 100%; 
+    background-size: 100%; 
   background-size: cover; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+
   background-repeat: no-repeat; 
   box-shadow: 0 0px 30px 10px black inset;
    padding-bottom: 10%;

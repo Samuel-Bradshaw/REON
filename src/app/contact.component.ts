@@ -18,7 +18,7 @@ export class ContactComponent implements OnInit {
 
   ngOnInit() {
 
-    
+
   }
 
   send():void{
@@ -44,7 +44,7 @@ export class ContactComponent implements OnInit {
     this.http.post(url, JSON.stringify(options), headers).subscribe(
       (data: any) => {
          if(data === "success"){
-         	console.log("success!");
+         	console.log(data);
          	this.message = null;
          	this.email = null;
           this.openDialog("Thank you for your message! \n\nWe will aim to respond as soon as possible.");

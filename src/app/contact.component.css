@@ -114,6 +114,13 @@ button.iblink{
 	text-align: center;
 }
 
+
+.iblink i.fa{
+margin-left: auto;
+margin-right: auto;
+
+}
+
 a.ilink{
 	position: absolute;
 	bottom: 2px;
