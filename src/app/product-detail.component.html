@@ -8,8 +8,8 @@
 
 <div *ngIf="product">
 	<div class="title-container">
-	<a routerLink="/products/{{product.category_id}}" class="back"><i class="fa fa-arrow-left"></i> {{product.category_name}} range</a>
-	<h1 class="center">{{product.name}}</h1>
+	<a routerLink="/products/{{product.category_id}}" class="back"><i class="fa fa-arrow-left"></i>&nbsp;<span class="notranslate">{{product.category_name}}</span></a>
+	<h1 class="center notranslate">{{product.name}}</h1>
 	</div>
 
 	<div class="grid">
@@ -51,7 +51,7 @@
 
 		<div class="info">
 			<h2>{{product.description}}</h2>
-			<h2>£{{product.price | number:'1.0-2'}}</h2>
+			<h2 class="notranslate">£{{product.price | number:'1.0-2'}}</h2>
 			<ul *ngFor="let detail of details">
 			  	<li>{{detail}} </li>
 			</ul>

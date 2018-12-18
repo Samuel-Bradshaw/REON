@@ -86,6 +86,9 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
     this.http.post(url , JSON.stringify(options), headers).subscribe(
         (data: any) => {
           this.product = data;
+          this.product.long_description = this.product.long_description.replace(/(?:\r\n|\r|\n)/g, '<br>');
+          this.product.long_description = this.product.long_description.replace(/&#10;/g, '<br>');
+          console.log(this.product.long_description);
           if(data.youtube_url != null){
           this.product.youtube_url = "https://www.youtube.com/embed/"+this.product.youtube_url; 
           }

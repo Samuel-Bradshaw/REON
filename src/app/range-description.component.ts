@@ -38,6 +38,8 @@ export class RangeDescriptionComponent implements OnInit, AfterViewInit {
       this.http.post(url , JSON.stringify(options), headers).subscribe(
           (data: any) => {
             this.category = data;
+            this.category.category_description = this.category.category_description.replace(/(?:\r\n|\r|\n)/g, '<br>');
+            this.category.category_description = this.category.category_description.replace(/&#10;/g, '<br>');
           },
 
           //TODO:

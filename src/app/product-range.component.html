@@ -10,9 +10,9 @@
 	    routerLink='/products/{{product.category_id}}/{{product.product_id}}'>
 	    <div class="module product">
 	      <img src="http://reonsynth.com/{{product.leading_photo_filepath}}" style="width:100%;">
-			<h2>{{ product.name }}</h2>
+			<h2 class="notranslate">{{ product.name }}</h2>
 			<h3>{{ product.description}} </h3>
-			<h3>£{{product.price| number:'1.0-2'}}</h3>  
+			<h3 class="notranslate">£{{product.price| number:'1.0-2'}}</h3>  
 	    </div>
 	  </a>
 	</div>

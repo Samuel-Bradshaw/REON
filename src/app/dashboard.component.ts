@@ -34,6 +34,7 @@ export class DashboardComponent implements OnInit {
     this.http.post(url , JSON.stringify(options), headers).subscribe(
         (data: any) => {
           this.page_components = data;
+          this.page_components.copy = this.page_components.copy.replace(/(?:\r\n|\r|\n)/g, '<br>');
           if(this.page_components.video_url !== null){
           		this.page_components.video_url =  "https://www.youtube.com/embed/"+this.page_components.video_url; 
       	  }

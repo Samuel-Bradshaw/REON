@@ -4,7 +4,7 @@
 	<div *ngIf="downloads">
 		<ul *ngFor="let download of downloads">
 			<li title="click to download">
-				<a href="{{url}}/{{download.filepath}}" download>{{download.folder}}<span *ngIf="download.product_id !== null"> manual</span>
+				<a href="{{url}}/{{download.filepath}}" download><span class="notranslate">{{download.folder}}</span><span *ngIf="download.product_id !== null"> manual</span>
 				</a> 
 			</li>
 		</ul>
