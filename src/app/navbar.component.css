@@ -28,8 +28,8 @@
 
 .nav-button {
   /*box-sizing: border-box;*/
-  height: 50px; 
-  line-height: 50px;
+  height: 48px; 
+  line-height: 48px;
   width:14.2%;
   color: black;
   text-align: center;  
@@ -50,16 +50,16 @@ a{
 .icon{
 cursor: pointer;
 float: right;
-margin-top: 10px;
-max-width: 38px;
+max-width: 32px;
 min-width: 24px;
+
 }
 
 
 @media (min-width:1000px){
 
   .nav-button{
-      font-size: 18px;
+      font-size: 14px;
   }
 
 }
@@ -69,13 +69,19 @@ min-width: 24px;
     margin-left: 12%;
   margin-right: 12%;
   }
+
+.nav-button{
+        height: 42px;
+      line-height: 42px;
+}
+
 }
 
 @media (max-width: 999px) and (min-width: 761px){
 
   .nav-button{
       min-width: 72px;
-      font-size: 15px;
+      font-size: 11px;
   }
 
 } 
@@ -83,7 +89,8 @@ min-width: 24px;
 @media (max-width: 760px){
     .nav-button{
       min-width: 65px;
-      font-size: 14px;
+      font-size: 10px;
+
   }
 
 }
@@ -135,11 +142,13 @@ min-width: 24px;
 
   .nav-bar:not(.responsive) .icon{
     margin-right: 5px;
+    margin-top: 8px;
   }
 
   .nav-bar.responsive .icon {
     position: absolute;
     right: 5px;
+    margin-top: 8px;
   }
 
   .nav-bar .nav-button{
