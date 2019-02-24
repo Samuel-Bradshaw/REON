@@ -138,13 +138,11 @@
    
     }
 
-/*
+
 #google_translate_element{
-   bottom: 9%;
-   left: auto;
-   right:55%;
-   width: 100px !important;
- }*/
+   top: 3px;
+   right:3px;
+ }
 
 
   #termslink{
@@ -161,10 +159,12 @@
 
 
   }
+
+
 @media(max-width: 320px){
- /* #google_translate_element{
+ #google_translate_element{
     display: none;
-  }*/
+  }
 
 
   #termslink{

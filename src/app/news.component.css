@@ -57,7 +57,13 @@ color:white;
 
 }
 
+a, p a, p>a{
+  color: white !important;
+}
 
+a{
+  color: inherit !important;
+}
 
 
 li.news-item:hover:not(.active-article){
@@ -93,6 +99,7 @@ li.news-item:hover span{
 	display: block;
 	color: white;
 }
+
 
 
 
@@ -183,8 +190,6 @@ p{
 	font-size: 14px;
 }
 
-.text a{
-	color: white;
-}
+
 
 }
