@@ -7,7 +7,8 @@
     // Sanitising URL supplied values.
 
     $title = filter_var($obj->title, FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW);
-    $article = filter_var($obj->article, FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW);
+   // $article = filter_var($obj->article, FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW);
+    $article = $obj->article;
    // $image_filepath = filter_var($obj->image_filepath, FILTER_SANITIZE_STRING, FILTER_FLAG_ENCODE_LOW);
     $date = date('Y-m-d');
 
