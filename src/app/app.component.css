@@ -160,6 +160,15 @@
 
   }
 
+@media(max-width:450px){
+
+  .homelink{
+    margin-left: 10%;
+  }
+
+
+}
+
 
 @media(max-width: 320px){
  #google_translate_element{

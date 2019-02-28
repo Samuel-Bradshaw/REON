@@ -81,7 +81,7 @@ ngAfterViewInit(){
       textSize = "8px";
       } else{
       iconSize = "9px";
-      textSize = "7px";
+      textSize = "8px";
       $("#google_translate_element a").css("margin", " 0 2px 0 0");
 
       }
